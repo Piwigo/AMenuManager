@@ -74,7 +74,7 @@ global $page;
     /*
       Add a new random picture section
     */
-    if ( ($block = $menu->get_block( 'mbAMM_randompict' ) ) != null )
+    if ( ( ($block = $menu->get_block( 'mbAMM_randompict' ) ) != null ) && ($user['nb_total_images'] > 0) )
     {
       $block->set_title(  base64_decode($this->my_config['amm_randompicture_title'][$user['language']]) );
       $block->data = array("delay" => $this->my_config['amm_randompicture_periodicchange']);
@@ -175,19 +175,24 @@ global $page;
   // return the html content for the random picture block
   private function ajax_amm_get_random_picture()
   {
+    global $user;
+
     $local_tpl = new Template(AMM_PATH."menu_templates/", "");
     $local_tpl->set_filename('body_page',
                   dirname($this->filelocation).'/menu_templates/menubar_randompic_inner.tpl');
 
       $sql="SELECT i.id as image_id, i.file as image_file, i.comment, i.path, i.tn_ext, c.id as catid, c.name, c.permalink, RAND() as rndvalue, i.name as imgname
-FROM ".CATEGORIES_TABLE." c, ".IMAGES_TABLE." i, ".IMAGE_CATEGORY_TABLE." ic
-WHERE c.status='public'
-  AND c.id = ic.category_id
-  AND ic.image_id = i.id
-ORDER BY rndvalue
-LIMIT 0,1
-";
+            FROM ".CATEGORIES_TABLE." c, ".IMAGES_TABLE." i, ".IMAGE_CATEGORY_TABLE." ic
+            WHERE c.id = ic.category_id
+              AND ic.image_id = i.id
+              AND i.level <= ".$user['level']." ";
+      if($user['forbidden_categories']!="")
+      {
+        $sql.=" AND c.id NOT IN (".$user['forbidden_categories'].") ";
+      }
 
+      $sql.=" ORDER BY rndvalue
+            LIMIT 0,1";
 
 
       $result = pwg_query($sql);
