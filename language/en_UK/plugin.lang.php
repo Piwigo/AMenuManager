@@ -85,5 +85,9 @@ $lang['g002_modmenu'] = '\'menu\' block';
 $lang['g002_modspecial'] = '\'special\' block';
 $lang['g002_labelmenu'] = 'Menu\'s label';
 
+$lang['g002_setting_randompic_periodicchange'] = "Periodic change of the image";
+$lang['g002_setting_randompic_periodicchange_delay'] = "Delay";
+$lang['g002_setting_randompic_periodicchange_deactivated'] = "Disabled";
+
 
 ?>

@@ -86,4 +86,8 @@ $lang['g002_modspecial'] = '\'speciale\' Abschnitt';
 $lang['g002_labelmenu'] = 'Menü Wortlaut';
 
 
+$lang['g002_setting_randompic_periodicchange'] = "Periodische Änderung des Bildes";
+$lang['g002_setting_randompic_periodicchange_delay'] = "Frist";
+$lang['g002_setting_randompic_periodicchange_deactivated'] = "Deaktiviert";
+
 ?>

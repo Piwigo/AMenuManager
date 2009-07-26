@@ -23,14 +23,14 @@ Author URI: http://piwigo.org
 | release | date       |
 | 2.0.0b  | 2008/07/27 | * initial release with own blocks classes
 | 2.0.0   | 2008/10/23 | * first release for piwigo's blocks classes
-| 2.1.0   | 2009/07/24 | * 
-|         |            |   
-|         |            |   
-|         |            |   
-|         |            |   
-|         |            |   
-|         |            |   
-|         |            |   
+| 2.1.0   | 2009/07/26 | * add of a functionality : random image can be changed
+|         |            |   every x seconds (from 0.5 to 60)
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
 
 
 :: TO DO
