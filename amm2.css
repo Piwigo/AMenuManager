@@ -1,0 +1,12 @@
+.ammillustration {
+  text-align:center;
+  font-size:85%;
+  float:none;
+  width:100%;
+}
+
+#menubar dd.randompicdd {
+  /*min-height:180px;*/
+  margin:10px;
+  display:block;
+}
