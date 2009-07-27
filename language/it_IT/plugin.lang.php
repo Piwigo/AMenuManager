@@ -85,8 +85,8 @@ $lang['g002_modspecial'] = 'Sezzione \'speciale\'';
 $lang['g002_modmenu'] = 'Sezzione \'menu\'';
 $lang['g002_labelmenu'] = 'Titolo del menu';
 
-$lang['g002_setting_randompic_periodicchange'] = "Periodica di modificare l'immagine";
+$lang['g002_setting_randompic_periodicchange'] = "Cambiamento periodico dell\'immagine";
 $lang['g002_setting_randompic_periodicchange_delay'] = "Ritardo";
-$lang['g002_setting_randompic_periodicchange_deactivated'] = "Disabili";
+$lang['g002_setting_randompic_periodicchange_deactivated'] = "Disattivato";
 
 ?>
