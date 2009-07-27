@@ -46,6 +46,7 @@ class AMM_root extends common_plugin
       'amm_randompicture_showname' => 'n',     //n:no, o:over, u:under
       'amm_randompicture_showcomment' => 'n',   //n:no, o:over, u:under
       'amm_randompicture_periodicchange' => 0,   //0: no periodic change ; periodic change in milliseconds
+      'amm_randompicture_height' => 0,           //0: automatic, otherwise it's the fixed height in pixels
       'amm_randompicture_title' => array(),
       'amm_sections_modspecials' => array(
         'favorites' => 'y',

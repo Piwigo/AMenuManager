@@ -2,8 +2,8 @@
 /* -----------------------------------------------------------------------------
   Plugin     : Advanced Menu Manager
   Author     : Grum
-    email    : grum@grum.dnsalias.com
-    website  : http://photos.grum.dnsalias.com
+    email    : grum@piwigo.org
+    website  : http://photos.grum.fr
     PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
 
     << May the Little SpaceFrog be with you ! >>
@@ -77,7 +77,11 @@ global $page;
     if ( ( ($block = $menu->get_block( 'mbAMM_randompict' ) ) != null ) && ($user['nb_total_images'] > 0) )
     {
       $block->set_title(  base64_decode($this->my_config['amm_randompicture_title'][$user['language']]) );
-      $block->data = array("delay" => $this->my_config['amm_randompicture_periodicchange']);
+      $block->data = array(
+        "delay" => $this->my_config['amm_randompicture_periodicchange'],
+        "blockHeight" => $this->my_config['amm_randompicture_height'],
+        "firstPicture" => $this->ajax_amm_get_random_picture()
+      );
       $block->template = dirname(__FILE__).'/menu_templates/menubar_randompic.tpl';
     }
 

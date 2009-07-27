@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 2.1.0
+Version: 2.1.1
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -31,6 +31,16 @@ Author URI: http://piwigo.org
 |         |            |   a user (permission + level)
 |         |            |   (cf. post:107877 on french forum)
 |         |            |   (cf. topic:14374 on french forum)
+| 2.1.1   | 2009/07/27 | * random picture is preloaded before the first ajax call
+|         |            |   assuming the display of a thumbnail even if javascript
+|         |            |   is disabled on the browser
+|         |            |   (cf. post:116807 on french forum)
+|         |            | * give the possibility to choose between an automatic
+|         |            |   and a fixed height for the block menu
+|         |            |   (cf. post:116804 on french forum)
+|         |            | * compatibility with Sylvia theme
+|         |            |   (cf. post:116800 on french forum)
+|         |            |
 |         |            |
 |         |            |
 |         |            |
@@ -59,7 +69,7 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 define('AMM_DIR' , basename(dirname(__FILE__)));
 define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
-define('AMM_VERSION' , '2.1.0'); // => ne pas oublier la version dans l'entête !!
+define('AMM_VERSION' , '2.1.1'); // => ne pas oublier la version dans l'entête !!
 
 global $prefixeTable, $page;
 

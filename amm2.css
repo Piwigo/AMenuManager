@@ -2,11 +2,26 @@
   text-align:center;
   font-size:85%;
   float:none;
-  width:100%;
+  margin-right:auto;
+  margin-left:auto;
+  max-width:180px;
+  position:relative;
+  padding:10px;
+}
+
+.ammillustrationc{
+  margin:0px 10px 10px 10px;
 }
 
 #menubar dd.randompicdd {
-  /*min-height:180px;*/
-  margin:10px;
   display:block;
+  margin-left:0px;
 }
+
+#irandompicinner {
+  width:100%;
+  overflow:hidden;
+  float:none;
+}
+
+

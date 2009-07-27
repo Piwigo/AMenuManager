@@ -5,48 +5,78 @@
 
 {literal}
 <script type="text/javascript">
-//var divnum = 1;
-//var divprec = 0;
+var fixedHeight = {/literal}{$block->data.blockHeight}{literal};
 
   function init()
   {
-    $("#iamm_ill0").hide();
-    //$("#iamm_ill1").hide();
+    {/literal}
+    {if $block->data.blockHeight>0}
+      $("#irandompicinner").height(fixedHeight);
+      {literal}$("#iammrpic").load( function () { computePositionTop(); } );{/literal}
+    {else}
+      {literal}
+      $("#iammrpic").load( function () { $("#irandompicinner").animate({height: ($("#iamm_ill0").innerHeight())+"px"}, "normal"); } );
+      {/literal}
+    {/if}
+    {literal}
+  }
+
+  function computePositionTop()
+  {
+    $("#iamm_ill0").css({top:(fixedHeight-$("#iamm_ill0").innerHeight())/2});
   }
 
   function getRandomPicture()
   {
-    //divprec=divnum;
-    //divnum=1-divnum;
     $.get("./index.php", {ajaxfct:"randompic"},
       function (data)
       {
         $("#iamm_ill0").fadeTo('slow', 0, function ()
         {
           $("#iamm_ill0").html(data);
-          $("#iammrpic").load( function () {
-            $("#irandompicdd").animate({height: ($("#iamm_ill0").height())+"px"}, "normal", function ()
-            {
-              $("#iamm_ill0").fadeTo('slow', 1, function ()
+
+          {/literal}
+          {if $block->data.blockHeight>0}
+            {literal}
+            $("#iammrpic").load( function () {
+              computePositionTop();
+              $("#iamm_ill0").fadeTo('slow', 1);
+            } );
+            {/literal}
+          {else}
+            {literal}
+            $("#iammrpic").load( function () {
+              $("#irandompicinner").animate({height: ($("#iamm_ill0").innerHeight())+"px"}, "normal", function ()
               {
-                $("#irandompicdd").animate({height: this.clientHeight+"px"}, "normal");
+                $("#iamm_ill0").fadeTo('slow', 1, function ()
+                {
+                  $("#irandompicinner").animate({height: this.clientHeight+"px"}, "normal");
+                });
               });
-            });
-          } );
+            } );
+            {/literal}
+          {/if}
+          {literal}
+
         } );
       }
     );
   }
+
+
 </script>
 {/literal}
 
 <dd id="irandompicdd" class="randompicdd">
-  <div id="iamm_ill0" class="illustration ammillustration"></div>
-  <!--<div id="iamm_ill1" class="illustration ammillustration"></div>-->
+  <div id="irandompicinner" class="illustration">
+    <div class="ammillustrationc">
+      <div id="iamm_ill0" class="ammillustration">{$block->data.firstPicture}</div>
+    </div>
+  </div>
 </dd>
 
 <script type="text/javascript">
-  getRandomPicture();
+  init();
   {if $block->data.delay > 0 }
     var vIntervalID = window.setInterval(getRandomPicture, {$block->data.delay});
   {/if}

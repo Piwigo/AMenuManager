@@ -89,5 +89,7 @@ $lang['g002_labelmenu'] = 'Menü Wortlaut';
 $lang['g002_setting_randompic_periodicchange'] = "Periodische Änderung des Bildes";
 $lang['g002_setting_randompic_periodicchange_delay'] = "Frist";
 $lang['g002_setting_randompic_periodicchange_deactivated'] = "Deaktiviert";
+$lang['g002_setting_randompic_height'] = "Höhe der Block Menü";
+$lang['g002_setting_randompic_height_auto'] = "Auto";
 
 ?>

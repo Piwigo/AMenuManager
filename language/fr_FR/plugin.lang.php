@@ -88,5 +88,6 @@ $lang['g002_labelmenu'] = 'Libellé du menu';
 $lang['g002_setting_randompic_periodicchange'] = "Changement périodique de l'image";
 $lang['g002_setting_randompic_periodicchange_delay'] = "Délai";
 $lang['g002_setting_randompic_periodicchange_deactivated'] = "Désactivé";
-
+$lang['g002_setting_randompic_height'] = "Hauteur du bloc de menu";
+$lang['g002_setting_randompic_height_auto'] = "Automatique";
 ?>

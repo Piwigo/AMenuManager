@@ -466,6 +466,7 @@ global $page;
   */
   protected function action_randompic_modify_config()
   {
+    $this->my_config['amm_randompicture_height']=$_POST['famm_randompicture_height'];
     $this->my_config['amm_randompicture_periodicchange']=$_POST['famm_randompicture_periodicchange'];
     $this->my_config['amm_randompicture_showname']=$_POST['famm_randompicture_showname'];
     $this->my_config['amm_randompicture_showcomment']=$_POST['famm_randompicture_showcomment'];
@@ -528,6 +529,7 @@ global $page;
       'showname_selected' => $this->my_config['amm_randompicture_showname'],
       'showcomment_selected' => $this->my_config['amm_randompicture_showcomment'],
       'periodic_change' => $this->my_config['amm_randompicture_periodicchange'],
+      'height' => $this->my_config['amm_randompicture_height'],
       'lang_selected' => $user['language'],
       'fromlang' => substr($user['language'],0,2)
     );

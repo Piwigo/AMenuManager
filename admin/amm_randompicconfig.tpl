@@ -42,16 +42,26 @@
     formatDelay({/literal}{$datas.periodic_change}{literal});
     $("#iamm_rp_pc_slider").slider(
       {
-        min:0, 
+        min:0,
         max:60000,
         steps:120,
         startValue:{/literal}{$datas.periodic_change}{literal},
         slide: function(event, ui) { formatDelay(ui.value); }
       });
+
+    formatHeight({/literal}{$datas.height}{literal});
+    $("#iamm_rp_height_slider").slider(
+      {
+        min:99,
+        max:300,
+        steps:201,
+        startValue:affectHeight({/literal}{$datas.height}{literal}),
+        slide: function(event, ui) { formatHeight(ui.value); }
+      });
   }
 
   function formatDelay(delay)
-  { 
+  {
     $("#iamm_randompicture_periodicchange").val(delay);
     if(delay==0)
     {
@@ -61,6 +71,27 @@
     {
       $("#iamm_rp_pc_display").html((delay/1000).toFixed(2)+"s");
     }
+  }
+
+  function formatHeight(height)
+  {
+    (height==99)?vheight=0:vheight=height;
+
+    $("#iamm_randompicture_height").val(vheight);
+    if(vheight==0)
+    {
+      $("#iamm_rp_height_display").html("{/literal}{'g002_setting_randompic_height_auto'|@translate}{literal}");
+    }
+    else
+    {
+      $("#iamm_rp_height_display").html(vheight+"px");
+    }
+  }
+
+  function affectHeight(height)
+  {
+    if(height==0)
+    {return(0);}else{return(height);}
   }
 
   function change_lang()
@@ -109,7 +140,7 @@
     <table class="formtable">
       <tr>
         <td>{'g002_setting_block_title'|@translate}</td>
-        <td>
+        <td colspan="2">
           <input type="text" id="iamm_randompicture_title" value="" maxlength="50" onkeyup="apply_changes('iamm_randompicture_title');" onblur="apply_changes('iamm_randompicture_title');"/>
           <select onchange="change_lang();" id="islang">
             {html_options values=$datas.language_list_values output=$datas.language_list_labels selected=$datas.lang_selected}
@@ -118,10 +149,22 @@
       </tr>
       <tr>
         <td></td>
-        <td style="font-size:80%;">
+        <td style="font-size:80%;" colspan="2">
           <a style="cursor:pointer;" onclick="do_translation()">{'g002_translate'|@translate}</a>
         </td>
       </tr>
+
+      <tr>
+        <td>{'g002_setting_randompic_height'|@translate}</td>
+        <td>
+          <input type="hidden" name="famm_randompicture_height" id="iamm_randompicture_height" value="{$datas.height}">
+          <div id="iamm_rp_height_slider"></div>
+        </td>
+        <td width="90px">
+          <div id="iamm_rp_height_display"></div>
+        </td>
+      </tr>
+
 
     </table>
 
