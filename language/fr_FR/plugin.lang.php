@@ -14,7 +14,7 @@ $lang['g002_personnalblock'] = 'Menu personnalisé';
 
 $lang['g002_setmenu_nfo'] = 'Gestion de l\'affichage des sections affichées dans le menu';
 $lang['g002_addlinks_nfo'] = 'Section permettant d\'afficher dans le menu une liste d\'hyperliens vers d\'autres sites internet';
-$lang['g002_randompict_nfo'] = 'Section permettant d\'afficher dans le menu une image prise au hasard dans la gallerie';
+$lang['g002_randompict_nfo'] = 'Section permettant d\'afficher dans le menu une image prise au hasard dans la galerie';
 $lang['g002_personnalblock_nfo'] = 'Afficher dans le menu des sections au contenu personnalisé';
 
 
@@ -28,7 +28,7 @@ $lang['g002_icon'] = 'Image';
 $lang['g002_visible'] = 'Visible';
 $lang['g002_linkslist'] = "Liste des liens";
 $lang['g002_confirm_delete_link'] = "Supprimer le lien ?";
-$lang['g002_nolinks'] = 'Pas de liens';
+$lang['g002_nolinks'] = 'Pas de lien';
 $lang['g002_link'] = 'lien';
 $lang['g002_links'] = 'liens';
 
