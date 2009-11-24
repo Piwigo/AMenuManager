@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 2.1.2
+Version: 2.1.3
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -43,8 +43,9 @@ Author URI: http://piwigo.org
 | 2.1.2   | 2009/11/16 | * adding new translations
 |         |            |    - es_ES
 |         |            |    - hu_HU (thx to sámli)
-|         |            |
-|         |            |
+| 2.1.3   | 2009/11/24 | * move the js for "random image" in the the footer
+|         |            |   (having the js inside the <dl> tag was not w3c
+|         |            |   compliant)
 |         |            |
 
 
@@ -69,7 +70,7 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 define('AMM_DIR' , basename(dirname(__FILE__)));
 define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
-define('AMM_VERSION' , '2.1.2'); // => ne pas oublier la version dans l'entête !!
+define('AMM_VERSION' , '2.1.3'); // => ne pas oublier la version dans l'entête !!
 
 global $prefixeTable, $page;
 

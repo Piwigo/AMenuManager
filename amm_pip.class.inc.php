@@ -48,6 +48,7 @@ class AMM_PIP extends AMM_root
     add_event_handler('loading_lang', array(&$this, 'load_lang'));
     add_event_handler('blockmanager_apply', array(&$this, 'blockmanager_apply') );
     add_event_handler('loc_end_page_header', array(&$this->css, 'apply_CSS'));
+    add_event_handler('loc_end_page_tail', array(&$this, 'applyJS'));
   }
 
   /*
@@ -227,6 +228,33 @@ global $page;
     $local_tpl->assign('plugin', array('PATH' => AMM_PATH));
 
     return($local_tpl->parse('body_page', true));
+  }
+
+
+  public function applyJS()
+  {
+    global $user, $template;
+
+    $menu = new BlockManager("menubar");
+    $menu->load_registered_blocks();
+    $menu->prepare_display();
+
+    if ( ( ($block = $menu->get_block( 'mbAMM_randompict' ) ) != null ) && ($user['nb_total_images'] > 0) )
+    {
+      $local_tpl = new Template(AMM_PATH."admin/", "");
+      $local_tpl->set_filename('body_page', dirname($this->filelocation).'/menu_templates/menubar_randompic.js.tpl');
+
+      $data = array(
+        "delay" => $this->my_config['amm_randompicture_periodicchange'],
+        "blockHeight" => $this->my_config['amm_randompicture_height'],
+        "firstPicture" => $this->ajax_amm_get_random_picture()
+      );
+
+      $local_tpl->assign('data', $data);
+
+      $template->append('footer_elements', $local_tpl->parse('body_page', true));
+    }
+
   }
 
 } // AMM_PIP class
