@@ -91,4 +91,11 @@ $lang['g002_setting_randompic_periodicchange_deactivated'] = "Disabled";
 $lang['g002_setting_randompic_height'] = "Height of menu block";
 $lang['g002_setting_randompic_height_auto'] = "Automatic";
 
+// v2.1.3
+$lang['g002_cancel'] = "Cancel";
+$lang['g002_piwigo_default'] = "Piwigo default sort";
+$lang['g002_apply_changes'] = "Apply changes";
+$lang['g002_config_saved'] = "The configuration is saved";
+$lang['g002_adviser_not_allowed'] = "Adviser is not allowed to make changes";
+
 ?>
