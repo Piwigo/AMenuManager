@@ -12,7 +12,7 @@ Author URI: http://piwigo.org
 --------------------------------------------------------------------------------
   Author     : Grum
     email    : grum@grum.fr
-    website  : http://photos.fr
+    website  : http://photos.grum.fr
     PWG user : http://forum.piwigo.org/profile.php?id=3706
 
     << May the Little SpaceFrog be with you ! >>
@@ -43,9 +43,22 @@ Author URI: http://piwigo.org
 | 2.1.2   | 2009/11/16 | * adding new translations
 |         |            |    - es_ES
 |         |            |    - hu_HU (thx to sámli)
-| 2.1.3   | 2009/11/24 | * move the js for "random image" in the the footer
+| 2.1.3   | 2009/11/24 | * mantis:1285
+|         |            |   move the js for "random image" in the the footer
 |         |            |   (having the js inside the <dl> tag was not w3c
 |         |            |   compliant)
+|         |            | * mantis:1132
+|         |            |   Allowing order management for items in Piwigo's core blocks
+|         |            | * mantis:1133
+|         |            |   Allowing to group content from Piwigo's core blocks
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
 |         |            |
 
 

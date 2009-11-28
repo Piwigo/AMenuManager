@@ -3,14 +3,14 @@
   Plugin     : Advanced Menu Manager
   Author     : Grum
     email    : grum@grum.fr
-    website  : http://photos.fr
+    website  : http://photos.grum.fr
     PWG user : http://forum.piwigo.org/profile.php?id=3706
 
     << May the Little SpaceFrog be with you ! >>
   ------------------------------------------------------------------------------
   See main.inc.php for release information
 
-  AMM_root : root classe for plugin
+  AMM_root : root class for plugin
 
   --------------------------------------------------------------------------- */
 
@@ -19,9 +19,25 @@ if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/common_plugin.class.inc.php');
 include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/css.class.inc.php');
 
+
 class AMM_root extends common_plugin
 {
   protected $css;   //the css object
+  protected $defaultMenus = array(
+    'favorites' => array('container' => 'special', 'visibility' => '', 'order' => 0, 'translation' => 'favorite_cat'),
+    'most_visited' => array('container' => 'special', 'visibility' => '', 'order' => 1, 'translation' => 'most_visited_cat'),
+    'best_rated' => array('container' => 'special', 'visibility' => '', 'order' => 2, 'translation' => 'best_rated_cat'),
+    'random' => array('container' => 'special', 'visibility' => '', 'order' => 3, 'translation' => 'random_cat'),
+    'recent_pics' => array('container' => 'special', 'visibility' => '', 'order' => 4, 'translation' => 'recent_pics_cat'),
+    'recent_cats' => array('container' => 'special', 'visibility' => '', 'order' => 5, 'translation' => 'recent_cats_cat'),
+    'calendar' => array('container' => 'special', 'visibility' => '', 'order' => 6, 'translation' => 'calendar'),
+    'qsearch' => array('container' => 'menu', 'visibility' => '', 'order' => 0, 'translation' => 'qsearch'),
+    'tags' => array('container' => 'menu', 'visibility' => '', 'order' => 1, 'translation' => 'Tags'),
+    'search' => array('container' => 'menu', 'visibility' => '', 'order' => 2, 'translation' => 'Search'),
+    'comments' => array('container' => 'menu', 'visibility' => '', 'order' => 3, 'translation' => 'comments'),
+    'about' => array('container' => 'menu', 'visibility' => '', 'order' => 4, 'translation' => 'About'),
+    'rss' => array('container' => 'menu', 'visibility' => '', 'order' => 5, 'translation' => 'Notification')
+  );
 
   function AMM_root($prefixeTable, $filelocation)
   {
@@ -48,23 +64,7 @@ class AMM_root extends common_plugin
       'amm_randompicture_periodicchange' => 0,   //0: no periodic change ; periodic change in milliseconds
       'amm_randompicture_height' => 0,           //0: automatic, otherwise it's the fixed height in pixels
       'amm_randompicture_title' => array(),
-      'amm_sections_modspecials' => array(
-        'favorites' => 'y',
-        'most_visited' => 'y',
-        'best_rated' => 'y',
-        'random' => 'y',
-        'recent_pics' => 'y',
-        'recent_cats' => 'y',
-        'calendar' => 'y'
-      ),
-      'amm_sections_modmenu' => array(
-        'qsearch' => 'y',
-        'tags' => 'y',
-        'search' => 'y',
-        'comments' => 'y',
-        'about' => 'y',
-        'rss' => 'y'
-      )
+      'amm_sections_items' => $this->defaultMenus
     );
 
     $languages=get_languages();
@@ -190,8 +190,23 @@ WHERE (lang = '*' OR lang = '".$lang."') ";
   }
 
 
+  protected function sortSectionsItemsCompare($a, $b)
+  {
+    if($a['container']==$b['container'])
+    {
+      if($a['order']==$b['order']) return(0);
+      return(($a['order']<$b['order'])?-1:1);
+    }
+    else return(($a['container']<$b['container'])?-1:1);
+  }
+
+  protected function sortSectionsItems()
+  {
+    uasort($this->my_config['amm_sections_items'], array($this, "sortSectionsItemsCompare"));
+  }
 
 } // amm_root  class
+
 
 
 ?>

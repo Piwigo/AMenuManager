@@ -3,3 +3,6 @@
 table.littlefont th { text-align:center; padding:3px;padding-left:9px;padding-right:9px; }
 table.littlefont td { text-align:left; padding:0px;padding-left:3px;padding-right:3px; }
 
+.containerMenuSection { width:250px;  margin:auto; padding:10px; }
+li.menuItem { padding:4px; width:230px; cursor:move;}
+li.menuItemDisabled { cursor:defaut;}

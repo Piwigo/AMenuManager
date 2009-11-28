@@ -3,7 +3,7 @@
   Plugin     : Advanced Menu Manager
   Author     : Grum
     email    : grum@grum.dnsalias.com
-    website  : http://photos.grum.dnsalias.com
+    website  : http://photos.grum.fr
     PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
 
     << May the Little SpaceFrog be with you ! >>
@@ -16,6 +16,7 @@
 if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 
 include_once(PHPWG_PLUGINS_PATH.'AMenuManager/amm_root.class.inc.php');
+include_once(PHPWG_ROOT_PATH.'include/block.class.php');
 include_once(PHPWG_ROOT_PATH.'admin/include/tabsheet.class.php');
 include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/ajax.class.inc.php');
 include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/genericjs.class.inc.php');
@@ -26,6 +27,7 @@ class AMM_AIP extends AMM_root
   protected $google_translate;
   protected $tabsheet;
   protected $ajax;
+  protected $sectionsId=array('menu', 'special');
 
   protected $urls_modes=array(0 => 'new_window', 1 => 'current_window');
 
@@ -64,9 +66,7 @@ class AMM_AIP extends AMM_root
   */
   public function manage()
   {
-    global $template;
-
-global $page;
+    global $template, $page;
 
     $template->set_filename('plugin_admin_content', dirname(__FILE__)."/admin/amm_admin.tpl");
 
@@ -175,7 +175,7 @@ global $page;
     elseif($_REQUEST['fAMM_tabsheet']=='setmenu')
     {
       $page_nfo=l10n('g002_setmenu_nfo');
-      $this->display_sections_list_page($_REQUEST['action']);
+      $this->display_sections_page();
     }
 
     $template->assign('page_nfo', $page_nfo);
@@ -220,6 +220,7 @@ global $page;
           $result=$this->ajax_amm_links_delete($_REQUEST['fItem']);
           break;
 
+/*
         case 'setmenu_modmenu_sections_list':
           $result=$this->ajax_amm_setmenu_mod_section_list('amm_sections_modmenu');
           break;
@@ -233,6 +234,7 @@ global $page;
         case 'setmenu_modspecial_sections_showhide':
           $result=$this->ajax_amm_setmenu_mod_section_showhide('amm_sections_modspecials', $_REQUEST['fItem']);
           break;
+*/
 
         case 'personalised_list':
           $result=$this->ajax_amm_personalised_list();
@@ -483,34 +485,40 @@ global $page;
   /*
     manage display for sections table page
   */
-  private function display_sections_list_page($action)
+  private function display_sections_page()
   {
-    global $template, $user;
-    $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_sections.tpl');
+    global $template, $user, $page;
+    $template->set_filename('body_page', dirname($this->filelocation).'/admin/amm_sections.tpl');
 
-    switch($action)
+    if(isset($_POST['fList']) && !$this->adviser_abort())
     {
-      case 'modmenu':
-        $tmp_list=array(
-          array('separator' => '', 'link' => '', 'label' => 'g002_modmenu'),
-          array('separator' => ' / ', 'link' => $this->page_link.'&amp;fAMM_tabsheet=setmenu&amp;action=modspecial', 'label' => 'g002_modspecial')
-        );
-        break;
-      case 'modspecial':
-        $tmp_list=array(
-          array('separator' => '', 'link' => $this->page_link.'&amp;fAMM_tabsheet=setmenu&amp;action=modmenu', 'label' => 'g002_modmenu'),
-          array('separator' => ' / ', 'link' => '', 'label' => 'g002_modspecial')
-        );
-        break;
+      /* the returned information in the fList form element are
+       *  a list of ecah item, separate with a ";"
+       *  each item have properties separated by a ","
+       *   id, container, order, visibility
+      */
+      $items=explode(";",$_POST['fList']);
+      for($i=0;$i<count($items)-1;$i++)
+      {
+        $properties=explode(",", $items[$i]);
+        $this->my_config['amm_sections_items'][$properties[0]]['container']=$properties[1];
+        $this->my_config['amm_sections_items'][$properties[0]]['order']=$properties[2];
+        $this->my_config['amm_sections_items'][$properties[0]]['visibility']=$properties[3];
+      }
+      $this->sortSectionsItems();
+      if($this->save_config())
+      {
+        array_push($page['infos'], l10n('AMM_config_saved'));
+      }
+      else
+      {
+        array_push($page['errors'], l10n('AMM_adviser_not_authorized'));
+      }
     }
 
-    $template_datas=array(
-      'AMM_AJAX_URL_LIST' => $this->page_link."&ajaxfct=setmenu_".$action."_",
-      'LIST' => $tmp_list
-    );
-
-    $template->assign("datas", $template_datas);
+    $template->assign("sections", $this->sectionsId);
+    $template->assign("defaultValues", $this->defaultMenus);
+    $template->assign("items", $this->my_config['amm_sections_items']);
     $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
   }
 
@@ -989,28 +997,12 @@ global $page;
 
 
 
-
+/*
+ *
   // return a html formatted list of special menu sections items
   private function ajax_amm_setmenu_mod_section_list($menuname)
   {
-    $labels=array(
-      'amm_sections_modspecials' => array(
-          'favorites' => 'favorite_cat',
-          'most_visited' => 'most_visited_cat',
-          'best_rated' => 'best_rated_cat',
-          'random' => 'random_cat',
-          'recent_pics' => 'recent_pics_cat',
-          'recent_cats' => 'recent_cats_cat',
-          'calendar' => 'calendar'        ),
-      'amm_sections_modmenu' => array(
-          'qsearch' => 'qsearch',
-          'tags' => 'Tags',
-          'search' => 'Search',
-          'comments' => 'comments',
-          'about' => 'About',
-          'rss' => 'Notification'
-        )
-    );
+
 
 
     $local_tpl = new Template(AMM_PATH."admin/", "");
@@ -1044,6 +1036,8 @@ global $page;
 
     return($this->ajax_amm_setmenu_mod_section_list($menuname));
   }
+  * */
+
 
 } // AMM_AIP class
 

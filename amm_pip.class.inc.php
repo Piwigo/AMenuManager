@@ -21,6 +21,7 @@ include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/ajax.class.inc.php');
 class AMM_PIP extends AMM_root
 {
   protected $ajax;
+  protected $displayRandomImageBlock=true;
 
   function AMM_PIP($prefixeTable, $filelocation)
   {
@@ -67,10 +68,9 @@ class AMM_PIP extends AMM_root
 
   public function blockmanager_apply( $menu_ref_arr )
   {
-    global $user;
+    global $user, $page;
     $menu = & $menu_ref_arr[0];
 
-global $page;
 
     /*
       Add a new random picture section
@@ -84,6 +84,10 @@ global $page;
         "firstPicture" => $this->ajax_amm_get_random_picture()
       );
       $block->template = dirname(__FILE__).'/menu_templates/menubar_randompic.tpl';
+    }
+    else
+    {
+      $this->displayRandomImageBlock=false;
     }
 
     /*
@@ -135,23 +139,30 @@ global $page;
       }
     }
 
+
     /*
       hide items from special & menu sections
     */
-    foreach(array('mbMenu' => 'amm_sections_modmenu', 'mbSpecials' =>'amm_sections_modspecials') as $key0 => $val0)
+    $blocks=Array();
+    $blocks['menu']=$menu->get_block('mbMenu');
+    $blocks['special']=$menu->get_block('mbSpecials');
+
+    $menuItems=array_merge($blocks['menu']->data, $blocks['special']->data);
+    $this->sortSectionsItems();
+
+    $blocks['menu']->data=Array();
+    $blocks['special']->data=Array();
+
+    foreach($this->my_config['amm_sections_items'] as $key => $val)
     {
-      if ( ($block = $menu->get_block( $key0 ) ) != null )
+      if(isset($menuItems[$key]))
       {
-        foreach($this->my_config[$val0] as $key => $val)
-        {
-          if($val=='n')
-          {
-            unset( $block->data[$key] );
-          }
-        }
+        $blocks[$val['container']]->data[$key]=$menuItems[$key];
       }
     }
-}
+    if(count($blocks['menu']->data)==0) $menu->hide_block('mbMenu');
+    if(count($blocks['special']->data)==0) $menu->hide_block('mbSpecials');
+  }
 
   /*
     return ajax content
@@ -235,11 +246,7 @@ global $page;
   {
     global $user, $template;
 
-    $menu = new BlockManager("menubar");
-    $menu->load_registered_blocks();
-    $menu->prepare_display();
-
-    if ( ( ($block = $menu->get_block( 'mbAMM_randompict' ) ) != null ) && ($user['nb_total_images'] > 0) )
+    if($this->displayRandomImageBlock)
     {
       $local_tpl = new Template(AMM_PATH."admin/", "");
       $local_tpl->set_filename('body_page', dirname($this->filelocation).'/menu_templates/menubar_randompic.js.tpl');
