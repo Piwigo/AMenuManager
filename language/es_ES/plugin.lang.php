@@ -90,4 +90,12 @@ $lang['g002_setting_randompic_periodicchange_delay'] = "Plazo";
 $lang['g002_setting_randompic_periodicchange_deactivated'] = "Desactivado";
 $lang['g002_setting_randompic_height'] = "Altura del bloque de menú";
 $lang['g002_setting_randompic_height_auto'] = "Automático";
+
+// v2.1.3
+$lang['g002_cancel'] = "Anular";
+$lang['g002_piwigo_default'] = "Selección por defecto de Piwigo";
+$lang['g002_apply_changes'] = "Validar";
+$lang['g002_config_saved'] = "Configuración salvaguardada";
+$lang['g002_adviser_not_allowed'] = "El consejero no es autorizado a efectuar modificaciones";
+$lang['g002_click_to_manage_rights'] = "Administrar los derechos de acceso";
 ?>
