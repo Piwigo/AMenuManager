@@ -29,10 +29,10 @@
       $this->exportfile=dirname($this->filelocation).'/'.$this->plugin_name_files.'.sql';
     }
 
-    /* 
-        function for installation process 
-        return true if install process is ok, otherwise false 
-    */ 
+    /*
+        function for installation process
+        return true if install process is ok, otherwise false
+    */
     public function install()
     {
 
@@ -82,6 +82,31 @@
 
       $this->init_config();
       $this->load_config();
+      /* AMM release earlier than the 2.1.3 uses two parameters to manage the display
+       * of the menu items ("amm_sections_modspecials" and "amm_sections_modmenu")
+       *
+       * These two parameters are replaced by a single parameter "amm_sections_items"
+       *
+       * This function aim to import the old conf into the new conf property
+      */
+      if(isset($this->my_config['amm_sections_modspecials']))
+      {
+        foreach($this->my_config['amm_sections_modspecials'] as $key=>$val)
+        {
+          $this->my_config['amm_sections_items'][$key]['visibility']=($val=="y")?"guest,generic,normal,admin/":"admin/";
+        }
+        unset($this->my_config['amm_sections_modspecials']);
+      }
+
+      if(isset($this->my_config['amm_sections_modmenu']))
+      {
+        foreach($this->my_config['amm_sections_modmenu'] as $key=>$val)
+        {
+          $this->my_config['amm_sections_items'][$key]['visibility']=($val=="y")?"guest,generic,normal,admin/":"admin/";
+        }
+        unset($this->my_config['amm_sections_modmenu']);
+      }
+
       $this->save_config();
     }
 

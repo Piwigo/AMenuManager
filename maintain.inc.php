@@ -56,6 +56,10 @@ function plugin_install($plugin_id, $plugin_version, &$errors)
 
 function plugin_activate($plugin_id, $plugin_version, &$errors)
 {
+  global $prefixeTable;
+
+  $amm=new AMM_install($prefixeTable, __FILE__);
+  $result=$amm->activate();
 }
 
 function plugin_deactivate($plugin_id)
