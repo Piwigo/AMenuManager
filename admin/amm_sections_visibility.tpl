@@ -3,8 +3,7 @@
 {foreach from=$users item=values}
   <label>
   <input type="checkbox" id="i{$name}_vis_user_{$values.id}" value="{$values.id}"
-    {if $values.allowed==true} checked{/if}
-    {if $values.enabled==false} disabled{/if} />{$values.name}
+    {if $values.allowed==true} checked{/if} />{$values.name}
   </label><br/>
 {/foreach}
 </p>
@@ -14,8 +13,7 @@
 {foreach from=$groups item=values}
   <label>
   <input type="checkbox" id="i{$name}_vis_group_{$values.id}" value="{$values.id}"
-    {if $values.allowed==true} checked{/if}
-    {if $values.enabled==false} disabled{/if} />{$values.name}
+    {if $values.allowed==true} checked{/if} />{$values.name}
   </label><br/>
 {/foreach}
 </p>

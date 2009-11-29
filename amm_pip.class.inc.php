@@ -146,8 +146,30 @@ class AMM_PIP extends AMM_root
      *  managing rights to access
     */
     $blocks=Array();
-    $blocks['menu']=$menu->get_block('mbMenu');
-    $blocks['special']=$menu->get_block('mbSpecials');
+
+    if($menu->is_hidden('mbMenu'))
+    {
+      // if block is hidden, make a fake to manage AMM features
+      // the fake block isn't displayed
+      $blocks['menu']=new DisplayBlock('amm_mbMenu');
+      $blocks['menu']->data=Array();
+    }
+    else
+    {
+      $blocks['menu']=$menu->get_block('mbMenu');
+    }
+
+    if($menu->is_hidden('mbSpecials'))
+    {
+      // if block is hidden, make a fake to manage AMM features
+      // the fake block isn't displayed
+      $blocks['special']=new DisplayBlock('amm_mbSpecial');
+      $blocks['special']->data=Array();
+    }
+    else
+    {
+      $blocks['special']=$menu->get_block('mbSpecials');
+    }
 
     $menuItems=array_merge($blocks['menu']->data, $blocks['special']->data);
     $this->sortSectionsItems();

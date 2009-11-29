@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 2.1.3
+Version: 2.1.4
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -57,11 +57,13 @@ Author URI: http://piwigo.org
 |         |            |   management system
 |         |            | * mantis: feature 1100
 |         |            |   Random picture : compatibility with theme 'montblanc'
-|         |            |
-|         |            |
-|         |            |
-|         |            |
-|         |            |
+| 2.1.4   | 2009/11/29 | * mantis: feature 1299
+|         |            |   Allows to manage access for the 'Admin' users
+|         |            | * mantis: feature 1298
+|         |            |   Users 'Webmaster' aren't managed
+|         |            | * mantis: feature 1297
+|         |            |   AMM don't works properly if a block 'menu' or
+|         |            |   'specials' is hidden
 |         |            |
 |         |            |
 
@@ -87,7 +89,7 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 define('AMM_DIR' , basename(dirname(__FILE__)));
 define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
-define('AMM_VERSION' , '2.1.3'); //=> ne pas oublier la version dans l'entête !!
+define('AMM_VERSION' , '2.1.4'); //=> ne pas oublier la version dans l'entête !!
 
 global $prefixeTable, $page;
 

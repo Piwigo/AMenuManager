@@ -520,7 +520,7 @@ class AMM_AIP extends AMM_root
     foreach($this->my_config['amm_sections_items'] as $key=>$val)
     {
       $this->my_config['amm_sections_items'][$key]['visibilityForm'] = $this->makeVisibility($val['visibility'], $key);
-      $this->defaultMenus[$key]['visibilityForm'] = $this->makeVisibility("guest,generic,normal,admin/", $key);
+      $this->defaultMenus[$key]['visibilityForm'] = $this->makeVisibility("guest,generic,normal,webmaster,admin/", $key);
     }
 
     $users=new users("");
