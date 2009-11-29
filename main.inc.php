@@ -55,7 +55,8 @@ Author URI: http://piwigo.org
 |         |            | * mantis: feature 1278
 |         |            |   Allowing to manage access to menu items with a right
 |         |            |   management system
-|         |            |
+|         |            | * mantis: feature 1100
+|         |            |   Random picture : compatibility with theme 'montblanc'
 |         |            |
 |         |            |
 |         |            |
