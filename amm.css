@@ -3,6 +3,11 @@
 table.littlefont th { text-align:center; padding:3px;padding-left:9px;padding-right:9px; }
 table.littlefont td { text-align:left; padding:0px;padding-left:3px;padding-right:3px; }
 
-.containerMenuSection { width:250px;  margin:auto; padding:10px; }
+.containerMenuSection { width:250px;  margin:auto; padding:10px; display:inline-block; vertical-align:top; }
 li.menuItem { padding:4px; width:230px; cursor:move;}
 li.menuItemDisabled { cursor:defaut;}
+div.visibility { width:100%;overflow:hidden;display:none;margin-left:30px; }
+
+div.visibility p { margin:0px; }
+div.visibility input { margin-right:8px; }
+div.visibility h3 { position:relative; font-size:14px; height:auto; margin:5px 0px 0px;padding:0px;text-align:left;}

@@ -140,8 +140,10 @@ class AMM_PIP extends AMM_root
     }
 
 
-    /*
-      hide items from special & menu sections
+    /* manage items from special & menu sections
+     *  reordering items
+     *  grouping items
+     *  managing rights to access
     */
     $blocks=Array();
     $blocks['menu']=$menu->get_block('mbMenu');
@@ -153,15 +155,49 @@ class AMM_PIP extends AMM_root
     $blocks['menu']->data=Array();
     $blocks['special']->data=Array();
 
+    $users=new users("");
+    $groups=new groups("");
+    $user_groups=$this->get_user_groups($user['id']);
+
     foreach($this->my_config['amm_sections_items'] as $key => $val)
     {
       if(isset($menuItems[$key]))
       {
-        $blocks[$val['container']]->data[$key]=$menuItems[$key];
+        $access=explode("/",$val['visibility']);
+        $users->set_alloweds(str_replace(",", "/", $access[0]));
+        $groups->set_alloweds(str_replace(",", "/", $access[1]));
+
+        /* test if user status is allowed to access the menu item
+         * if access is managed by group, the user have to be associated with an allowed group to access the menu item
+        */
+        if($users->is_allowed($user['status']) && (
+            ($access[1]=='') ||
+            (($access[1]!='') && $groups->are_allowed($user_groups)))
+        )
+        {
+          $blocks[$val['container']]->data[$key]=$menuItems[$key];
+        }
       }
     }
     if(count($blocks['menu']->data)==0) $menu->hide_block('mbMenu');
     if(count($blocks['special']->data)==0) $menu->hide_block('mbSpecials');
+  }
+
+
+  protected function get_user_groups($user_id)
+  {
+    $returned=array();
+    $sql="SELECT group_id FROM ".USER_GROUP_TABLE."
+          WHERE user_id = ".$user_id." ";
+    $result=pwg_query($sql);
+    if($result)
+    {
+      while($row=mysql_fetch_assoc($result))
+      {
+        array_push($returned, $row['group_id']);
+      }
+    }
+    return($returned);
   }
 
   /*

@@ -17,6 +17,7 @@
 if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 
 include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/common_plugin.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/users_groups.class.inc.php');
 include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/css.class.inc.php');
 
 
@@ -24,19 +25,19 @@ class AMM_root extends common_plugin
 {
   protected $css;   //the css object
   protected $defaultMenus = array(
-    'favorites' => array('container' => 'special', 'visibility' => '', 'order' => 0, 'translation' => 'favorite_cat'),
-    'most_visited' => array('container' => 'special', 'visibility' => '', 'order' => 1, 'translation' => 'most_visited_cat'),
-    'best_rated' => array('container' => 'special', 'visibility' => '', 'order' => 2, 'translation' => 'best_rated_cat'),
-    'random' => array('container' => 'special', 'visibility' => '', 'order' => 3, 'translation' => 'random_cat'),
-    'recent_pics' => array('container' => 'special', 'visibility' => '', 'order' => 4, 'translation' => 'recent_pics_cat'),
-    'recent_cats' => array('container' => 'special', 'visibility' => '', 'order' => 5, 'translation' => 'recent_cats_cat'),
-    'calendar' => array('container' => 'special', 'visibility' => '', 'order' => 6, 'translation' => 'calendar'),
-    'qsearch' => array('container' => 'menu', 'visibility' => '', 'order' => 0, 'translation' => 'qsearch'),
-    'tags' => array('container' => 'menu', 'visibility' => '', 'order' => 1, 'translation' => 'Tags'),
-    'search' => array('container' => 'menu', 'visibility' => '', 'order' => 2, 'translation' => 'Search'),
-    'comments' => array('container' => 'menu', 'visibility' => '', 'order' => 3, 'translation' => 'comments'),
-    'about' => array('container' => 'menu', 'visibility' => '', 'order' => 4, 'translation' => 'About'),
-    'rss' => array('container' => 'menu', 'visibility' => '', 'order' => 5, 'translation' => 'Notification')
+    'favorites' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 0, 'translation' => 'favorite_cat'),
+    'most_visited' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 1, 'translation' => 'most_visited_cat'),
+    'best_rated' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 2, 'translation' => 'best_rated_cat'),
+    'random' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 3, 'translation' => 'random_cat'),
+    'recent_pics' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 4, 'translation' => 'recent_pics_cat'),
+    'recent_cats' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 5, 'translation' => 'recent_cats_cat'),
+    'calendar' => array('container' => 'special', 'visibility' => 'guest,generic,normal,admin/', 'order' => 6, 'translation' => 'calendar'),
+    'qsearch' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,admin/', 'order' => 0, 'translation' => 'qsearch'),
+    'tags' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,admin/', 'order' => 1, 'translation' => 'Tags'),
+    'search' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,admin/', 'order' => 2, 'translation' => 'Search'),
+    'comments' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,admin/', 'order' => 3, 'translation' => 'comments'),
+    'about' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,admin/', 'order' => 4, 'translation' => 'About'),
+    'rss' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,admin/', 'order' => 5, 'translation' => 'Notification')
   );
 
   function AMM_root($prefixeTable, $filelocation)

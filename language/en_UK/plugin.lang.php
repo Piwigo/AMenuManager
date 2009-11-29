@@ -97,5 +97,6 @@ $lang['g002_piwigo_default'] = "Piwigo default sort";
 $lang['g002_apply_changes'] = "Apply changes";
 $lang['g002_config_saved'] = "The configuration is saved";
 $lang['g002_adviser_not_allowed'] = "Adviser is not allowed to make changes";
+$lang['g002_click_to_manage_rights'] = "Rights management";
 
 ?>

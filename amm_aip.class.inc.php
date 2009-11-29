@@ -27,7 +27,7 @@ class AMM_AIP extends AMM_root
   protected $google_translate;
   protected $tabsheet;
   protected $ajax;
-  protected $sectionsId=array('menu', 'special');
+  protected $sectionsId=array('menu' => 'title_menu', 'special' => 'special_categories');
 
   protected $urls_modes=array(0 => 'new_window', 1 => 'current_window');
 
@@ -500,22 +500,34 @@ class AMM_AIP extends AMM_root
       $items=explode(";",$_POST['fList']);
       for($i=0;$i<count($items)-1;$i++)
       {
-        $properties=explode(",", $items[$i]);
-        $this->my_config['amm_sections_items'][$properties[0]]['container']=$properties[1];
-        $this->my_config['amm_sections_items'][$properties[0]]['order']=$properties[2];
-        $this->my_config['amm_sections_items'][$properties[0]]['visibility']=$properties[3];
+        $properties=explode("#", $items[$i]);
+        $properties[0]=explode(",", $properties[0]);
+        $this->my_config['amm_sections_items'][$properties[0][0]]['container']=$properties[0][1];
+        $this->my_config['amm_sections_items'][$properties[0][0]]['order']=$properties[0][2];
+        $this->my_config['amm_sections_items'][$properties[0][0]]['visibility']=$properties[1];
       }
       $this->sortSectionsItems();
       if($this->save_config())
       {
-        array_push($page['infos'], l10n('AMM_config_saved'));
+        array_push($page['infos'], l10n('g002_config_saved'));
       }
       else
       {
-        array_push($page['errors'], l10n('AMM_adviser_not_authorized'));
+        array_push($page['errors'], l10n('g002_adviser_not_allowed'));
       }
     }
 
+    foreach($this->my_config['amm_sections_items'] as $key=>$val)
+    {
+      $this->my_config['amm_sections_items'][$key]['visibilityForm'] = $this->makeVisibility($val['visibility'], $key);
+      $this->defaultMenus[$key]['visibilityForm'] = $this->makeVisibility("guest,generic,normal,admin/", $key);
+    }
+
+    $users=new users("");
+    $groups=new groups("");
+
+
+    $template->assign("visibility", Array('users' => $users->access_list, 'groups' => $groups->access_list));
     $template->assign("sections", $this->sectionsId);
     $template->assign("defaultValues", $this->defaultMenus);
     $template->assign("items", $this->my_config['amm_sections_items']);
@@ -731,6 +743,30 @@ class AMM_AIP extends AMM_root
 
 
 
+  /* this function returns an HTML FORM to use with each menu items
+   * $visibility is a formatted string looking this :
+   *   users type1(,users typeX)/(groupId0)(,groupIdX))
+  */
+  private function makeVisibility($visibility, $id)
+  {
+    $local_tpl = new Template(AMM_PATH."admin/", "");
+    $local_tpl->set_filename('body_page',
+                  dirname($this->filelocation).'/admin/amm_sections_visibility.tpl');
+
+
+    $parameters=explode("/", $visibility);
+
+    $users=new users(str_replace(",", "/", $parameters[0]));
+    $users->set_allowed('admin', true);
+    $groups=new groups(str_replace(",", "/", $parameters[1]));
+
+    $local_tpl->assign('name', $id);
+    $local_tpl->assign('users', $users->access_list);
+    $local_tpl->assign('groups', $groups->access_list);
+
+    return($local_tpl->parse('body_page', true));
+  }
+
 
 
   /*
@@ -746,6 +782,8 @@ class AMM_AIP extends AMM_root
     }
     return(false);
   }
+
+
 
   /* ---------------------------------------------------------------------------
     functions to manage urls tables
@@ -822,6 +860,8 @@ class AMM_AIP extends AMM_root
     return(pwg_query($sql));
   }
 
+
+
   /* ---------------------------------------------------------------------------
     functions to manage sections tables
   --------------------------------------------------------------------------- */
@@ -882,6 +922,9 @@ class AMM_AIP extends AMM_root
     }
     return(0);
   }
+
+
+
 
 
   /* ---------------------------------------------------------------------------
@@ -994,49 +1037,6 @@ class AMM_AIP extends AMM_root
     }
     return($this->ajax_amm_personalised_list());
   }
-
-
-
-/*
- *
-  // return a html formatted list of special menu sections items
-  private function ajax_amm_setmenu_mod_section_list($menuname)
-  {
-
-
-
-    $local_tpl = new Template(AMM_PATH."admin/", "");
-    $local_tpl->set_filename('body_page',
-                  dirname($this->filelocation).'/admin/amm_sectionsmod_detail.tpl');
-
-    $template_datas = array('LIST' => array());
-    foreach($this->my_config[$menuname] as $key => $val)
-    {
-      $template_datas['LIST'][] = array(
-        'ID' => base64_encode($key),
-        'LABEL' => $labels[$menuname][$key],
-        'VISIBLE' => 'g002_yesno_'.$val
-      );
-    }
-
-    $local_tpl->assign('datas', $template_datas);
-    $local_tpl->assign('plugin', array('PATH' => AMM_PATH));
-
-    return($local_tpl->parse('body_page', true));
-  }
-
-
-  // move item to the specified position
-  private function ajax_amm_setmenu_mod_section_showhide($menuname, $urlid)
-  {
-    $switchvisible=array('y'=>'n', 'n'=>'y');
-
-    $this->my_config[$menuname][base64_decode($urlid)]=$switchvisible[$this->my_config[$menuname][base64_decode($urlid)]];
-    $this->save_config();
-
-    return($this->ajax_amm_setmenu_mod_section_list($menuname));
-  }
-  * */
 
 
 } // AMM_AIP class

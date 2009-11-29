@@ -27,13 +27,13 @@ Author URI: http://piwigo.org
 |         |            |   every x seconds (from 0.5 to 60)
 |         |            | * bug resolved : random image block is displayed only
 |         |            |   if user have accessibility to more than 0 images
-|         |            |   random images are choosen in the accessible images for
-|         |            |   a user (permission + level)
+|         |            |   random images are choosen in the accessible images
+|         |            |   for a user (permission + level)
 |         |            |   (cf. post:107877 on french forum)
 |         |            |   (cf. topic:14374 on french forum)
-| 2.1.1   | 2009/07/27 | * random picture is preloaded before the first ajax call
-|         |            |   assuming the display of a thumbnail even if javascript
-|         |            |   is disabled on the browser
+| 2.1.1   | 2009/07/27 | * random picture is preloaded before the first ajax
+|         |            |   call assuming the display of a thumbnail even if
+|         |            |   javascript is disabled on the browser
 |         |            |   (cf. post:116807 on french forum)
 |         |            | * give the possibility to choose between an automatic
 |         |            |   and a fixed height for the block menu
@@ -43,15 +43,18 @@ Author URI: http://piwigo.org
 | 2.1.2   | 2009/11/16 | * adding new translations
 |         |            |    - es_ES
 |         |            |    - hu_HU (thx to sámli)
-| 2.1.3   | 2009/11/24 | * mantis:1285
+| 2.1.3   | 2009/11/24 | * mantis: feature 1285
 |         |            |   move the js for "random image" in the the footer
 |         |            |   (having the js inside the <dl> tag was not w3c
 |         |            |   compliant)
-|         |            | * mantis:1132
-|         |            |   Allowing order management for items in Piwigo's core blocks
-|         |            | * mantis:1133
+|         |            | * mantis: feature 1132
+|         |            |   Allowing order management for items in Piwigo's core
+|         |            |   blocks
+|         |            | * mantis: feature 1133
 |         |            |   Allowing to group content from Piwigo's core blocks
-|         |            |
+|         |            | * mantis: feature 1278
+|         |            |   Allowing to manage access to menu items with a right
+|         |            |   management system
 |         |            |
 |         |            |
 |         |            |
@@ -83,7 +86,7 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 define('AMM_DIR' , basename(dirname(__FILE__)));
 define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
-define('AMM_VERSION' , '2.1.3'); // => ne pas oublier la version dans l'entête !!
+define('AMM_VERSION' , '2.1.3'); //=> ne pas oublier la version dans l'entête !!
 
 global $prefixeTable, $page;
 
