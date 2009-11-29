@@ -90,4 +90,13 @@ $lang['g002_setting_randompic_periodicchange_delay'] = "Ritardo";
 $lang['g002_setting_randompic_periodicchange_deactivated'] = "Disattivato";
 $lang['g002_setting_randompic_height'] = "Altezza blocco del menu";
 $lang['g002_setting_randompic_height_auto'] = "Automatico";
+
+// v2.1.3
+$lang['g002_cancel'] = "Cancellare";
+$lang['g002_piwigo_default'] = "Ordinamento di default di Piwigo";
+$lang['g002_apply_changes'] = "Salva";
+$lang['g002_config_saved'] = "Configurazione salvata";
+$lang['g002_adviser_not_allowed'] = "Il consiglier non è autorizzato ad effettuare modifiche";
+
+
 ?>
