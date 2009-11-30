@@ -97,6 +97,7 @@ $lang['g002_piwigo_default'] = "Ordinamento di default di Piwigo";
 $lang['g002_apply_changes'] = "Salva";
 $lang['g002_config_saved'] = "Configurazione salvata";
 $lang['g002_adviser_not_allowed'] = "Il consiglier non è autorizzato ad effettuare modifiche";
+$lang['g002_click_to_manage_rights'] = "Gestire i diritti d'accesso";
 
 
 ?>
