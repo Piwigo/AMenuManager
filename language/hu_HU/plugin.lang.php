@@ -91,4 +91,12 @@ $lang['g002_setting_randompic_periodicchange_deactivated'] = "Kikapcsolva";
 $lang['g002_setting_randompic_height'] = "Menü blokkok szélessége";
 $lang['g002_setting_randompic_height_auto'] = "Automatikus";
 
+// v2.1.3
+$lang['g002_cancel'] = "Mégse";
+$lang['g002_piwigo_default'] = "Piwigo alapértelmezett rendezés";
+$lang['g002_apply_changes'] = "Alkalmaz";
+$lang['g002_config_saved'] = "Konfiguráció mentve";
+$lang['g002_adviser_not_allowed'] = "Nincs jogosultság a módosításhoz";
+$lang['g002_click_to_manage_rights'] = "Jogkezelés";
+
 ?>
