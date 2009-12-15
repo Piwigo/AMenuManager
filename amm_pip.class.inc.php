@@ -302,9 +302,9 @@ class AMM_PIP extends AMM_root
 
   public function applyJS()
   {
-    global $user, $template;
+    global $user, $template, $page;
 
-    if($this->displayRandomImageBlock)
+    if($this->displayRandomImageBlock && $page['body_id'] == 'theCategoryPage')
     {
       $local_tpl = new Template(AMM_PATH."admin/", "");
       $local_tpl->set_filename('body_page', dirname($this->filelocation).'/menu_templates/menubar_randompic.js.tpl');
