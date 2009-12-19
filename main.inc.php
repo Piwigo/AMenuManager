@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 2.1.5
+Version: 2.1.6
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -71,8 +71,9 @@ Author URI: http://piwigo.org
 |         |            |    - zh_CN (thx mzs777)
 |         |            | * update translations
 |         |            |    - hu_HU (thx to sámli)
-|         |            |
-|         |            |
+| 2.1.6   | 2009/12/19 | * mantis: feature 1336
+|         |            |   Error message about an undefined var 'tabsheet' on
+|         |            |   the admin panel
 |         |            |
 |         |            |
 |         |            |
@@ -103,7 +104,7 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 define('AMM_DIR' , basename(dirname(__FILE__)));
 define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
-define('AMM_VERSION' , '2.1.5'); //=> ne pas oublier la version dans l'entête !!
+define('AMM_VERSION' , '2.1.6'); //=> ne pas oublier la version dans l'entête !!
 
 global $prefixeTable, $page;
 
