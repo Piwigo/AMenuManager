@@ -130,7 +130,7 @@ class AMM_root extends common_plugin
     $result=pwg_query($sql);
     if($result)
     {
-      while($row=mysql_fetch_array($result))
+      while($row=pwg_db_fetch_assoc($result))
       {
         $row['label']=stripslashes($row['label']);
         $returned[]=$row;
@@ -151,7 +151,7 @@ class AMM_root extends common_plugin
     $result=pwg_query($sql);
     if($result)
     {
-      $tmp=mysql_fetch_row($result);
+      $tmp=pwg_db_fetch_row($result);
       $returned=$tmp[0];
     }
     return($returned);
@@ -182,7 +182,7 @@ WHERE (lang = '*' OR lang = '".$lang."') ";
     $result=pwg_query($sql);
     if($result)
     {
-      while($row=mysql_fetch_array($result))
+      while($row=pwg_db_fetch_assoc($result))
       {
         $returned[]=$row;
       }
