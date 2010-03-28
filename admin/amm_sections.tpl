@@ -1,5 +1,5 @@
-{known_script id="jquery.ui" src=$ROOT_URL|@cat:"template-common/lib/ui/ui.core.packed.js"}
-{known_script id="jquery.ui.sortable" src=$ROOT_URL|@cat:"template-common/lib/ui/ui.sortable.packed.js"}
+{known_script id="jquery.ui" src=$ROOT_URL|@cat:"themes/default/js/ui/packed/ui.core.packed.js"}
+{known_script id="jquery.ui.sortable" src=$ROOT_URL|@cat:"themes/default/js/ui/packed/ui.sortable.packed.js"}
 
 <div id="containerMenu">
   {foreach from=$sections item=sectionName key=section}

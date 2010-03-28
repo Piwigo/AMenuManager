@@ -25,17 +25,17 @@ class AMM_root extends common_plugin
 {
   protected $css;   //the css object
   protected $defaultMenus = array(
-    'favorites' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 0, 'translation' => 'favorite_cat'),
-    'most_visited' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 1, 'translation' => 'most_visited_cat'),
-    'best_rated' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 2, 'translation' => 'best_rated_cat'),
-    'random' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 3, 'translation' => 'random_cat'),
-    'recent_pics' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 4, 'translation' => 'recent_pics_cat'),
-    'recent_cats' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 5, 'translation' => 'recent_cats_cat'),
-    'calendar' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 6, 'translation' => 'calendar'),
-    'qsearch' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 0, 'translation' => 'qsearch'),
+    'favorites' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 0, 'translation' => 'My favorites'),
+    'most_visited' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 1, 'translation' => 'Most visited'),
+    'best_rated' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 2, 'translation' => 'Best rated'),
+    'random' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 3, 'translation' => 'Random pictures'),
+    'recent_pics' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 4, 'translation' => 'Recent pictures'),
+    'recent_cats' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 5, 'translation' => 'Recent categories'),
+    'calendar' => array('container' => 'special', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 6, 'translation' => 'Calendar'),
+    'qsearch' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 0, 'translation' => 'Quick search'),
     'tags' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 1, 'translation' => 'Tags'),
     'search' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 2, 'translation' => 'Search'),
-    'comments' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 3, 'translation' => 'comments'),
+    'comments' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 3, 'translation' => 'Comments'),
     'about' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 4, 'translation' => 'About'),
     'rss' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 5, 'translation' => 'Notification')
   );

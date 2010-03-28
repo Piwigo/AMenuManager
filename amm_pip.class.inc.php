@@ -304,6 +304,18 @@ class AMM_PIP extends AMM_root
   {
     global $user, $template, $page;
 
+    if(!array_key_exists('body_id', $page))
+    {
+      /*
+       * it seems the error message reported on mantis:1476 is displayed because
+       * the 'body_id' doesn't exist in the $page
+       *
+       * not abble to reproduce the error, but initializing the key to an empty
+       * value if it doesn't exist may be a sufficient solution
+       */
+      $page['body_id']="";
+    }
+
     if($this->displayRandomImageBlock && $page['body_id'] == 'theCategoryPage')
     {
       $local_tpl = new Template(AMM_PATH."admin/", "");

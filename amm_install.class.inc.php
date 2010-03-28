@@ -3,7 +3,7 @@
   Plugin     : Advanced Menu Manager
   Author     : Grum
     email    : grum@grum.dnsalias.com
-    website  : http://photos.grum.dnsalias.com
+    website  : http://photos.grum.fr
     PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
 
     << May the Little SpaceFrog be with you ! >>
@@ -13,7 +13,8 @@
   MyPolls_Install : classe to manage plugin install
 
   --------------------------------------------------------------------------- */
-  @include_once('amm_root.class.inc.php');
+  include_once('amm_version.inc.php');
+  include_once('amm_root.class.inc.php');
   include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/tables.class.inc.php');
 
 
@@ -35,6 +36,10 @@
     */
     public function install()
     {
+      $this->init_config();
+      $this->load_config();
+      $this->my_config['installed']=AMM_VERSION2;
+      $this->save_config();
 
       $tables_def=array(
 "CREATE TABLE  `".$this->tables['urls']."` (
@@ -52,10 +57,10 @@
 "CREATE TABLE  `".$this->tables['personalised']."` (
   `id` int(11) NOT NULL default '0',
   `lang` varchar(5) NOT NULL default '',
-  `title` varchar(50) NOT NULL default '',
+  `title` varchar(255) NOT NULL default '',
   `content` text NOT NULL,
   `visible` char(1) NOT NULL default 'y',
-  `nfo` varchar(25) NOT NULL default '',
+  `nfo` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`,`lang`)
 )"
 );
@@ -82,6 +87,24 @@
 
       $this->init_config();
       $this->load_config();
+
+      $this->udpateTablesDef();
+
+      $this->my_config['installed']=AMM_VERSION2; //update the installed release number
+      $this->save_config();
+    }
+
+    public function deactivate()
+    {
+    }
+
+
+    /**
+     * update tables & config between releases
+     *
+     */
+    protected function udpateTablesDef()
+    {
       /* AMM release earlier than the 2.1.3 uses two parameters to manage the display
        * of the menu items ("amm_sections_modspecials" and "amm_sections_modmenu")
        *
@@ -107,11 +130,33 @@
         unset($this->my_config['amm_sections_modmenu']);
       }
 
-      $this->save_config();
-    }
+      if(!array_key_exists('installed', $this->my_config))
+      {
+        /*
+         * if key does not exist, probably try to update a plugin older than the
+         * 2.2.0 release
+         */
+        $this->my_config['installed']="02.01.06";
+      }
 
-    public function deactivate()
-    {
+      if($this->my_config['installed']<="02.01.06")
+      {
+        /*
+         * 2.2.0 updates
+         *
+         * - update fields length for table 'personalised'
+         * - update config for menu translation
+         */
+        $sql="ALTER TABLE `".$this->tables['personalised']."`
+              MODIFY COLUMN `title` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+              MODIFY COLUMN `nfo` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;";
+        pwg_query($sql);
+
+        foreach($this->my_config['amm_sections_items'] as $key => $val)
+        {
+          $this->my_config['amm_sections_items'][$key]['translation'] = $this->defaultMenus[$key]['translation'];
+        }
+      }
     }
 
   } //class

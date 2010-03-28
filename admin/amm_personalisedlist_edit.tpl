@@ -1,5 +1,3 @@
-{* $Id $ *}
-
 {include file='include/autosize.inc.tpl'}
 
 {literal}
@@ -80,7 +78,7 @@
       <tr>
         <td>{'g002_setting_personalised_nfo'|@translate}</td>
         <td>
-          <input type="text" name="famm_personalised_nfo" id="iamm_personalised_nfo" value="{$datas.nfo}" maxlength="25"/>
+          <input type="text" name="famm_personalised_nfo" id="iamm_personalised_nfo" value="{$datas.nfo}" maxlength="255"/>
         </td>
       </tr>
 
@@ -118,7 +116,7 @@
       <tr>
         <td>{'g002_setting_block_title'|@translate}</td>
         <td>
-          <input type="text" id="iamm_personalised_title" value="" maxlength="50" onkeyup="apply_changes('iamm_personalised_title');" onblur="apply_changes('iamm_personalised_title');"/>
+          <input type="text" id="iamm_personalised_title" value="" maxlength="255" onkeyup="apply_changes('iamm_personalised_title');" onblur="apply_changes('iamm_personalised_title');"/>
         </td>
       </tr>
       <tr>

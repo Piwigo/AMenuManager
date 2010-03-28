@@ -27,7 +27,7 @@ class AMM_AIP extends AMM_root
   protected $google_translate;
   protected $tabsheet;
   protected $ajax;
-  protected $sectionsId=array('menu' => 'title_menu', 'special' => 'special_categories');
+  protected $sectionsId=array('menu' => 'Menu', 'special' => 'Specials');
 
   protected $urls_modes=array(0 => 'new_window', 1 => 'current_window');
 
@@ -522,6 +522,8 @@ class AMM_AIP extends AMM_root
       $this->my_config['amm_sections_items'][$key]['visibilityForm'] = $this->makeVisibility($val['visibility'], $key);
       $this->defaultMenus[$key]['visibilityForm'] = $this->makeVisibility("guest,generic,normal,webmaster,admin/", $key);
     }
+
+    $this->sortSectionsItems();
 
     $users=new users("");
     $groups=new groups("");

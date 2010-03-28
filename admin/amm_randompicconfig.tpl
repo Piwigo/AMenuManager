@@ -1,5 +1,5 @@
-{known_script id="jquery.ui" src=$ROOT_URL|@cat:"template-common/lib/ui/ui.core.packed.js"}
-{known_script id="jquery.ui.slider" src=$ROOT_URL|@cat:"template-common/lib/ui/ui.slider.packed.js"}
+{known_script id="jquery.ui" src=$ROOT_URL|@cat:"themes/default/js/ui/packed/ui.core.packed.js"}
+{known_script id="jquery.ui.slider" src=$ROOT_URL|@cat:"themes/default/js/ui/packed/ui.slider.packed.js"}
 
 {literal}
 <style>
@@ -7,7 +7,8 @@
     width:350px;
     height:10px;
     border:1px solid;
-    margin-left:10px;
+    margin-right:5px;
+    padding-right:14px;
   }
  .ui-slider-handle {
     width:12px;
@@ -15,7 +16,7 @@
     position:relative;
     top:-2px;
     border:1px solid;
-    background:#cccccc;
+    display:block;
   }
 </style>
 <script type="text/javascript">
