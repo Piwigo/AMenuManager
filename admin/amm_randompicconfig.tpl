@@ -46,7 +46,7 @@
         min:0,
         max:60000,
         steps:120,
-        startValue:{/literal}{$datas.periodic_change}{literal},
+        value:{/literal}{$datas.periodic_change}{literal},
         slide: function(event, ui) { formatDelay(ui.value); }
       });
 
@@ -56,7 +56,7 @@
         min:99,
         max:300,
         steps:201,
-        startValue:affectHeight({/literal}{$datas.height}{literal}),
+        value:affectHeight({/literal}{$datas.height}{literal}),
         slide: function(event, ui) { formatHeight(ui.value); }
       });
   }
