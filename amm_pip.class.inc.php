@@ -214,7 +214,7 @@ class AMM_PIP extends AMM_root
     $result=pwg_query($sql);
     if($result)
     {
-      while($row=mysql_fetch_assoc($result))
+      while($row=pwg_db_fetch_assoc($result))
       {
         array_push($returned, $row['group_id']);
       }
@@ -270,7 +270,7 @@ class AMM_PIP extends AMM_root
 
 
       $result = pwg_query($sql);
-      if($result and $nfo = mysql_fetch_array($result))
+      if($result and $nfo = pwg_db_fetch_assoc($result))
       {
         $nfo['section']='category';
         $nfo['category']=array(

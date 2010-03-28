@@ -608,7 +608,7 @@ class AMM_AIP extends AMM_root
     $result=pwg_query($sql);
     if($result)
     {
-      $tmp=mysql_fetch_row($result);
+      $tmp=pwg_db_fetch_row($result);
       $tmp=$tmp[0];
     }
     else
@@ -802,7 +802,7 @@ class AMM_AIP extends AMM_root
     $result=pwg_query($sql);
     if($result)
     {
-      $returned=mysql_fetch_array($result);
+      $returned=pwg_db_fetch_assoc($result);
       //$returned['label']=stripslashes($returned['label']);
     }
     return($returned);
@@ -816,7 +816,7 @@ class AMM_AIP extends AMM_root
     if($result)
     {
       $tmp=array();
-      while($row=mysql_fetch_array($result))
+      while($row=pwg_db_fetch_assoc($result))
       {
         $tmp[$row['id']]=$row['position'];
       }
@@ -878,7 +878,7 @@ class AMM_AIP extends AMM_root
     $result=pwg_query($sql);
     if($result)
     {
-      while($returned[]=mysql_fetch_array($result));
+      while($returned[]=pwg_db_fetch_assoc($result));
     }
     return($returned);
   }
@@ -916,7 +916,7 @@ class AMM_AIP extends AMM_root
     $result=pwg_query($sql);
     if($result)
     {
-      $row=mysql_fetch_row($result);
+      $row=pwg_db_fetch_row($result);
       if(is_array($row))
       {
         return($row[0]+1);
