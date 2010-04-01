@@ -1,6 +1,6 @@
 <?php
 
-$lang['Grum Plugin Classes is not installed'] = 'El plugin <b>Grum Plugin Classes</b> no está instalado';
+$lang['To install this plugin, you need to install Grum Plugin Classes %s before'] = 'Para instalar este plugin, usted debe previamente, instalar el plugin Grum Plugin Classes %s';
 
 $lang['g002_title_page'] = 'Gestión avanzada del menú';
 $lang['g002_version'] = 'v';
