@@ -126,7 +126,7 @@ if(defined('IN_ADMIN'))
   //AMM admin part loaded and active only if in admin page
   include_once("amm_aim.class.inc.php");
   $obj = new AMM_AIM($prefixeTable, __FILE__);
-  $obj->init_events();
+  $obj->initEvents();
   set_plugin_data($plugin['id'], $obj);
 }
 else

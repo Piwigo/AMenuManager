@@ -16,21 +16,19 @@
 if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 
 include_once(PHPWG_PLUGINS_PATH.'AMenuManager/amm_root.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/ajax.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCAjax.class.inc.php');
 
 class AMM_PIP extends AMM_root
 {
-  protected $ajax;
   protected $displayRandomImageBlock=true;
 
   function AMM_PIP($prefixeTable, $filelocation)
   {
     parent::__construct($prefixeTable, $filelocation);
-    $this->ajax = new Ajax();
-    $this->css = new css(dirname($this->filelocation).'/'.$this->plugin_name_files."2.css");
+    $this->css = new GPCCss(dirname($this->getFileLocation()).'/'.$this->getPluginNameFiles()."2.css");
 
-    $this->load_config();
-    $this->init_events();
+    $this->loadConfig();
+    $this->initEvents();
   }
 
 
@@ -42,13 +40,13 @@ class AMM_PIP extends AMM_root
   /*
     initialize events call for the plugin
   */
-  public function init_events()
+  public function initEvents()
   {
     //TODELETE: add_event_handler('loc_begin_menubar', array(&$this, 'modify_menu') );
-    parent::init_events();
+    parent::initEvents();
     add_event_handler('loading_lang', array(&$this, 'load_lang'));
     add_event_handler('blockmanager_apply', array(&$this, 'blockmanager_apply') );
-    add_event_handler('loc_end_page_header', array(&$this->css, 'apply_CSS'));
+    add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
     add_event_handler('loc_end_page_tail', array(&$this, 'applyJS'));
   }
 
@@ -77,10 +75,10 @@ class AMM_PIP extends AMM_root
     */
     if ( ( ($block = $menu->get_block( 'mbAMM_randompict' ) ) != null ) && ($user['nb_total_images'] > 0) )
     {
-      $block->set_title(  base64_decode($this->my_config['amm_randompicture_title'][$user['language']]) );
+      $block->set_title(  base64_decode($this->config['amm_randompicture_title'][$user['language']]) );
       $block->data = array(
-        "delay" => $this->my_config['amm_randompicture_periodicchange'],
-        "blockHeight" => $this->my_config['amm_randompicture_height'],
+        "delay" => $this->config['amm_randompicture_periodicchange'],
+        "blockHeight" => $this->config['amm_randompicture_height'],
         "firstPicture" => $this->ajax_amm_get_random_picture()
       );
       $block->template = dirname(__FILE__).'/menu_templates/menubar_randompic.tpl';
@@ -98,7 +96,7 @@ class AMM_PIP extends AMM_root
       $urls=$this->get_urls(true);
       if ( count($urls)>0 )
       {
-        if($this->my_config['amm_links_show_icons']=='y')
+        if($this->config['amm_links_show_icons']=='y')
         {
           for($i=0;$i<count($urls);$i++)
           {
@@ -106,12 +104,12 @@ class AMM_PIP extends AMM_root
           }
         }
 
-        $block->set_title( base64_decode($this->my_config['amm_links_title'][$user['language']]) );
+        $block->set_title( base64_decode($this->config['amm_links_title'][$user['language']]) );
         $block->template = dirname(__FILE__).'/menu_templates/menubar_links.tpl';
 
         $block->data = array(
           'LINKS' => $urls,
-          'icons' => $this->my_config['amm_links_show_icons']
+          'icons' => $this->config['amm_links_show_icons']
         );
       }
     }
@@ -177,24 +175,24 @@ class AMM_PIP extends AMM_root
     $blocks['menu']->data=Array();
     $blocks['special']->data=Array();
 
-    $users=new users("");
-    $groups=new groups("");
+    $users=new GPCUsers("");
+    $groups=new GPCGroups("");
     $user_groups=$this->get_user_groups($user['id']);
 
-    foreach($this->my_config['amm_sections_items'] as $key => $val)
+    foreach($this->config['amm_sections_items'] as $key => $val)
     {
       if(isset($menuItems[$key]))
       {
         $access=explode("/",$val['visibility']);
-        $users->set_alloweds(str_replace(",", "/", $access[0]));
-        $groups->set_alloweds(str_replace(",", "/", $access[1]));
+        $users->setAlloweds(str_replace(",", "/", $access[0]));
+        $groups->setAlloweds(str_replace(",", "/", $access[1]));
 
         /* test if user status is allowed to access the menu item
          * if access is managed by group, the user have to be associated with an allowed group to access the menu item
         */
-        if($users->is_allowed($user['status']) && (
+        if($users->isAllowed($user['status']) && (
             ($access[1]=='') ||
-            (($access[1]!='') && $groups->are_allowed($user_groups)))
+            (($access[1]!='') && $groups->areAllowed($user_groups)))
         )
         {
           $blocks[$val['container']]->data[$key]=$menuItems[$key];
@@ -240,7 +238,7 @@ class AMM_PIP extends AMM_root
             $result=$this->ajax_amm_get_random_picture();
             break;
         }
-        $this->ajax->return_result($result);
+        GPCAjax::returnResult($result);
       }
     }
   }
@@ -253,7 +251,7 @@ class AMM_PIP extends AMM_root
 
     $local_tpl = new Template(AMM_PATH."menu_templates/", "");
     $local_tpl->set_filename('body_page',
-                  dirname($this->filelocation).'/menu_templates/menubar_randompic_inner.tpl');
+                  dirname($this->getFileLocation()).'/menu_templates/menubar_randompic_inner.tpl');
 
       $sql="SELECT i.id as image_id, i.file as image_file, i.comment, i.path, i.tn_ext, c.id as catid, c.name, c.permalink, RAND() as rndvalue, i.name as imgname
             FROM ".CATEGORIES_TABLE." c, ".IMAGES_TABLE." i, ".IMAGE_CATEGORY_TABLE." ic
@@ -284,8 +282,8 @@ class AMM_PIP extends AMM_root
           'IMG' => get_thumbnail_url($nfo),
           'IMGNAME' => $nfo['imgname'],
           'IMGCOMMENT' => $nfo['comment'],
-          'SHOWNAME' => $this->my_config['amm_randompicture_showname'],
-          'SHOWCOMMENT' => $this->my_config['amm_randompicture_showcomment']
+          'SHOWNAME' => $this->config['amm_randompicture_showname'],
+          'SHOWCOMMENT' => $this->config['amm_randompicture_showcomment']
         );
       }
       else
@@ -319,11 +317,11 @@ class AMM_PIP extends AMM_root
     if($this->displayRandomImageBlock && $page['body_id'] == 'theCategoryPage')
     {
       $local_tpl = new Template(AMM_PATH."admin/", "");
-      $local_tpl->set_filename('body_page', dirname($this->filelocation).'/menu_templates/menubar_randompic.js.tpl');
+      $local_tpl->set_filename('body_page', dirname($this->getFileLocation()).'/menu_templates/menubar_randompic.js.tpl');
 
       $data = array(
-        "delay" => $this->my_config['amm_randompicture_periodicchange'],
-        "blockHeight" => $this->my_config['amm_randompicture_height'],
+        "delay" => $this->config['amm_randompicture_periodicchange'],
+        "blockHeight" => $this->config['amm_randompicture_height'],
         "firstPicture" => $this->ajax_amm_get_random_picture()
       );
 

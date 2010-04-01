@@ -6,7 +6,8 @@
  .ui-slider {
     width:350px;
     height:10px;
-    border:1px solid;
+    border-width:1px;
+    border-style:solid;
     margin-right:5px;
     padding-right:14px;
   }
@@ -15,7 +16,8 @@
     height:12px;
     position:relative;
     top:-2px;
-    border:1px solid;
+    border-width:1px;
+    border-style:solid;
     display:block;
   }
 </style>
@@ -49,6 +51,7 @@
         value:{/literal}{$datas.periodic_change}{literal},
         slide: function(event, ui) { formatDelay(ui.value); }
       });
+    $("#iamm_rp_pc_slider a").addClass('gcBgInput');
 
     formatHeight({/literal}{$datas.height}{literal});
     $("#iamm_rp_height_slider").slider(
@@ -59,6 +62,7 @@
         value:affectHeight({/literal}{$datas.height}{literal}),
         slide: function(event, ui) { formatHeight(ui.value); }
       });
+    $("#iamm_rp_height_slider a").addClass('gcBgInput');
   }
 
   function formatDelay(delay)
@@ -159,7 +163,7 @@
         <td>{'g002_setting_randompic_height'|@translate}</td>
         <td>
           <input type="hidden" name="famm_randompicture_height" id="iamm_randompicture_height" value="{$datas.height}">
-          <div id="iamm_rp_height_slider"></div>
+          <div id="iamm_rp_height_slider" class="gcBgInput gcBorderInput"></div>
         </td>
         <td width="90px">
           <div id="iamm_rp_height_display"></div>
@@ -203,7 +207,7 @@
           <td>{'g002_setting_randompic_periodicchange_delay'|@translate}</td>
           <td>
             <input type="hidden" name="famm_randompicture_periodicchange" id="iamm_randompicture_periodicchange" value="{$datas.periodic_change}">
-            <div id="iamm_rp_pc_slider"></div>
+            <div id="iamm_rp_pc_slider" class="gcBgInput gcBorderInput"></div>
           </td>
           <td width="70px">
             <div id="iamm_rp_pc_display"></div>

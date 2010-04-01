@@ -16,12 +16,12 @@
 
 if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/common_plugin.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/users_groups.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/css.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCUsersGroups.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCCss.class.inc.php');
 
 
-class AMM_root extends common_plugin
+class AMM_root extends CommonPlugin
 {
   protected $css;   //the css object
   protected $defaultMenus = array(
@@ -40,14 +40,21 @@ class AMM_root extends common_plugin
     'rss' => array('container' => 'menu', 'visibility' => 'guest,generic,normal,webmaster,admin/', 'order' => 5, 'translation' => 'Notification')
   );
 
-  function AMM_root($prefixeTable, $filelocation)
+  public function __construct($prefixeTable, $filelocation)
   {
-    $this->plugin_name="Advanced Menu Manager";
-    $this->plugin_name_files="amm";
+    $this->setPluginName("Advanced Menu Manager");
+    $this->setPluginNameFiles("amm");
     parent::__construct($prefixeTable, $filelocation);
 
     $list=array('urls', 'personalised');
-    $this->set_tables_list($list);
+    $this->setTablesList($list);
+  }
+
+  public function __destruct()
+  {
+    unset($this->css);
+    unset($this->defaultMenus);
+    parent::__destruct();
   }
 
   /* ---------------------------------------------------------------------------
@@ -55,9 +62,9 @@ class AMM_root extends common_plugin
   --------------------------------------------------------------------------- */
 
   /* this function initialize var $my_config with default values */
-  public function init_config()
+  public function initConfig()
   {
-    $this->my_config=array(
+    $this->config=array(
       'amm_links_show_icons' => 'y',
       'amm_links_title' => array(),
       'amm_randompicture_showname' => 'n',     //n:no, o:over, u:under
@@ -73,23 +80,23 @@ class AMM_root extends common_plugin
     {
       if($key=='fr_FR')
       {
-        $this->my_config['amm_links_title'][$key]=base64_encode('Liens');
-        $this->my_config['amm_randompicture_title'][$key]=base64_encode('Une image au hasard');
+        $this->config['amm_links_title'][$key]=base64_encode('Liens');
+        $this->config['amm_randompicture_title'][$key]=base64_encode('Une image au hasard');
       }
       else
       {
-        $this->my_config['amm_links_title'][$key]=base64_encode('Links');
-        $this->my_config['amm_randompicture_title'][$key]=base64_encode('A random picture');
+        $this->config['amm_links_title'][$key]=base64_encode('Links');
+        $this->config['amm_randompicture_title'][$key]=base64_encode('A random picture');
       }
     }
   }
 
-  public function load_config()
+  public function loadConfig()
   {
-    parent::load_config();
+    parent::loadConfig();
   }
 
-  public function init_events()
+  public function initEvents()
   {
     add_event_handler('blockmanager_register_blocks', array(&$this, 'register_blocks') );
   }
@@ -203,7 +210,7 @@ WHERE (lang = '*' OR lang = '".$lang."') ";
 
   protected function sortSectionsItems()
   {
-    uasort($this->my_config['amm_sections_items'], array($this, "sortSectionsItemsCompare"));
+    uasort($this->config['amm_sections_items'], array($this, "sortSectionsItemsCompare"));
   }
 
 } // amm_root  class

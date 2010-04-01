@@ -25,9 +25,11 @@
 
     if(action_todo!='')
     {
-      http_request=create_httpobject('get', '', '{/literal}{$datas.AMM_AJAX_URL_LIST}{literal}'+action_todo, false);
-      http_request.send(null);
-      doc.innerHTML=http_request.responseText;
+      doc.innerHTML=$.ajax({
+        type: "POST",
+        url: "{/literal}{$datas.AMM_AJAX_URL_LIST}{literal}"+action_todo,
+        async: false,
+      }).responseText;
     }
   }
 

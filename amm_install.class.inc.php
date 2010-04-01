@@ -15,19 +15,19 @@
   --------------------------------------------------------------------------- */
   include_once('amm_version.inc.php');
   include_once('amm_root.class.inc.php');
-  include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/tables.class.inc.php');
+  include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCTables.class.inc.php');
 
 
   class AMM_install extends AMM_root
   {
-    private $tablef;
+    private $tablesManager;
     private $exportfile;
 
     public function AMM_install($prefixeTable, $filelocation)
     {
       parent::__construct($prefixeTable, $filelocation);
-      $this->tablef= new manage_tables($this->tables);
-      $this->exportfile=dirname($this->filelocation).'/'.$this->plugin_name_files.'.sql';
+      $this->tablesManager= new GPCTables($this->tables);
+      $this->exportfile=dirname($this->getFileLocation()).'/'.$this->getPluginNameFiles().'.sql';
     }
 
     /*
@@ -36,10 +36,10 @@
     */
     public function install()
     {
-      $this->init_config();
-      $this->load_config();
-      $this->my_config['installed']=AMM_VERSION2;
-      $this->save_config();
+      $this->initConfig();
+      $this->loadConfig();
+      $this->config['installed']=AMM_VERSION2;
+      $this->saveConfig();
 
       $tables_def=array(
 "CREATE TABLE  `".$this->tables['urls']."` (
@@ -66,7 +66,7 @@
 );
       //$table_def array
       $tables_def = create_table_add_character_set($tables_def);
-      $result=$this->tablef->create_tables($tables_def);
+      $result=$this->tablesManager->create($tables_def);
       return($result);
     }
 
@@ -76,22 +76,22 @@
     */
     public function uninstall()
     {
-      $this->tablef->export($this->exportfile);
-      $this->delete_config();
-      $this->tablef->drop_tables();
+      $this->tablesManager->export($this->exportfile);
+      $this->deleteConfig();
+      $this->tablesManager->drop();
     }
 
     public function activate()
     {
       global $template;
 
-      $this->init_config();
-      $this->load_config();
+      $this->initConfig();
+      $this->loadConfig();
 
       $this->udpateTablesDef();
 
-      $this->my_config['installed']=AMM_VERSION2; //update the installed release number
-      $this->save_config();
+      $this->config['installed']=AMM_VERSION2; //update the installed release number
+      $this->saveConfig();
     }
 
     public function deactivate()
@@ -112,34 +112,34 @@
        *
        * This function aim to import the old conf into the new conf property
       */
-      if(isset($this->my_config['amm_sections_modspecials']))
+      if(isset($this->config['amm_sections_modspecials']))
       {
-        foreach($this->my_config['amm_sections_modspecials'] as $key=>$val)
+        foreach($this->config['amm_sections_modspecials'] as $key=>$val)
         {
-          $this->my_config['amm_sections_items'][$key]['visibility']=($val=="y")?"guest,generic,normal,admin/":"admin/";
+          $this->config['amm_sections_items'][$key]['visibility']=($val=="y")?"guest,generic,normal,admin/":"admin/";
         }
-        unset($this->my_config['amm_sections_modspecials']);
+        unset($this->config['amm_sections_modspecials']);
       }
 
-      if(isset($this->my_config['amm_sections_modmenu']))
+      if(isset($this->config['amm_sections_modmenu']))
       {
-        foreach($this->my_config['amm_sections_modmenu'] as $key=>$val)
+        foreach($this->config['amm_sections_modmenu'] as $key=>$val)
         {
-          $this->my_config['amm_sections_items'][$key]['visibility']=($val=="y")?"guest,generic,normal,admin/":"admin/";
+          $this->config['amm_sections_items'][$key]['visibility']=($val=="y")?"guest,generic,normal,admin/":"admin/";
         }
-        unset($this->my_config['amm_sections_modmenu']);
+        unset($this->config['amm_sections_modmenu']);
       }
 
-      if(!array_key_exists('installed', $this->my_config))
+      if(!array_key_exists('installed', $this->config))
       {
         /*
          * if key does not exist, probably try to update a plugin older than the
          * 2.2.0 release
          */
-        $this->my_config['installed']="02.01.06";
+        $this->config['installed']="02.01.06";
       }
 
-      if($this->my_config['installed']<="02.01.06")
+      if($this->config['installed']<="02.01.06")
       {
         /*
          * 2.2.0 updates
@@ -152,9 +152,9 @@
               MODIFY COLUMN `nfo` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;";
         pwg_query($sql);
 
-        foreach($this->my_config['amm_sections_items'] as $key => $val)
+        foreach($this->config['amm_sections_items'] as $key => $val)
         {
-          $this->my_config['amm_sections_items'][$key]['translation'] = $this->defaultMenus[$key]['translation'];
+          $this->config['amm_sections_items'][$key]['translation'] = $this->defaultMenus[$key]['translation'];
         }
       }
     }

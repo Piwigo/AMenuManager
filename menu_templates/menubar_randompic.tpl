@@ -1,4 +1,4 @@
-{known_script id="jquery" src=$ROOT_URL|cat:"template-common/lib/jquery.packed.js"}
+{known_script id="jquery" src=$ROOT_URL|cat:"themes/default/js/jquery.packed.js"}
 
 <!-- random picture menu bar -->
 <dt>{$block->get_title()}</dt>

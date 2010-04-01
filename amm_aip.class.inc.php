@@ -18,15 +18,14 @@ if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 include_once(PHPWG_PLUGINS_PATH.'AMenuManager/amm_root.class.inc.php');
 include_once(PHPWG_ROOT_PATH.'include/block.class.php');
 include_once(PHPWG_ROOT_PATH.'admin/include/tabsheet.class.php');
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/ajax.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/genericjs.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'grum_plugins_classes-2/translate.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCAjax.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/genericjs.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCTranslate.class.inc.php');
 
 class AMM_AIP extends AMM_root
 {
   protected $google_translate;
   protected $tabsheet;
-  protected $ajax;
   protected $sectionsId=array('menu' => 'Menu', 'special' => 'Specials');
 
   protected $urls_modes=array(0 => 'new_window', 1 => 'current_window');
@@ -35,25 +34,24 @@ class AMM_AIP extends AMM_root
   {
     parent::__construct($prefixeTable, $filelocation);
 
-    $this->load_config();
-    $this->init_events();
+    $this->loadConfig();
+    $this->initEvents();
 
     $this->tabsheet = new tabsheet();
     $this->tabsheet->add('setmenu',
                           l10n('g002_setmenu'),
-                          $this->page_link.'&amp;fAMM_tabsheet=setmenu');
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=setmenu');
     $this->tabsheet->add('links',
                           l10n('g002_addlinks'),
-                          $this->page_link.'&amp;fAMM_tabsheet=links');
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=links');
     $this->tabsheet->add('randompict',
                           l10n('g002_randompict'),
-                          $this->page_link.'&amp;fAMM_tabsheet=randompict');
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=randompict');
     $this->tabsheet->add('personnalblock',
                           l10n('g002_personnalblock'),
-                          $this->page_link.'&amp;fAMM_tabsheet=personnalblock');
-    $this->css = new css(dirname($this->filelocation).'/'.$this->plugin_name_files.".css");
-    $this->ajax = new Ajax();
-    $this->google_translate = new translate();
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock');
+    $this->css = new GPCCss(dirname($this->getFileLocation()).'/'.$this->getPluginNameFiles().".css");
+    $this->google_translate = new GPCTranslate();
   }
 
 
@@ -79,7 +77,7 @@ class AMM_AIP extends AMM_root
     $selected_tab=$this->tabsheet->get_selected();
     $template->assign($this->tabsheet->get_titlename(), "[".$selected_tab['caption']."]");
 
-    $template_plugin["AMM_VERSION"] = "<i>".$this->plugin_name."</i> ".l10n('g002_version').AMM_VERSION;
+    $template_plugin["AMM_VERSION"] = "<i>".$this->getPluginName()."</i> ".l10n('g002_version').AMM_VERSION;
     $template_plugin["AMM_PAGE"] = $_REQUEST['fAMM_tabsheet'];
     $template_plugin["PATH"] = AMM_PATH;
 
@@ -188,9 +186,9 @@ class AMM_AIP extends AMM_root
   /*
     initialize events call for the plugin
   */
-  public function init_events()
+  public function initEvents()
   {
-    add_event_handler('loc_end_page_header', array(&$this->css, 'apply_CSS'));
+    add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
   }
 
   /* ---------------------------------------------------------------------------
@@ -243,8 +241,8 @@ class AMM_AIP extends AMM_root
           $result=$this->ajax_amm_personalised_delete($_REQUEST['fItem']);
           break;
       }
-      //$template->
-      $this->ajax->return_result($result);
+
+      GPCAjax::returnResult($result);
     }
   }
 
@@ -281,7 +279,7 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
     $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_linkslist.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_linkslist.tpl');
 
     $tmp=$this->get_count_url();
     if($tmp==0)
@@ -299,9 +297,9 @@ class AMM_AIP extends AMM_root
 
 
     $template_datas=array(
-      'lnk_create' => $this->page_link.'&amp;fAMM_tabsheet=links&amp;action=create',
-      'lnk_config' => $this->page_link.'&amp;fAMM_tabsheet=links&amp;action=config',
-      'AMM_AJAX_URL_LIST' => $this->page_link."&ajaxfct=",
+      'lnk_create' => $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;action=create',
+      'lnk_config' => $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;action=config',
+      'AMM_AJAX_URL_LIST' => $this->getAdminLink()."&ajaxfct=",
       'nburl' => $tmp
     );
 
@@ -316,18 +314,18 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
     $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_linksconfig.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_linksconfig.tpl');
 
     $template_datas=array(
-      'lnk_list' => $this->page_link.'&amp;fAMM_tabsheet=links',
-      'AMM_AJAX_URL_LIST' => $this->page_link."&ajaxfct=",
-      'show_icons_selected' => $this->my_config['amm_links_show_icons'],
+      'lnk_list' => $this->getAdminLink().'&amp;fAMM_tabsheet=links',
+      'AMM_AJAX_URL_LIST' => $this->getAdminLink()."&ajaxfct=",
+      'show_icons_selected' => $this->config['amm_links_show_icons'],
       'lang_selected' => $user['language'],
       'fromlang' => substr($user['language'],0,2)
     );
 
     $template_datas['language_list'] = array();
-    foreach($this->my_config['amm_links_title'] as $key => $val)
+    foreach($this->config['amm_links_title'] as $key => $val)
     {
       $template_datas['language_list'][] = array(
         'LANG' => $key,
@@ -361,11 +359,11 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
     $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_linkslist_edit.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_linkslist_edit.tpl');
 
     $extensions_list=array('jpg'=>0,'jpeg'=>0,'gif'=>0,'png'=>0);
     $template_icons_list=array();
-    $directory=dir(dirname($this->filelocation).'/links_pictures/');
+    $directory=dir(dirname($this->getFileLocation()).'/links_pictures/');
     while($file=$directory->read())
     {
       if(isset($extensions_list[get_extension(strtolower($file))]))
@@ -402,7 +400,7 @@ class AMM_AIP extends AMM_root
       );
     }
 
-    $template_datas['lnk_list'] = $this->page_link.'&amp;fAMM_tabsheet=links';
+    $template_datas['lnk_list'] = $this->getAdminLink().'&amp;fAMM_tabsheet=links';
     $template_datas['icons_img'] = AMM_PATH."links_pictures/".$template_datas['icons_selected'];
     $template_datas['icons_values'] = array();
     foreach($template_icons_list as $key => $val)
@@ -454,13 +452,13 @@ class AMM_AIP extends AMM_root
   */
   protected function action_links_modify_config()
   {
-    $this->my_config['amm_links_show_icons']=$_POST['famm_links_show_icons'];
+    $this->config['amm_links_show_icons']=$_POST['famm_links_show_icons'];
     $languages=get_languages();
     foreach($languages as $key => $val)
     {
-      $this->my_config['amm_links_title'][$key]=base64_encode($_POST['famm_links_title_'.$key]);
+      $this->config['amm_links_title'][$key]=base64_encode($_POST['famm_links_title_'.$key]);
     }
-    $this->save_config();
+    $this->saveConfig();
   }
 
   /*
@@ -468,16 +466,16 @@ class AMM_AIP extends AMM_root
   */
   protected function action_randompic_modify_config()
   {
-    $this->my_config['amm_randompicture_height']=$_POST['famm_randompicture_height'];
-    $this->my_config['amm_randompicture_periodicchange']=$_POST['famm_randompicture_periodicchange'];
-    $this->my_config['amm_randompicture_showname']=$_POST['famm_randompicture_showname'];
-    $this->my_config['amm_randompicture_showcomment']=$_POST['famm_randompicture_showcomment'];
+    $this->config['amm_randompicture_height']=$_POST['famm_randompicture_height'];
+    $this->config['amm_randompicture_periodicchange']=$_POST['famm_randompicture_periodicchange'];
+    $this->config['amm_randompicture_showname']=$_POST['famm_randompicture_showname'];
+    $this->config['amm_randompicture_showcomment']=$_POST['famm_randompicture_showcomment'];
     $languages=get_languages();
     foreach($languages as $key => $val)
     {
-      $this->my_config['amm_randompicture_title'][$key]=base64_encode(stripslashes($_POST['famm_randompicture_title_'.$key]));
+      $this->config['amm_randompicture_title'][$key]=base64_encode(stripslashes($_POST['famm_randompicture_title_'.$key]));
     }
-    $this->save_config();
+    $this->saveConfig();
   }
 
 
@@ -488,7 +486,7 @@ class AMM_AIP extends AMM_root
   private function display_sections_page()
   {
     global $template, $user, $page;
-    $template->set_filename('body_page', dirname($this->filelocation).'/admin/amm_sections.tpl');
+    $template->set_filename('body_page', dirname($this->getFileLocation()).'/admin/amm_sections.tpl');
 
     if(isset($_POST['fList']) && !$this->adviser_abort())
     {
@@ -502,12 +500,12 @@ class AMM_AIP extends AMM_root
       {
         $properties=explode("#", $items[$i]);
         $properties[0]=explode(",", $properties[0]);
-        $this->my_config['amm_sections_items'][$properties[0][0]]['container']=$properties[0][1];
-        $this->my_config['amm_sections_items'][$properties[0][0]]['order']=$properties[0][2];
-        $this->my_config['amm_sections_items'][$properties[0][0]]['visibility']=$properties[1];
+        $this->config['amm_sections_items'][$properties[0][0]]['container']=$properties[0][1];
+        $this->config['amm_sections_items'][$properties[0][0]]['order']=$properties[0][2];
+        $this->config['amm_sections_items'][$properties[0][0]]['visibility']=$properties[1];
       }
       $this->sortSectionsItems();
-      if($this->save_config())
+      if($this->saveConfig())
       {
         array_push($page['infos'], l10n('g002_config_saved'));
       }
@@ -517,22 +515,22 @@ class AMM_AIP extends AMM_root
       }
     }
 
-    foreach($this->my_config['amm_sections_items'] as $key=>$val)
+    foreach($this->config['amm_sections_items'] as $key=>$val)
     {
-      $this->my_config['amm_sections_items'][$key]['visibilityForm'] = $this->makeVisibility($val['visibility'], $key);
+      $this->config['amm_sections_items'][$key]['visibilityForm'] = $this->makeVisibility($val['visibility'], $key);
       $this->defaultMenus[$key]['visibilityForm'] = $this->makeVisibility("guest,generic,normal,webmaster,admin/", $key);
     }
 
     $this->sortSectionsItems();
 
-    $users=new users("");
-    $groups=new groups("");
+    $users=new GPCUsers("");
+    $groups=new GPCGroups("");
 
 
     $template->assign("visibility", Array('users' => $users->access_list, 'groups' => $groups->access_list));
     $template->assign("sections", $this->sectionsId);
     $template->assign("defaultValues", $this->defaultMenus);
-    $template->assign("items", $this->my_config['amm_sections_items']);
+    $template->assign("items", $this->config['amm_sections_items']);
     $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
   }
 
@@ -544,20 +542,20 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
     $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_randompicconfig.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_randompicconfig.tpl');
 
     $template_datas=array(
-      'lnk_list' => $this->page_link.'&amp;fAMM_tabsheet=links',
-      'showname_selected' => $this->my_config['amm_randompicture_showname'],
-      'showcomment_selected' => $this->my_config['amm_randompicture_showcomment'],
-      'periodic_change' => $this->my_config['amm_randompicture_periodicchange'],
-      'height' => $this->my_config['amm_randompicture_height'],
+      'lnk_list' => $this->getAdminLink().'&amp;fAMM_tabsheet=links',
+      'showname_selected' => $this->config['amm_randompicture_showname'],
+      'showcomment_selected' => $this->config['amm_randompicture_showcomment'],
+      'periodic_change' => $this->config['amm_randompicture_periodicchange'],
+      'height' => $this->config['amm_randompicture_height'],
       'lang_selected' => $user['language'],
       'fromlang' => substr($user['language'],0,2)
     );
 
     $template_datas['language_list'] = array();
-    foreach($this->my_config['amm_randompicture_title'] as $key => $val)
+    foreach($this->config['amm_randompicture_title'] as $key => $val)
     {
       $template_datas['language_list'][] = array(
         'LANG' => $key,
@@ -602,7 +600,7 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
     $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_personalisedlist.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_personalisedlist.tpl');
 
     $sql="SELECT COUNT(DISTINCT ID) as countid FROM ".$this->tables['personalised'];
     $result=pwg_query($sql);
@@ -631,8 +629,8 @@ class AMM_AIP extends AMM_root
 
 
     $template_datas=array(
-      'lnk_create' => $this->page_link.'&amp;fAMM_tabsheet=personnalblock&amp;action=create',
-      'AMM_AJAX_URL_LIST' => $this->page_link."&ajaxfct=",
+      'lnk_create' => $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock&amp;action=create',
+      'AMM_AJAX_URL_LIST' => $this->getAdminLink()."&ajaxfct=",
       'nbsections' => $tmp
     );
 
@@ -649,7 +647,7 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
     $template->set_filename('body_page',
-                            dirname($this->filelocation).'/admin/amm_personalisedlist_edit.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_personalisedlist_edit.tpl');
 
     $template_datas=array();
 
@@ -696,7 +694,7 @@ class AMM_AIP extends AMM_root
 
     $template_datas['lang_selected'] = $user['language'];
 
-    $template_datas['personalised_list'] = $this->page_link.'&amp;fAMM_tabsheet=personnalblock';
+    $template_datas['personalised_list'] = $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock';
     $template_datas['yesno_values'] = array('y','n');
     $template_datas['yesno_labels'][] = l10n('g002_yesno_y');
     $template_datas['yesno_labels'][] = l10n('g002_yesno_n');
@@ -753,14 +751,14 @@ class AMM_AIP extends AMM_root
   {
     $local_tpl = new Template(AMM_PATH."admin/", "");
     $local_tpl->set_filename('body_page',
-                  dirname($this->filelocation).'/admin/amm_sections_visibility.tpl');
+                  dirname($this->getFileLocation()).'/admin/amm_sections_visibility.tpl');
 
 
     $parameters=explode("/", $visibility);
 
-    $users=new users(str_replace(",", "/", $parameters[0]));
-    $users->set_allowed('admin', true);
-    $groups=new groups(str_replace(",", "/", $parameters[1]));
+    $users=new GPCUsers(str_replace(",", "/", $parameters[0]));
+    $users->setAllowed('admin', true);
+    $groups=new GPCGroups(str_replace(",", "/", $parameters[1]));
 
     $local_tpl->assign('name', $id);
     $local_tpl->assign('users', $users->access_list);
@@ -779,7 +777,7 @@ class AMM_AIP extends AMM_root
   {
     if(is_adviser())
     {
-      $this->display_result(l10n("g002_adviser_not_allowed"), false);
+      $this->displayResult(l10n("g002_adviser_not_allowed"), false);
       return(true);
     }
     return(false);
@@ -939,7 +937,7 @@ class AMM_AIP extends AMM_root
     global $template, $user;
     $local_tpl = new Template(AMM_PATH."admin/", "");
     $local_tpl->set_filename('body_page',
-                  dirname($this->filelocation).'/admin/amm_linkslist_detail.tpl');
+                  dirname($this->getFileLocation()).'/admin/amm_linkslist_detail.tpl');
 
     $template_datas['urls']=array();
     $urls=$this->get_urls();
@@ -952,7 +950,7 @@ class AMM_AIP extends AMM_root
         'mode' => l10n("g002_mode_".$this->urls_modes[$urls[$i]['mode']]),
         'up' =>  ($i==0)?false:true,
         'down' =>  ($i<(count($urls)-1))?true:false,
-        'edit' => $this->page_link.'&amp;fAMM_tabsheet=links&amp;action=modify&amp;fItem='.$urls[$i]['id'],
+        'edit' => $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;action=modify&amp;fItem='.$urls[$i]['id'],
         'ID' => $urls[$i]['id'],
         'IDPREV' => ($i==0)?0:$urls[$i-1]['id'],
         'IDNEXT' => ($i<(count($urls)-1))?$urls[$i+1]['id']:0,
@@ -998,7 +996,7 @@ class AMM_AIP extends AMM_root
     global $template, $user;
     $local_tpl = new Template(AMM_PATH."admin/", "");
     $local_tpl->set_filename('body_page',
-                  dirname($this->filelocation).'/admin/amm_personalisedlist_detail.tpl');
+                  dirname($this->getFileLocation()).'/admin/amm_personalisedlist_detail.tpl');
 
     $template_datas['sections']=array();
 
@@ -1010,7 +1008,7 @@ class AMM_AIP extends AMM_root
       {
         $template_datas['sections'][]=array(
           'title' => ($val['title']!='')?$val['title']:l10n('g002_notitle'),
-          'edit' => $this->page_link.'&amp;fAMM_tabsheet=personnalblock&amp;action=modify&amp;fItem='.$val['id'],
+          'edit' => $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock&amp;action=modify&amp;fItem='.$val['id'],
           'ID' => $val['id'],
           'visible' => l10n('g002_yesno_'.$val['visible']),
           'nfo' => $val['nfo']
