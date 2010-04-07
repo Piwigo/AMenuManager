@@ -13,7 +13,7 @@ $lang['g002_randompict'] = 'Immagini a caso';
 $lang['g002_personnalblock'] = 'Menu personalizzato';
 
 $lang['g002_setmenu_nfo'] = 'Gestione della visualizzazione delle sezioni visualizzate nel menu';
-$lang['g002_addlinks_nfo'] = 'Sezione che permette la visualizzazione nel menu di una lista d\'hyperlinks verso altri siti internet';
+$lang['g002_addlinks_nfo'] = 'Sezione che permette la visualizzazione nel menu di una elenco d\'hyperlinks verso altri siti internet';
 $lang['g002_randompict_nfo'] = 'Sezione che permette la visualizzazione nel menu d\'un immagine presa a caso nella galleria';
 $lang['g002_personnalblock_nfo'] = 'Visualizzare nel menu delle sezioni con un contenuto personalizzato';
 
@@ -26,7 +26,7 @@ $lang['g002_url'] = 'URL';
 $lang['g002_mode'] = 'Modo';
 $lang['g002_icon'] = 'Immagine';
 $lang['g002_visible'] = 'Visibile';
-$lang['g002_linkslist'] = 'Lista dei links';
+$lang['g002_linkslist'] = 'Elento dei links';
 $lang['g002_confirm_delete_link'] = 'Cancellare il link ?';
 $lang['g002_nolinks'] = 'Nessun\' link';
 $lang['g002_link'] = 'link';
@@ -65,7 +65,7 @@ $lang['g002_show_n'] = 'No';
 $lang['g002_show_o'] = 'Mostra sopra la foto';
 $lang['g002_show_u'] = 'Mostra sotto la foto';
 
-$lang['g002_personalisedlist'] = 'Lista delle selezioni personalizzate';
+$lang['g002_personalisedlist'] = 'Elenco delle selezioni personalizzate';
 $lang['g002_notitle'] = '[Nessun\' titolo]';
 $lang['g002_title'] = 'Titolo';
 $lang['g002_sections'] = 'sezzioni';
