@@ -15,7 +15,7 @@ $lang['g002_personnalblock'] = 'Menu spersonalizowane';
 $lang['g002_setmenu_nfo'] = 'Zarządzanie wyświetlanymi blokami menu';
 $lang['g002_addlinks_nfo'] = 'Blok menu pozwalający na wyświetlanie linków';
 $lang['g002_randompict_nfo'] = 'Blok menu pozwalający na wyświetlanie losowych obrazów z galerii';
-$lang['g002_personnalblock_nfo'] = 'Wyświetlaj spersonalizowane bloki w menu;
+$lang['g002_personnalblock_nfo'] = 'Wyświetlaj spersonalizowane bloki w menu';
 
 
 $lang['g002_mode_new_window'] = 'Nowe okno';
