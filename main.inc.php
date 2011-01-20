@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 2.2.0
+Version: 2.2.3
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -83,6 +83,7 @@ Author URI: http://piwigo.org
 |         |            | * mantis: bug 1541
 |         |            |   Items order is not respected in admin pages
 |         |            |
+| 2.2.3   | 2011/01/20 | * Add languages
 |         |            |
 |         |            |
 |         |            |
