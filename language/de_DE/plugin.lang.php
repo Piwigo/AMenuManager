@@ -92,4 +92,24 @@ $lang['g002_setting_randompic_periodicchange_deactivated'] = "Deaktiviert";
 $lang['g002_setting_randompic_height'] = "Höhe der Block Menü";
 $lang['g002_setting_randompic_height_auto'] = "Auto";
 
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Einstellungen wurden gespeichert"; 
+$lang['g002_config_not_saved'] = "Einstellungen wurden nicht gespeichert"; 
+$lang['g002_selected_all_gallery'] = "Alle Alben"; 
+$lang['g002_selected_favorites_wm'] = "Die Favoriten des Webmasters"; 
+$lang['g002_selected_categories'] = "Alle ausgewählten Alben"; 
+$lang['g002_loading'] = "Laden..."; 
+$lang['g002_valid_order'] = "Befehl anwenden"; 
+$lang['g002_reset_order'] = "Befehl zurücksetzen"; 
+$lang['g002_accessibility'] = "Zugänglichkeit"; 
+$lang['g002_setting_core_blocks_content'] = "Inhalt der Menüs 'Menu' & 'Specials'"; 
+$lang['g002_setting_blocks_position'] = "Sichtbarkeit und Reihenfolge für die Menüs "; 
+$lang['g002_plugin'] = "Plug-In"; 
+$lang['g002_selectedpict'] = "Ausgewählte Bilder"; 
+$lang['g002_album_nfo'] = 'Die Konvertierung eines oder mehrere Alben in einem Menü erlauben'; 
+$lang['g002_album2menu'] = "Konvertierter Album zum Menü"; 
+$lang['g002_album'] = "Album &rArr; Menü"; 
+$lang['g002_setting_albums_menus'] = "Zu konvertierenden Alben in Menüs.";
+
+
 ?>

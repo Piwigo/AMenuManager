@@ -99,5 +99,26 @@ $lang['g002_config_saved'] = "Configurazione salvata";
 $lang['g002_adviser_not_allowed'] = "Il consiglier non è autorizzato ad effettuare modifiche";
 $lang['g002_click_to_manage_rights'] = "Gestire gli accessi";
 
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Configurazione salvata"; 
+$lang['g002_config_not_saved'] = "Configurazione non salvata"; 
+$lang['g002_selected_all_gallery'] = "Tutti gli album"; 
+$lang['g002_selected_favorites_wm'] = "Le immagini preferite del webmaster";
+
+$lang['g002_selected_categories'] = "Tutti gli album selezionati"; 
+$lang['g002_loading'] = "carica..."; 
+$lang['g002_valid_order'] = "Applicare l'ordine"; 
+$lang['g002_reset_order'] = "Resettare l'ordine"; 
+$lang['g002_accessibility'] = "Accessibilità"; 
+$lang['g002_setting_core_blocks_content'] = "Contenuto per i menu 'Menu' & 'Speciale'"; 
+$lang['g002_setting_blocks_position'] = "Visibilità e ordine dei menu "; 
+$lang['g002_plugin'] = "Plug-in";
+$lang['g002_selectedpict'] = "Immagini selezionate"; 
+$lang['g002_album_nfo'] = 'Autorizzare la conversione di uno o più album in un  menu '; 
+$lang['g002_album2menu'] = "Convertire album in menu"; 
+$lang['g002_album'] = "Album &rArr; menu"; 
+$lang['g002_setting_albums_menus'] = "Album da convertire in menu";
+
+
 
 ?>
