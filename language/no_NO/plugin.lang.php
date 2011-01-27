@@ -99,4 +99,23 @@ $lang['g002_config_saved'] = "Konfigurasjon er lagret";
 $lang['g002_adviser_not_allowed'] = "Rådgiver kan ikke gjøre endringer";
 $lang['g002_click_to_manage_rights'] = "Rettighets behandling";
 
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Konfigurasjon lagret";
+$lang['g002_config_not_saved'] = "Konfigurasjon ble ikke lagret";
+$lang['g002_selected_all_gallery'] = "Alle album";
+$lang['g002_selected_favorites_wm'] = "Webmasters favoritt bilder";
+$lang['g002_selected_categories'] = "Alle valgte album";
+$lang['g002_loading'] = "Laster...";
+$lang['g002_valid_order'] = "Sett rekkefølge";
+$lang['g002_reset_order'] = "Tilbakestill rekkefølge";
+$lang['g002_accessibility'] = "Tilgang";
+$lang['g002_setting_core_blocks_content'] = "Innhold for 'Meny' & 'Spesial' menyer";
+$lang['g002_setting_blocks_position'] = "Synlighet & rekkefølge for menyer ";
+$lang['g002_plugin'] = "Pluggin";
+$lang['g002_selectedpict'] = "Valgte bilder";
+$lang['g002_album_nfo'] = 'Godta å konvertere et eller flere til en meny';
+$lang['g002_album2menu'] = "Konverter album til meny";
+$lang['g002_album'] = "Album &rArr; meny";
+$lang['g002_setting_albums_menus'] = "Album å konvertere til meny";
+
 ?>
