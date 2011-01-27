@@ -99,4 +99,23 @@ $lang['g002_config_saved'] = "Konfigurācija ir saglabāta";
 $lang['g002_adviser_not_allowed'] = "Padomdevējam nav tiesību izdarīt izmaiņas";
 $lang['g002_click_to_manage_rights'] = "Tiesību pārvaldīšana";
 
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Konfigurācija saglabāta";
+$lang['g002_config_not_saved'] = "Konfigurācija nav saglabāta";
+$lang['g002_selected_all_gallery'] = "Visi albūmi";
+$lang['g002_selected_favorites_wm'] = "Webmasteramīļākie attēli";
+$lang['g002_selected_categories'] = "Visi atlasītie albūmi";
+$lang['g002_loading'] = "Ielādējas...";
+$lang['g002_valid_order'] = "Pielietot kārtību";
+$lang['g002_reset_order'] = "Atjaunot kārtību";
+$lang['g002_accessibility'] = "Pieejamība";
+$lang['g002_setting_core_blocks_content'] = " 'Menu' & 'Specials' izvēlņu saturs";
+$lang['g002_setting_blocks_position'] = "Redzamība & kārtojums izvēlnēm ";
+$lang['g002_plugin'] = "Spraudnis";
+$lang['g002_selectedpict'] = "Atlasītie attēli";
+$lang['g002_album_nfo'] = 'Atļaut konvertēt vienu vai vairākus albūmus izvēlnē';
+$lang['g002_album2menu'] = "Izvēlnē konvertētais albūms";
+$lang['g002_album'] = "Albūma &rArr; izvēlne";
+$lang['g002_setting_albums_menus'] = "Albūmi, ko konvertēt izvēlnē"; 
+
 ?>
