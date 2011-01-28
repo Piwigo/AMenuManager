@@ -13,28 +13,26 @@ include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCCore.class.inc.php
 include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCTables.class.inc.php');
 
 
-global $gpc_installed, $gpcNeeded, $lang; //needed for plugin manager compatibility
+global $gpcInstalled, $lang; //needed for plugin manager compatibility
 
 /* -----------------------------------------------------------------------------
 AMM needs the Grum Plugin Classe
 ----------------------------------------------------------------------------- */
-$gpc_installed=false;
-$gpcNeeded="3.0.0";
+$gpcInstalled=false;
 if(file_exists(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php'))
 {
   @include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php');
-  // need GPC release greater or equal than 3.0.0
-  if(CommonPlugin::checkGPCRelease(3,0,0))
+  // need GPC release greater or equal than 3.3.3
+  if(CommonPlugin::checkGPCRelease(3,3,3))
   {
     @include_once("amm_install.class.inc.php");
-    $gpc_installed=true;
+    $gpcInstalled=true;
   }
 }
 
 function gpcMsgError(&$errors)
 {
-  global $gpcNeeded;
-  $msg=sprintf(l10n('To install this plugin, you need to install Grum Plugin Classes %s before'), $gpcNeeded);
+  $msg=sprintf(l10n('To install this plugin, you need to install Grum Plugin Classes %s before'), AMM_GPC_NEEDED);
   if(is_array($errors))
   {
     array_push($errors, $msg);
@@ -50,16 +48,15 @@ function gpcMsgError(&$errors)
 
 load_language('plugin.lang', AMM_PATH);
 
+
+
 function plugin_install($plugin_id, $plugin_version, &$errors)
 {
-  global $prefixeTable, $gpc_installed, $gpcNeeded;
-  if($gpc_installed)
+  global $prefixeTable, $gpcInstalled;
+  if($gpcInstalled)
   {
-    //$menu->register('mbAMM_links', 'Links', 0, 'AMM');
-    //$menu->register('mbAMM_randompict', 'Random pictures', 0, 'AMM');
     $amm=new AMM_install($prefixeTable, __FILE__);
     $result=$amm->install();
-    GPCCore::register($amm->getPluginName(), AMM_VERSION, $gpcNeeded);
   }
   else
   {
@@ -69,31 +66,38 @@ function plugin_install($plugin_id, $plugin_version, &$errors)
 
 function plugin_activate($plugin_id, $plugin_version, &$errors)
 {
-  global $prefixeTable;
-
-  $amm=new AMM_install($prefixeTable, __FILE__);
-  $result=$amm->activate();
+  global $prefixeTable, $gpcInstalled;
+  if($gpcInstalled)
+  {
+    $amm=new AMM_install($prefixeTable, __FILE__);
+    $result=$amm->activate();
+  }
 }
 
 function plugin_deactivate($plugin_id)
 {
+  global $prefixeTable, $gpcInstalled;
+
+  if($gpcInstalled)
+  {
+    $amm=new AMM_install($prefixeTable, __FILE__);
+    $amm->deactivate();
+  }
 }
 
 function plugin_uninstall($plugin_id)
 {
-  global $prefixeTable, $gpc_installed;
-  if($gpc_installed)
+  global $prefixeTable, $gpcInstalled;
+  if($gpcInstalled)
   {
     $amm=new AMM_install($prefixeTable, __FILE__);
     $result=$amm->uninstall();
-    GPCCore::unregister($amm->getPluginName());
   }
   else
   {
     gpcMsgError($errors);
   }
 }
-
 
 
 ?>

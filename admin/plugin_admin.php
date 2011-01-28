@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
   Plugin     : Advanced Menu Manager
   Author     : Grum
-    email    : grum@grum.dnsalias.com
+    email    : grum@piwigo.org
     website  : http://photos.grum.dnsalias.com
     PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
 

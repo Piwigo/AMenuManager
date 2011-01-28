@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
   Plugin     : Advanced Menu Manager
   Author     : Grum
-    email    : grum@grum.dnsalias.com
+    email    : grum@piwigo.org
     website  : http://photos.grum.dnsalias.com
     PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
 
@@ -32,6 +32,14 @@ class AMM_AIM extends AMM_root
   {
     parent::initEvents();
     add_event_handler('get_admin_plugin_menu_links', array(&$this, 'pluginAdminMenu') );
+    add_event_handler('loc_end_page_header', array(&$this, 'adminPanel'));
+  }
+
+  public function adminPanel()
+  {
+    global $template;
+
+    $template->append('footer_elements', "<script>$(document).ready(function () { $('li a[href=".$template->get_template_vars('U_CONFIG_MENUBAR')."]').attr('href', '".$this->getAdminLink()."&amp;fAMM_tabsheet=setmenu&amp;fAMM_page=position'); });</script>");
   }
 
 } // amm_aim  class

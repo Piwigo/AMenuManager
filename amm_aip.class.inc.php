@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
   Plugin     : Advanced Menu Manager
   Author     : Grum
-    email    : grum@grum.dnsalias.com
+    email    : grum@piwigo.org
     website  : http://photos.grum.fr
     PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
 
@@ -18,19 +18,17 @@ if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 include_once(PHPWG_PLUGINS_PATH.'AMenuManager/amm_root.class.inc.php');
 include_once(PHPWG_ROOT_PATH.'include/block.class.php');
 include_once(PHPWG_ROOT_PATH.'admin/include/tabsheet.class.php');
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCAjax.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/genericjs.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCTranslate.class.inc.php');
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCTabSheet.class.inc.php');
+
 
 class AMM_AIP extends AMM_root
 {
-  protected $google_translate;
+  protected $googleTranslate;
   protected $tabsheet;
-  protected $sectionsId=array('menu' => 'Menu', 'special' => 'Specials');
+  protected $blocksId=array('menu' => 'Menu', 'special' => 'Specials');
 
-  protected $urls_modes=array(0 => 'new_window', 1 => 'current_window');
 
-  function AMM_AIP($prefixeTable, $filelocation)
+  public function __construct($prefixeTable, $filelocation)
   {
     parent::__construct($prefixeTable, $filelocation);
 
@@ -50,27 +48,23 @@ class AMM_AIP extends AMM_root
     $this->tabsheet->add('personnalblock',
                           l10n('g002_personnalblock'),
                           $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock');
+    $this->tabsheet->add('album',
+                          l10n('g002_album'),
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=album');
     $this->css = new GPCCss(dirname($this->getFileLocation()).'/'.$this->getPluginNameFiles().".css");
-    $this->google_translate = new GPCTranslate();
   }
 
 
-  /* ---------------------------------------------------------------------------
-  Public classe functions
-  --------------------------------------------------------------------------- */
-
-  /*
-    manage plugin integration into piwigo's admin interface
-  */
+  /**
+   * manage plugin integration into piwigo's admin interface
+   */
   public function manage()
   {
     global $template, $page;
 
     $template->set_filename('plugin_admin_content', dirname(__FILE__)."/admin/amm_admin.tpl");
 
-    $this->return_ajax_content();
-
-    $this->init_request();
+    $this->initRequest();
 
     $this->tabsheet->select($_REQUEST['fAMM_tabsheet']);
     $this->tabsheet->assign();
@@ -82,960 +76,425 @@ class AMM_AIP extends AMM_root
     $template_plugin["PATH"] = AMM_PATH;
 
     $template->assign('plugin', $template_plugin);
+    $template->assign('token', get_pwg_token());
 
 
-    if(isset($_POST['famm_modeedit']))
+    switch($_REQUEST['fAMM_tabsheet'])
     {
-      $post_action=$_POST['famm_modeedit'];
-    }
-    else
-    {
-      $post_action="";
-    }
+      case 'links':
+        $this->displayLinksPage($_REQUEST['fAMM_page']);
+        break;
 
-    $page_nfo="";
-    if($_REQUEST['fAMM_tabsheet']=='links')
-    {
-      $page_nfo=l10n('g002_addlinks_nfo');
+      case 'randompict':
+        $this->displayRandompicPage();
+        break;
 
-      switch($_REQUEST['action'])
-      {
-        case 'list':
-          $this->display_links_list_page();
-          break;
-        case 'create':
-        case 'modify':
-          if($post_action==$_REQUEST['action'])
-          {
-            if(!$this->adviser_abort())
-            {
-              $this->action_create_modify_url();
-            }
-            $this->display_links_list_page();
-          }
-          else
-          {
-            ($_REQUEST['action']=='modify')?$urlid=$_REQUEST['fItem']:$urlid=0;
-            $this->display_links_manage_page($_REQUEST['action'], $urlid);
-          }
-          break;
-        case 'config':
-          if($post_action==$_REQUEST['action'])
-          {
-            if(!$this->adviser_abort())
-            {
-              $this->action_links_modify_config();
-            }
-          }
-          $this->display_links_config_page();
-          break;
-      }
-    }
-    elseif($_REQUEST['fAMM_tabsheet']=='randompict')
-    {
-      $page_nfo=l10n('g002_randompict_nfo');
-      if($post_action=='config')
-      {
-        if(!$this->adviser_abort())
-        {
-          $this->action_randompic_modify_config();
-        }
-      }
-      $this->display_randompic_config_page();
-    }
-    elseif($_REQUEST['fAMM_tabsheet']=='personnalblock')
-    {
-      $page_nfo=l10n('g002_personnalblock_nfo');
+      case 'personnalblock':
+        $this->displayPersonalisedBlockPage();
+        break;
 
-      switch($_REQUEST['action'])
-      {
-        case 'list':
-          $this->display_personalised_list_page();
-          break;
-        case 'create':
-        case 'modify':
-          if($post_action==$_REQUEST['action'])
-          {
-            if(!$this->adviser_abort())
-            {
-              $this->action_create_modify_personalised();
-            }
-            $this->display_personalised_list_page();
-          }
-          else
-          {
-            ($_REQUEST['action']=='modify')?$sectionid=$_REQUEST['fItem']:$sectionid=0;
-            $this->display_personalised_manage_page($_REQUEST['action'], $sectionid);
-          }
-          break;
-      }
-    }
-    elseif($_REQUEST['fAMM_tabsheet']=='setmenu')
-    {
-      $page_nfo=l10n('g002_setmenu_nfo');
-      $this->display_sections_page();
-    }
+      case 'setmenu':
+        $this->displayBlocksPage($_REQUEST['fAMM_page']);
+        break;
 
-    $template->assign('page_nfo', $page_nfo);
+      case 'album':
+        $this->displayAlbumPage();
+        break;
+    }
 
     $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');
-
-
   }
 
-  /*
-    initialize events call for the plugin
-  */
+
+  /**
+   * initialize events call for the plugin
+   */
   public function initEvents()
   {
     add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
+    GPCCss::applyGpcCss();
   }
 
-  /* ---------------------------------------------------------------------------
-  Private classe functions
-  --------------------------------------------------------------------------- */
 
-  /*
-    return ajax content
-  */
-  protected function return_ajax_content()
-  {
-    global $ajax, $template;
-
-    if(isset($_REQUEST['ajaxfct']))
-    {
-      //$this->debug("AJAXFCT:".$_REQUEST['ajaxfct']);
-      $result="<p class='errors'>".l10n('g002_error_invalid_ajax_call')."</p>";
-      switch($_REQUEST['ajaxfct'])
-      {
-        case 'links_list':
-          $result=$this->ajax_amm_links_list();
-          break;
-        case 'links_permut':
-          $result=$this->ajax_amm_links_permut($_REQUEST['fItem'], $_REQUEST['fPermut']);
-          break;
-        case 'links_delete':
-          $result=$this->ajax_amm_links_delete($_REQUEST['fItem']);
-          break;
-
-/*
-        case 'setmenu_modmenu_sections_list':
-          $result=$this->ajax_amm_setmenu_mod_section_list('amm_sections_modmenu');
-          break;
-        case 'setmenu_modmenu_sections_showhide':
-          $result=$this->ajax_amm_setmenu_mod_section_showhide('amm_sections_modmenu', $_REQUEST['fItem']);
-          break;
-
-        case 'setmenu_modspecial_sections_list':
-          $result=$this->ajax_amm_setmenu_mod_section_list('amm_sections_modspecials');
-          break;
-        case 'setmenu_modspecial_sections_showhide':
-          $result=$this->ajax_amm_setmenu_mod_section_showhide('amm_sections_modspecials', $_REQUEST['fItem']);
-          break;
-*/
-
-        case 'personalised_list':
-          $result=$this->ajax_amm_personalised_list();
-          break;
-        case 'personalised_delete':
-          $result=$this->ajax_amm_personalised_delete($_REQUEST['fItem']);
-          break;
-      }
-
-      GPCAjax::returnResult($result);
-    }
-  }
-
-  /*
-    if empty, initialize $_request
-  */
-  private function init_request()
+  /**
+   * if empty, initialize the $_REQUEST var
+   *
+   * if not empty, check validity for the request values
+   *
+   */
+  private function initRequest()
   {
     //initialise $REQUEST values if not defined
-    if(!array_key_exists('fAMM_tabsheet', $_REQUEST))
+    if(!array_key_exists('fAMM_tabsheet', $_REQUEST)) $_REQUEST['fAMM_tabsheet']='setmenu';
+
+    if(!($_REQUEST['fAMM_tabsheet']=='links' or
+         $_REQUEST['fAMM_tabsheet']=='randompict' or
+         $_REQUEST['fAMM_tabsheet']=='personnalblock' or
+         $_REQUEST['fAMM_tabsheet']=='setmenu' or
+         $_REQUEST['fAMM_tabsheet']=='album'
+        )
+      ) $_REQUEST['fAMM_tabsheet']='setmenu';
+
+
+    /*
+     * checks for links page
+     */
+    if($_REQUEST['fAMM_tabsheet']=='links')
     {
-      $_REQUEST['fAMM_tabsheet']='setmenu';
+      if(!isset($_REQUEST['fAMM_page'])) $_REQUEST['fAMM_page']='links';
+
+      if(!($_REQUEST['fAMM_page']=='links' or
+           $_REQUEST['fAMM_page']=='config'
+          )
+        ) $_REQUEST['fAMM_page']='config';
     }
 
-    if((($_REQUEST['fAMM_tabsheet']=='links') or
-        ($_REQUEST['fAMM_tabsheet']=='personnalblock')) and !isset($_REQUEST['action']))
+
+    /*
+     * checks for blocks menu page
+     */
+    if($_REQUEST['fAMM_tabsheet']=='setmenu')
     {
-      $_REQUEST['action']='list';
+      if(!isset($_REQUEST['fAMM_page'])) $_REQUEST['fAMM_page']='position';
+
+      if(!($_REQUEST['fAMM_page']=='position' or
+           $_REQUEST['fAMM_page']=='blocksContent'
+          )
+        ) $_REQUEST['fAMM_page']='position';
     }
-    elseif((($_REQUEST['fAMM_tabsheet']=='setmenu')) and !isset($_REQUEST['action']))
-    {
-      $_REQUEST['action']='modmenu';
-    }
+
+  } //initRequest
 
 
-
-  } //init_request
-
-
-  /*
-    manage display for urls table page
-  */
-  private function display_links_list_page()
+  /**
+   * display the links management page
+   */
+  private function displayLinksPage($tab)
   {
     global $template, $user;
+
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
+    GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/packed/ui.sortable.packed.js');
+    GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/packed/ui.dialog.packed.js');
+
     $template->set_filename('body_page',
-                            dirname($this->getFileLocation()).'/admin/amm_linkslist.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_links.tpl');
 
-    $tmp=$this->get_count_url();
-    if($tmp==0)
+    $linksTabsheet = new GPCTabSheet('linksTabsheet', $this->tabsheet->get_titlename(), 'tabsheet2 gcBorder', 'itab2');
+    $linksTabsheet->select($tab);
+    $linksTabsheet->add('links',
+                          l10n('g002_setting_link_links'),
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;fAMM_page=links');
+    $linksTabsheet->add('config',
+                          l10n('g002_configlinks'),
+                          $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;fAMM_page=config');
+    $linksTabsheet->assign();
+
+    switch($tab)
     {
-      $tmp=l10n("g002_nolinks");
-    }
-    elseif($tmp==1)
-    {
-      $tmp="1 ".l10n("g002_link");
-    }
-    else
-    {
-      $tmp=$tmp." ".l10n("g002_links");
-    }
-
-
-    $template_datas=array(
-      'lnk_create' => $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;action=create',
-      'lnk_config' => $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;action=config',
-      'AMM_AJAX_URL_LIST' => $this->getAdminLink()."&ajaxfct=",
-      'nburl' => $tmp
-    );
-
-    $template->assign("datas", $template_datas);
-    $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
-  }
-
-  /*
-    manage display for urls config page
-  */
-  private function display_links_config_page()
-  {
-    global $template, $user;
-    $template->set_filename('body_page',
-                            dirname($this->getFileLocation()).'/admin/amm_linksconfig.tpl');
-
-    $template_datas=array(
-      'lnk_list' => $this->getAdminLink().'&amp;fAMM_tabsheet=links',
-      'AMM_AJAX_URL_LIST' => $this->getAdminLink()."&ajaxfct=",
-      'show_icons_selected' => $this->config['amm_links_show_icons'],
-      'lang_selected' => $user['language'],
-      'fromlang' => substr($user['language'],0,2)
-    );
-
-    $template_datas['language_list'] = array();
-    foreach($this->config['amm_links_title'] as $key => $val)
-    {
-      $template_datas['language_list'][] = array(
-        'LANG' => $key,
-        'MENUBARTIT' => base64_decode($val)
-      );
-    }
-
-
-
-    $lang=get_languages();
-    foreach($lang as $key => $val)
-    {
-      $template_datas['language_list_values'][] = $key;
-      $template_datas['language_list_labels'][] = $val;
-    }
-
-
-    $template_datas['yesno_values'] = array('y','n');
-    $template_datas['yesno_labels'][] = l10n('g002_yesno_y');
-    $template_datas['yesno_labels'][] = l10n('g002_yesno_n');
-
-
-    $template->assign("datas", $template_datas);
-    $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
-  }
-
-  /*
-    manage display for urls create/modify page
-  */
-  private function display_links_manage_page($modeedit = 'create', $urlid=0)
-  {
-    global $template, $user;
-    $template->set_filename('body_page',
-                            dirname($this->getFileLocation()).'/admin/amm_linkslist_edit.tpl');
-
-    $extensions_list=array('jpg'=>0,'jpeg'=>0,'gif'=>0,'png'=>0);
-    $template_icons_list=array();
-    $directory=dir(dirname($this->getFileLocation()).'/links_pictures/');
-    while($file=$directory->read())
-    {
-      if(isset($extensions_list[get_extension(strtolower($file))]))
-      {
-        $template_icons_list[]=$file;
-      }
-    }
-
-
-    if($modeedit=='modify')
-    {
-      $url=$this->get_url($urlid);
-
-      $template_datas=array(
-        'id' => $urlid,
-        'modeedit' => 'modify',
-        'label' => htmlentities($url['label'], ENT_QUOTES, 'UTF-8'),
-        'url' => $url['url'],
-        'icons_selected' => $url['icon'],
-        'mode_selected' => $url['mode'],
-        'visible_selected' => $url['visible']
-      );
-    }
-    else
-    {
-      $template_datas=array(
-        'id' => '',
-        'modeedit' => 'create',
-        'label' => '',
-        'url' => '',
-        'icons_selected' => $template_icons_list[0],
-        'mode_selected' => 0,
-        'visible_selected' => 'y'
-      );
-    }
-
-    $template_datas['lnk_list'] = $this->getAdminLink().'&amp;fAMM_tabsheet=links';
-    $template_datas['icons_img'] = AMM_PATH."links_pictures/".$template_datas['icons_selected'];
-    $template_datas['icons_values'] = array();
-    foreach($template_icons_list as $key => $val)
-    {
-      $template_datas['icons_values'][] = array(
-        'img' => AMM_PATH."links_pictures/".$val,
-        'value' => $val,
-        'label' => $val
-      );
-    }
-    $template_datas['mode_values'] = array(0,1);
-    $template_datas['mode_labels'][] = l10n("g002_mode_".$this->urls_modes[0]);
-    $template_datas['mode_labels'][] = l10n("g002_mode_".$this->urls_modes[1]);
-    $template_datas['visible_values'] = array('y','n');
-    $template_datas['visible_labels'][] = l10n('g002_yesno_y');
-    $template_datas['visible_labels'][] = l10n('g002_yesno_n');
-
-    $template->assign("datas", $template_datas);
-    $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
-  }
-
-  /*
-    manage create/modify url into database and display result
-  */
-  protected function action_create_modify_url()
-  {
-    $datas=array(
-      'id' => $_POST['famm_id'],
-      'label' => $_POST['famm_label'],
-      'url' => $_POST['famm_url'],
-      'mode' => $_POST['famm_mode'],
-      'icon' => $_POST['famm_icon'],
-      'position' => 0,
-      'visible' => $_POST['famm_visible']
-    );
-
-    switch($_POST['famm_modeedit'])
-    {
-      case 'create':
-        $this->add_url($datas);
+      case 'links':
+        $template->assign('sheetContent', $this->displayLinksPageLinks());
         break;
-      case 'modify':
-        $this->modify_url($datas);
-    }
-  }
-
-  /*
-    manage urls config save into database
-  */
-  protected function action_links_modify_config()
-  {
-    $this->config['amm_links_show_icons']=$_POST['famm_links_show_icons'];
-    $languages=get_languages();
-    foreach($languages as $key => $val)
-    {
-      $this->config['amm_links_title'][$key]=base64_encode($_POST['famm_links_title_'.$key]);
-    }
-    $this->saveConfig();
-  }
-
-  /*
-    manage randompic config save into database
-  */
-  protected function action_randompic_modify_config()
-  {
-    $this->config['amm_randompicture_height']=$_POST['famm_randompicture_height'];
-    $this->config['amm_randompicture_periodicchange']=$_POST['famm_randompicture_periodicchange'];
-    $this->config['amm_randompicture_showname']=$_POST['famm_randompicture_showname'];
-    $this->config['amm_randompicture_showcomment']=$_POST['famm_randompicture_showcomment'];
-    $languages=get_languages();
-    foreach($languages as $key => $val)
-    {
-      $this->config['amm_randompicture_title'][$key]=base64_encode(stripslashes($_POST['famm_randompicture_title_'.$key]));
-    }
-    $this->saveConfig();
-  }
-
-
-
-  /*
-    manage display for sections table page
-  */
-  private function display_sections_page()
-  {
-    global $template, $user, $page;
-    $template->set_filename('body_page', dirname($this->getFileLocation()).'/admin/amm_sections.tpl');
-
-    if(isset($_POST['fList']) && !$this->adviser_abort())
-    {
-      /* the returned information in the fList form element are
-       *  a list of ecah item, separate with a ";"
-       *  each item have properties separated by a ","
-       *   id, container, order, visibility
-      */
-      $items=explode(";",$_POST['fList']);
-      for($i=0;$i<count($items)-1;$i++)
-      {
-        $properties=explode("#", $items[$i]);
-        $properties[0]=explode(",", $properties[0]);
-        $this->config['amm_sections_items'][$properties[0][0]]['container']=$properties[0][1];
-        $this->config['amm_sections_items'][$properties[0][0]]['order']=$properties[0][2];
-        $this->config['amm_sections_items'][$properties[0][0]]['visibility']=$properties[1];
-      }
-      $this->sortSectionsItems();
-      if($this->saveConfig())
-      {
-        array_push($page['infos'], l10n('g002_config_saved'));
-      }
-      else
-      {
-        array_push($page['errors'], l10n('g002_adviser_not_allowed'));
-      }
+      case 'config':
+        $template->assign('sheetContent', $this->displayLinksPageConfig());
+        break;
     }
 
-    foreach($this->config['amm_sections_items'] as $key=>$val)
-    {
-      $this->config['amm_sections_items'][$key]['visibilityForm'] = $this->makeVisibility($val['visibility'], $key);
-      $this->defaultMenus[$key]['visibilityForm'] = $this->makeVisibility("guest,generic,normal,webmaster,admin/", $key);
-    }
-
-    $this->sortSectionsItems();
-
-    $users=new GPCUsers("");
-    $groups=new GPCGroups("");
-
-
-    $template->assign("visibility", Array('users' => $users->access_list, 'groups' => $groups->access_list));
-    $template->assign("sections", $this->sectionsId);
-    $template->assign("defaultValues", $this->defaultMenus);
-    $template->assign("items", $this->config['amm_sections_items']);
     $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
+    $template->assign('pageNfo', l10n('g002_addlinks_nfo'));
   }
 
-
-  /*
-    manage display for randompic config page
-  */
-  private function display_randompic_config_page()
+  /**
+   * display the randompict management page
+   */
+  private function displayRandompicPage()
   {
     global $template, $user;
+
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
+    GPCCore::addHeaderJS('jquery.ui.slider', 'themes/default/js/ui/packed/ui.slider.packed.js');
+    GPCCore::addHeaderJS('gpc.categorySelector', 'plugins/GrumPluginClasses/js/ui.categorySelector'.GPCCore::getMinified().'.js');
+    GPCCore::addUI('inputList,inputText,inputRadio,categorySelector,googleTranslate');
+    GPCCore::addHeaderJS('amm.rpc', 'plugins/AMenuManager/js/amm_randomPictConfig'.GPCCore::getMinified().'.js');
+
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_randompicconfig.tpl');
 
-    $template_datas=array(
-      'lnk_list' => $this->getAdminLink().'&amp;fAMM_tabsheet=links',
-      'showname_selected' => $this->config['amm_randompicture_showname'],
-      'showcomment_selected' => $this->config['amm_randompicture_showcomment'],
-      'periodic_change' => $this->config['amm_randompicture_periodicchange'],
-      'height' => $this->config['amm_randompicture_height'],
-      'lang_selected' => $user['language'],
-      'fromlang' => substr($user['language'],0,2)
+    $datas=array(
+      'config' => array(
+          'infosName' => $this->config['amm_randompicture_showname'],
+          'infosComment' => $this->config['amm_randompicture_showcomment'],
+          'freqDelay' => $this->config['amm_randompicture_periodicchange'],
+          'selectMode' => $this->config['amm_randompicture_selectMode'],
+          'selectCat' => json_encode($this->config['amm_randompicture_selectCat']),
+          'blockHeight' => $this->config['amm_randompicture_height'],
+          'blockTitles' => array()
+        ),
+      'selectedLang' => $user['language'],
+      'fromLang' => substr($user['language'],0,2),
+      'langs' => array()
     );
-
-    $template_datas['language_list'] = array();
-    foreach($this->config['amm_randompicture_title'] as $key => $val)
-    {
-      $template_datas['language_list'][] = array(
-        'LANG' => $key,
-        'MENUBARTIT' => htmlentities(base64_decode($val), ENT_QUOTES, 'UTF-8')
-      );
-    }
-
-
 
     $lang=get_languages();
     foreach($lang as $key => $val)
     {
-      $template_datas['language_list_values'][] = $key;
-      $template_datas['language_list_labels'][] = $val;
+      $datas['langs'][$key] = $val;
+      $datas['config']['blockTitles'][$key] = isset($this->config['amm_randompicture_title'][$key])?base64_decode($this->config['amm_randompicture_title'][$key]):'';
     }
 
+    $template->assign("datas", $datas);
 
-    $template_datas['yesno_values'] = array('y','n');
-    $template_datas['yesno_labels'][] = l10n('g002_yesno_y');
-    $template_datas['yesno_labels'][] = l10n('g002_yesno_n');
-
-    $template_datas['show_values'] = array('n', 'o', 'u');
-    $template_datas['show_labels'][] = l10n('g002_show_n');
-    $template_datas['show_labels'][] = l10n('g002_show_o');
-    $template_datas['show_labels'][] = l10n('g002_show_u');
-
-
-    $template->assign("datas", $template_datas);
     $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
+    $template->assign('pageNfo', l10n('g002_randompict_nfo'));
   }
 
-
-
-
-
-
-
-  /*
-    manage display for personalised sections list page
-  */
-  private function display_personalised_list_page()
+  /**
+   * display the personnal blocks management page
+   */
+  private function displayPersonalisedBlockPage()
   {
     global $template, $user;
+
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
+    GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/packed/ui.dialog.packed.js');
+    GPCCore::addUI('inputList,inputText,inputRadio,googleTranslate');
+    GPCCore::addHeaderJS('amm.upbm', 'plugins/AMenuManager/js/amm_personalisedBlocks'.GPCCore::getMinified().'.js');
+
+
     $template->set_filename('body_page',
-                            dirname($this->getFileLocation()).'/admin/amm_personalisedlist.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_personalised.tpl');
 
-    $sql="SELECT COUNT(DISTINCT ID) as countid FROM ".$this->tables['personalised'];
-    $result=pwg_query($sql);
-    if($result)
-    {
-      $tmp=pwg_db_fetch_row($result);
-      $tmp=$tmp[0];
-    }
-    else
-    {
-      $tmp=0;
-    }
-
-    if($tmp==0)
-    {
-      $tmp=l10n("g002_nosections");
-    }
-    elseif($tmp==1)
-    {
-      $tmp="1 ".l10n("g002_section");
-    }
-    else
-    {
-      $tmp=$tmp." ".l10n("g002_sections");
-    }
-
-
-    $template_datas=array(
-      'lnk_create' => $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock&amp;action=create',
-      'AMM_AJAX_URL_LIST' => $this->getAdminLink()."&ajaxfct=",
-      'nbsections' => $tmp
+    $datas=array(
+      'selectedLang' => $user['language'],
+      'fromLang' => substr($user['language'],0,2),
+      'langs' => get_languages()
     );
 
-    $template->assign("datas", $template_datas);
+    $template->assign("datas", $datas);
+
     $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
+    $template->assign('pageNfo', l10n('g002_personnalblock_nfo'));
+  }
+
+  /**
+   * display the core blocks menu management page
+   */
+  private function displayBlocksPage($tab)
+  {
+    global $template, $conf;
+
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
+    GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/packed/ui.sortable.packed.js');
+    GPCCore::addUI('inputList');
+    GPCCore::addHeaderJS('amm.cbm', 'plugins/AMenuManager/js/amm_blocks'.GPCCore::getMinified().'.js');
+
+    $template->set_filename('body_page',
+                            dirname($this->getFileLocation()).'/admin/amm_coreBlocks.tpl');
+
+    $blocksTabsheet = new GPCTabSheet('blocksTabsheet', $this->tabsheet->get_titlename(), 'tabsheet2 gcBorder', 'itab2');
+    $blocksTabsheet->add('position',
+                          l10n('g002_setting_blocks_position'),
+                          '', false, "cbm.displayTabContent('position');");
+    $blocksTabsheet->add('config',
+                          l10n('g002_setting_core_blocks_content'),
+                          '', false, "cbm.displayTabContent('blocksContent');");
+    $blocksTabsheet->select($tab);
+    $blocksTabsheet->assign();
+
+
+    $users=new GPCUsers();
+    $groups=new GPCGroups();
+
+    $this->sortCoreBlocksItems();
+
+    foreach($this->config['amm_blocks_items'] as $menuId=>$menu)
+    {
+      $this->config['amm_blocks_items'][$menuId]['visibilityForm'] = $this->makeBlockVisibility($menu['visibility'], $menuId);
+      $this->config['amm_blocks_items'][$menuId]['translation']=$this->defaultMenus[$menuId]['translation'];
+      $this->defaultMenus[$menuId]['visibilityForm'] = $this->makeBlockVisibility("/", $menuId);
+    }
+
+    $registeredBlocks=$this->getRegisteredBlocks();
+    foreach($registeredBlocks as $key=>$val)
+    {
+      $registeredBlocks[$key]['users']=json_encode($registeredBlocks[$key]['users']);
+      $registeredBlocks[$key]['groups']=json_encode($registeredBlocks[$key]['groups']);
+    }
+
+    $datas=array(
+      'tab' => $tab,
+      'users' => $users->getList(),
+      'groups' => $groups->getList(),
+      'coreBlocks' => array(
+            'blocks' => $this->blocksId,
+            'defaultValues' => $this->defaultMenus,
+            'items' => $this->config['amm_blocks_items']
+          ),
+      'menuBlocks' => $registeredBlocks
+    );
+
+    $template->assign("datas", $datas);
+
+    $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
+    $template->assign('pageNfo', l10n('g002_setmenu_nfo'));
   }
 
 
 
-  /*
-    manage display for personalised sections create/modify page
-  */
-  private function display_personalised_manage_page($modeedit = 'create', $sectionid=0)
+  /**
+   * display the album to menu management page
+   */
+  private function displayAlbumPage()
   {
     global $template, $user;
+
+    GPCCore::addHeaderCSS('gpc.categorySelector', 'plugins/GrumPluginClasses/css/categorySelector_'.$template->get_themeconf('name').'.css');
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
+    GPCCore::addHeaderJS('gpc.categorySelector', 'plugins/GrumPluginClasses/js/ui.categorySelector'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('amm.ac', 'plugins/AMenuManager/js/amm_albumConfig'.GPCCore::getMinified().'.js');
+
     $template->set_filename('body_page',
-                            dirname($this->getFileLocation()).'/admin/amm_personalisedlist_edit.tpl');
+                            dirname($this->getFileLocation()).'/admin/amm_album.tpl');
 
-    $template_datas=array();
+    $datas=array(
+      'albums' => json_encode($this->config['amm_albums_to_menu'])
+    );
 
-    $lang=get_languages();
-    $lang['all']=l10n('g002_all_languages');
-    foreach($lang as $key => $val)
+    $template->assign("datas", $datas);
+
+    $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
+    $template->assign('pageNfo', l10n('g002_album_nfo'));
+  }
+
+
+  /*
+   *  ---------------------------------------------------------------------------
+   * links functionnalities
+   * ---------------------------------------------------------------------------
+   */
+
+  /**
+   * display the links management page
+   */
+  private function displayLinksPageLinks()
+  {
+    global $template, $user;
+
+    GPCCore::addUI('inputList,inputRadio,inputText,inputCheckbox');
+    GPCCore::addHeaderJS('amm.ulm', 'plugins/AMenuManager/js/amm_links'.GPCCore::getMinified().'.js');
+
+    $template->set_filename('sheet_page',
+                            dirname($this->getFileLocation()).'/admin/amm_linkslinks.tpl');
+
+    $users=new GPCUsers();
+    $groups=new GPCGroups();
+
+    $datas=array(
+      'access' => array('users' => $users->getList(), 'groups' => $groups->getList()),
+      'iconsValues' => array(),
+      'modesValues' => array(
+        array(
+          'value' => 0,
+          'label' => l10n("g002_mode_".$this->urlsModes[0])
+        ),
+        array(
+          'value' => 1,
+          'label' => l10n("g002_mode_".$this->urlsModes[1])
+        )
+      )
+    );
+
+    $directory=dir(dirname($this->getFileLocation()).'/links_pictures/');
+    while($file=$directory->read())
     {
-      $template_datas['language_list_values'][] = $key;
-      $template_datas['language_list_labels'][] = $val;
-      $template_datas['language_list'][$key]=array(
-        'LANG' => $key,
-        'MENUBARTIT' => '',
-        'MENUBARCONTENT' => ''
-      );
-    }
-
-
-    if($modeedit=='modify')
-    {
-      $sections=$this->get_personalised($sectionid);
-
-      $template_datas['id'] = $sectionid;
-      $template_datas['modeedit'] = 'modify';
-      $template_datas['visible_selected'] = $sections[0]['visible'];
-      $template_datas['nfo'] = htmlentities($sections[0]['nfo'], ENT_QUOTES, 'UTF-8');
-
-      foreach($sections as $key => $val)
+      if(in_array(get_extension(strtolower($file)), array('jpg', 'jpeg','gif','png')))
       {
-        $lang=($val['lang']=='*')?'all':$val['lang'];
-        $template_datas['language_list'][$lang] = array(
-          'LANG' => $lang,
-          'MENUBARTIT' => htmlentities($val['title'], ENT_QUOTES, 'UTF-8'),
-          'MENUBARCONTENT' => htmlentities($val['content'], ENT_QUOTES, 'UTF-8'),
+        $datas['iconsValues'][] = array(
+          'img' => AMM_PATH."links_pictures/".$file,
+          'value' => $file,
+          'label' => $file
         );
       }
     }
-    else
+
+    $template->assign("datas", $datas);
+
+    return($template->parse('sheet_page', true));
+  }
+
+  /**
+   * display the links config page
+   */
+  private function displayLinksPageConfig()
+  {
+    global $template, $user;
+
+    GPCCore::addUI('inputList,inputRadio,inputText,googleTranslate');
+    GPCCore::addHeaderJS('amm.ulc', 'plugins/AMenuManager/js/amm_linksConfig'.GPCCore::getMinified().'.js');
+
+    $template->set_filename('sheet_page',
+                            dirname($this->getFileLocation()).'/admin/amm_linksconfig.tpl');
+
+    $datas=array(
+      'config' => array(
+          'showIcons' => $this->config['amm_links_show_icons'],
+          'titles' => array()
+        ),
+      'selectedLang' => $user['language'],
+      'fromLang' => substr($user['language'],0,2),
+      'langs' => array()
+    );
+
+    $lang=get_languages();
+    foreach($lang as $key => $val)
     {
-      $template_datas['nfo'] = '';
-      $template_datas['id'] = '';
-      $template_datas['modeedit'] = 'create';
-      $template_datas['visible_selected'] = 'y';
+      $datas['langs'][$key] = $val;
+      $datas['config']['titles'][$key] = isset($this->config['amm_links_title'][$key])?base64_decode($this->config['amm_links_title'][$key]):'';
     }
 
-    $template_datas['lang_selected'] = $user['language'];
-
-    $template_datas['personalised_list'] = $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock';
-    $template_datas['yesno_values'] = array('y','n');
-    $template_datas['yesno_labels'][] = l10n('g002_yesno_y');
-    $template_datas['yesno_labels'][] = l10n('g002_yesno_n');
-
-    $template->assign("datas", $template_datas);
-    $template->assign_var_from_handle('AMM_BODY_PAGE', 'body_page');
+    $template->assign("datas", $datas);
+    return($template->parse('sheet_page', true));
   }
+
+
 
   /*
-    manage create/modify pesonalised sections into database and display result
+   * ---------------------------------------------------------------------------
+   * blocks functionnalities
+   * ---------------------------------------------------------------------------
+   */
+
+  /**
+   * this function returns an HTML FORM to use with each menu items
+   *
+   * @param String $visibility : a formatted string like :
+   *                              users type1(,users typeX)/(groupId0)(,groupIdX)
+   * @param String $blockId    : block Id
+   * @return String : html ready to use
   */
-  protected function action_create_modify_personalised()
-  {
-    global $user;
-
-    if($_POST['famm_modeedit']=='create')
-    {
-      $id=$this->get_personalised_id();
-    }
-    else
-    {
-      $id=$_POST['famm_id'];
-    }
-    $languages=get_languages();
-    $languages['all']='*';
-    foreach($languages as $key => $val)
-    {
-      $datas=array(
-        'id' => $id,
-        'lang' => ($key=='all')?'*':$key,
-        'visible' => $_POST['famm_personalised_visible'],
-        'nfo' => ($_POST['famm_personalised_nfo']=='')?$_POST['famm_personalised_title_'.$user['language']]:$_POST['famm_personalised_nfo'],
-        'title' => $_POST['famm_personalised_title_'.$key],
-        'content' => $_POST['famm_personalised_content_'.$key]
-      );
-      switch($_POST['famm_modeedit'])
-      {
-        case 'create':
-          $this->add_personalised($datas);
-          break;
-        case 'modify':
-          $this->modify_personalised($datas);
-      }
-    }
-  }
-
-
-
-  /* this function returns an HTML FORM to use with each menu items
-   * $visibility is a formatted string looking this :
-   *   users type1(,users typeX)/(groupId0)(,groupIdX))
-  */
-  private function makeVisibility($visibility, $id)
+  private function makeBlockVisibility($visibility, $menuId)
   {
     $local_tpl = new Template(AMM_PATH."admin/", "");
     $local_tpl->set_filename('body_page',
-                  dirname($this->getFileLocation()).'/admin/amm_sections_visibility.tpl');
+                  dirname($this->getFileLocation()).'/admin/amm_coreBlocks_detail.tpl');
 
 
     $parameters=explode("/", $visibility);
 
-    $users=new GPCUsers(str_replace(",", "/", $parameters[0]));
-    $users->setAllowed('admin', true);
-    $groups=new GPCGroups(str_replace(",", "/", $parameters[1]));
+    /* submenu access system is :
+     *  - by default, everything is accesible
+     *  - items not accessible are defined
+     */
+    $users=new GPCUsers();
+    $users->setAlloweds(explode(',', $parameters[0]), false);
+    $groups=new GPCGroups();
+    $groups->setAlloweds(explode(',', $parameters[1]), false);
 
-    $local_tpl->assign('name', $id);
-    $local_tpl->assign('users', $users->access_list);
-    $local_tpl->assign('groups', $groups->access_list);
-
-    return($local_tpl->parse('body_page', true));
-  }
-
-
-
-  /*
-    manage adviser profile
-      return true if user is adviser
-  */
-  protected function adviser_abort()
-  {
-    if(is_adviser())
-    {
-      $this->displayResult(l10n("g002_adviser_not_allowed"), false);
-      return(true);
-    }
-    return(false);
-  }
-
-
-
-  /* ---------------------------------------------------------------------------
-    functions to manage urls tables
-  --------------------------------------------------------------------------- */
-  // protected function get_urls()
-  // protected function get_count_url()
-  // => defined in root class
-
-  // return properties of an given url
-  private function get_url($url_id)
-  {
-    $returned=array();
-    $sql="SELECT * FROM ".$this->tables['urls']." WHERE id = '".$url_id."'";
-    $result=pwg_query($sql);
-    if($result)
-    {
-      $returned=pwg_db_fetch_assoc($result);
-      //$returned['label']=stripslashes($returned['label']);
-    }
-    return($returned);
-  }
-
-  // permut position of two 2 urls
-  private function permut_url($url_id, $url_permut)
-  {
-    $sql="SELECT id, position FROM ".$this->tables['urls']." WHERE id IN ('".$url_id."','".$url_permut."')";
-    $result=pwg_query($sql);
-    if($result)
-    {
-      $tmp=array();
-      while($row=pwg_db_fetch_assoc($result))
-      {
-        $tmp[$row['id']]=$row['position'];
-      }
-      $sql="UPDATE ".$this->tables['urls']." SET position = ".$tmp[$url_id]." WHERE id = '".$url_permut."'";
-      pwg_query($sql);
-      $sql="UPDATE ".$this->tables['urls']." SET position = ".$tmp[$url_permut]." WHERE id = '".$url_id."'";
-      pwg_query($sql);
-    }
-  }
-
-  // delete an url
-  private function delete_url($url_id)
-  {
-    $sql="DELETE FROM ".$this->tables['urls']." WHERE id = '".$url_id."' ";
-    return(pwg_query($sql));
-  }
-
-  // add an url
-  private function add_url($datas)
-  {
-    $numurl=$this->get_count_url();
-    $sql="INSERT INTO ".$this->tables['urls']." (label, url, mode, icon, position, visible)
-          VALUES ('".$datas['label']."', '".$datas['url']."', '".$datas['mode']."',
-                  '".$datas['icon']."', '".$numurl."', '".$datas['visible']."')";
-    return(pwg_query($sql));
-  }
-
-  // modify an url
-  private function modify_url($datas)
-  {
-    $sql="UPDATE ".$this->tables['urls']." SET label = '".$datas['label']."',
-          url = '".$datas['url']."', mode = '".$datas['mode']."', icon = '".$datas['icon']."',
-          visible = '".$datas['visible']."'
-          WHERE id = '".$datas['id']."'";
-    return(pwg_query($sql));
-  }
-
-  // just modify url visibility
-  private function set_url_visibility($urlid, $visible)
-  {
-    $sql="UPDATE ".$this->tables['urls']." SET visible = '".$visible."'
-          WHERE id = '".$urlid."'";
-    return(pwg_query($sql));
-  }
-
-
-
-  /* ---------------------------------------------------------------------------
-    functions to manage sections tables
-  --------------------------------------------------------------------------- */
-  // protected function get_sections($only_visible=false, $lang="")
-  // => defined in root class
-
-  // return properties of a given section (return each languages)
-  private function get_personalised($section_id)
-  {
-    $returned=array();
-    $sql="SELECT * FROM ".$this->tables['personalised']." WHERE id = '".$section_id."'";
-    $result=pwg_query($sql);
-    if($result)
-    {
-      while($returned[]=pwg_db_fetch_assoc($result));
-    }
-    return($returned);
-  }
-
-  // delete a section
-  private function delete_personalised($section_id)
-  {
-    $sql="DELETE FROM ".$this->tables['personalised']." WHERE id = '".$section_id."' ";
-    return(pwg_query($sql));
-  }
-
-  // add a section
-  private function add_personalised($datas)
-  {
-    $sql="INSERT INTO ".$this->tables['personalised']." (id, lang, title, content, visible, nfo)
-          VALUES ('".$datas['id']."', '".$datas['lang']."', '".$datas['title']."', '".$datas['content']."', '".$datas['visible']."', '".$datas['nfo']."')";
-    return(pwg_query($sql));
-  }
-
-  // modify a section
-  private function modify_personalised($datas)
-  {
-    $sql="UPDATE ".$this->tables['personalised']." SET title = '".$datas['title']."',
-          content = '".$datas['content']."',  visible = '".$datas['visible']."',
-          nfo = '".$datas['nfo']."'
-          WHERE id = '".$datas['id']."'
-          AND lang = '".$datas['lang']."'";
-    return(pwg_query($sql));
-  }
-
-  // return the next personalised id
-  private function get_personalised_id()
-  {
-    $sql='SELECT MAX(ID) FROM '.$this->tables['personalised'];
-    $result=pwg_query($sql);
-    if($result)
-    {
-      $row=pwg_db_fetch_row($result);
-      if(is_array($row))
-      {
-        return($row[0]+1);
-      }
-    }
-    return(0);
-  }
-
-
-
-
-
-  /* ---------------------------------------------------------------------------
-    ajax functions
-  --------------------------------------------------------------------------- */
-
-  // return a html formatted list of urls
-  private function ajax_amm_links_list()
-  {
-    global $template, $user;
-    $local_tpl = new Template(AMM_PATH."admin/", "");
-    $local_tpl->set_filename('body_page',
-                  dirname($this->getFileLocation()).'/admin/amm_linkslist_detail.tpl');
-
-    $template_datas['urls']=array();
-    $urls=$this->get_urls();
-    for($i=0;$i<count($urls);$i++)
-    {
-      $template_datas['urls'][]=array(
-        'img' => AMM_PATH."links_pictures/".$urls[$i]['icon'],
-        'label' => $urls[$i]['label'],
-        'url' => $urls[$i]['url'],
-        'mode' => l10n("g002_mode_".$this->urls_modes[$urls[$i]['mode']]),
-        'up' =>  ($i==0)?false:true,
-        'down' =>  ($i<(count($urls)-1))?true:false,
-        'edit' => $this->getAdminLink().'&amp;fAMM_tabsheet=links&amp;action=modify&amp;fItem='.$urls[$i]['id'],
-        'ID' => $urls[$i]['id'],
-        'IDPREV' => ($i==0)?0:$urls[$i-1]['id'],
-        'IDNEXT' => ($i<(count($urls)-1))?$urls[$i+1]['id']:0,
-        'visible' => l10n('g002_yesno_'.$urls[$i]['visible'])
-      );
-    }
-
-    $themeconf=array(
-      'icon_dir' => $template->get_themeconf('icon_dir')
-    );
-
-    $local_tpl->assign('themeconf', $themeconf);
-    $local_tpl->assign('datas', $template_datas);
-    $local_tpl->assign('plugin', array('PATH' => AMM_PATH));
+    $local_tpl->assign('name', $menuId);
+    $local_tpl->assign('users', $users->getList());
+    $local_tpl->assign('groups', $groups->getList());
 
     return($local_tpl->parse('body_page', true));
-  }
-
-  // permut position of 2 urls and returns a html formatted list of urls
-  private function ajax_amm_links_permut($urlid, $urlpermut)
-  {
-    $this->permut_url($urlid, $urlpermut);
-    return($this->ajax_amm_links_list());
-  }
-
-  // delete an url and returns a html formatted list of urls
-  private function ajax_amm_links_delete($urlid)
-  {
-    if(!$this->adviser_abort())
-    {
-      $this->delete_url($urlid);
-    }
-    return($this->ajax_amm_links_list());
-  }
-
-
-
-
-
-  // return a html formatted list of personalised sections
-  private function ajax_amm_personalised_list()
-  {
-    global $template, $user;
-    $local_tpl = new Template(AMM_PATH."admin/", "");
-    $local_tpl->set_filename('body_page',
-                  dirname($this->getFileLocation()).'/admin/amm_personalisedlist_detail.tpl');
-
-    $template_datas['sections']=array();
-
-    $sections=$this->get_sections(false, '', false);
-    $is_done=array();
-    foreach($sections as $key => $val)
-    {
-      if(!isset($is_done[$val['id']]))
-      {
-        $template_datas['sections'][]=array(
-          'title' => ($val['title']!='')?$val['title']:l10n('g002_notitle'),
-          'edit' => $this->getAdminLink().'&amp;fAMM_tabsheet=personnalblock&amp;action=modify&amp;fItem='.$val['id'],
-          'ID' => $val['id'],
-          'visible' => l10n('g002_yesno_'.$val['visible']),
-          'nfo' => $val['nfo']
-        );
-        $is_done[$val['id']]='';
-      }
-    }
-
-    $themeconf=array(
-      'icon_dir' => $template->get_themeconf('icon_dir')
-    );
-
-    $local_tpl->assign('themeconf', $themeconf);
-    $local_tpl->assign('datas', $template_datas);
-    $local_tpl->assign('plugin', array('PATH' => AMM_PATH));
-
-    return($local_tpl->parse('body_page', true));
-  }
-
-  // delete a section and returns a html formatted list
-  private function ajax_amm_personalised_delete($sectionid)
-  {
-    if(!$this->adviser_abort())
-    {
-      $this->delete_personalised($sectionid);
-    }
-    return($this->ajax_amm_personalised_list());
   }
 
 

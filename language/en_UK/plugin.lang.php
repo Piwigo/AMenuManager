@@ -46,7 +46,7 @@ $lang['g002_setting_block_active'] = 'Display block in menu';
 $lang['g002_setting_block_title'] = 'Block title';
 $lang['g002_apply'] = 'Apply';
 
-$lang['g002_sectionslist'] = 'Menu blocks';
+$lang['g002_sectionslist'] = 'Menu\'s blocks';
 
 $lang['g002_yesno_y'] = 'Yes';
 $lang['g002_yesno_n'] = 'No';
@@ -59,13 +59,13 @@ $lang['g002_translate'] = 'Translate with Google Translate';
 
 $lang['g002_configrandompic'] = 'Random picture settings';
 $lang['g002_setting_randompic_aboutpicture'] = 'Displayed datas';
-$lang['g002_setting_randompic_showname'] = 'Show picture name';
-$lang['g002_setting_randompic_showcomment'] = 'Show picture comment';
+$lang['g002_setting_randompic_showname'] = 'Show picture\'s name';
+$lang['g002_setting_randompic_showcomment'] = 'Show picure\'s comment';
 $lang['g002_show_n'] = 'No';
-$lang['g002_show_o'] = 'Display above the picture';
-$lang['g002_show_u'] = 'Display under the picture';
+$lang['g002_show_o'] = 'Display over the picture';
+$lang['g002_show_u'] = 'Display under thpicture';
 
-$lang['g002_personalisedlist'] = "List of personalized blocks";
+$lang['g002_personalisedlist'] = "Liste of personalised blocks";
 $lang['g002_notitle'] = '[No title]';
 $lang['g002_title'] = 'Title';
 $lang['g002_sections'] = 'blocks';
@@ -74,8 +74,8 @@ $lang['g002_nosections'] = 'No blocks';
 $lang['g002_addsection'] = 'Add a new block';
 $lang['g002_createofpersonalised'] = 'Create a new personalized block';
 $lang['g002_editofpersonalised'] = 'Modify a personalized block';
-$lang['g002_setting_block_langchoice'] = 'Language choice';
-$lang['g002_setting_personalised_content'] = 'Block content';
+$lang['g002_setting_block_langchoice'] = 'Lang choice';
+$lang['g002_setting_personalised_content'] = 'Block\'s content';
 $lang['g002_setting_personalised_properties'] = 'Properties';
 $lang['g002_setting_personalised_nfo'] = 'Description';
 
@@ -83,7 +83,7 @@ $lang['g002_all_languages'] = "All languages";
 
 $lang['g002_modmenu'] = '\'menu\' block';
 $lang['g002_modspecial'] = '\'special\' block';
-$lang['g002_labelmenu'] = 'Menu label';
+$lang['g002_labelmenu'] = 'Menu\'s label';
 
 $lang['g002_setting_randompic_periodicchange'] = "Periodic change of the image";
 $lang['g002_setting_randompic_periodicchange_delay'] = "Delay";
@@ -98,5 +98,26 @@ $lang['g002_apply_changes'] = "Apply changes";
 $lang['g002_config_saved'] = "The configuration is saved";
 $lang['g002_adviser_not_allowed'] = "Adviser is not allowed to make changes";
 $lang['g002_click_to_manage_rights'] = "Rights management";
+
+
+// v3.0.0
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Config saved";
+$lang['g002_config_not_saved'] = "Config was not saved";
+$lang['g002_selected_all_gallery'] = "All albums";
+$lang['g002_selected_favorites_wm'] = "Webmaster's favorites pictures";
+$lang['g002_selected_categories'] = "All selected albums";
+$lang['g002_loading'] = "Loading...";
+$lang['g002_valid_order'] = "Apply order";
+$lang['g002_reset_order'] = "Reset order";
+$lang['g002_accessibility'] = "Accessibility";
+$lang['g002_setting_core_blocks_content'] = "Content for 'Menu' & 'Specials' menus";
+$lang['g002_setting_blocks_position'] = "Visibility & ordering for menus ";
+$lang['g002_plugin'] = "Plugin";
+$lang['g002_selectedpict'] = "Selected pictures";
+$lang['g002_album_nfo'] = 'Allow to convert one or more album into a menu';
+$lang['g002_album2menu'] = "Converted album to menu";
+$lang['g002_album'] = "Album &rArr; menu";
+$lang['g002_setting_albums_menus'] = "Albums to convert to menu";
 
 ?>

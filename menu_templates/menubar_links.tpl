@@ -1,4 +1,3 @@
-
 <!-- links menu bar -->
 {if $block->get_title() !="" }
   <dt>{$block->get_title()}</dt>

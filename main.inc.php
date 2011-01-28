@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 2.2.3
+Version: 3.0.0
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -22,71 +22,123 @@ Author URI: http://piwigo.org
 
 | release | date       |
 | 2.0.0b  | 2008/07/27 | * initial release with own blocks classes
+|         |            |
 | 2.0.0   | 2008/10/23 | * first release for piwigo's blocks classes
+|         |            |
 | 2.1.0   | 2009/07/26 | * add a functionality : random image can be changed
 |         |            |   every x seconds (from 0.5 to 60)
+|         |            |
 |         |            | * bug resolved : random image block is displayed only
 |         |            |   if user have accessibility to more than 0 images
 |         |            |   random images are choosen in the accessible images
 |         |            |   for a user (permission + level)
 |         |            |   (cf. post:107877 on french forum)
 |         |            |   (cf. topic:14374 on french forum)
+|         |            |
 | 2.1.1   | 2009/07/27 | * random picture is preloaded before the first ajax
 |         |            |   call assuming the display of a thumbnail even if
 |         |            |   javascript is disabled on the browser
 |         |            |   (cf. post:116807 on french forum)
+|         |            |
 |         |            | * give the possibility to choose between an automatic
 |         |            |   and a fixed height for the block menu
 |         |            |   (cf. post:116804 on french forum)
+|         |            |
 |         |            | * compatibility with Sylvia theme
 |         |            |   (cf. post:116800 on french forum)
+|         |            |
 | 2.1.2   | 2009/11/16 | * adding new translations
 |         |            |    - es_ES
 |         |            |    - hu_HU (thx to sámli)
+|         |            |
 | 2.1.3   | 2009/11/24 | * mantis: feature 1285
 |         |            |   move the js for "random image" in the the footer
 |         |            |   (having the js inside the <dl> tag was not w3c
 |         |            |   compliant)
+|         |            |
 |         |            | * mantis: feature 1132
 |         |            |   Allowing order management for items in Piwigo's core
 |         |            |   blocks
+|         |            |
 |         |            | * mantis: feature 1133
 |         |            |   Allowing to group content from Piwigo's core blocks
+|         |            |
 |         |            | * mantis: feature 1278
 |         |            |   Allowing to manage access to menu items with a right
 |         |            |   management system
+|         |            |
 |         |            | * mantis: feature 1100
 |         |            |   Random picture : compatibility with theme 'montblanc'
+|         |            |
 | 2.1.4   | 2009/11/29 | * mantis: feature 1299
 |         |            |   Allows to manage access for the 'Admin' users
+|         |            |
 |         |            | * mantis: feature 1298
 |         |            |   Users 'Webmaster' aren't managed
+|         |            |
 |         |            | * mantis: feature 1297
 |         |            |   AMM don't works properly if a block 'menu' or
 |         |            |   'specials' is hidden
+|         |            |
 | 2.1.5   | 2009/12/15 | * mantis: feature 1331
 |         |            |   JS code used to manage the random picture is always
 |         |            |   loaded even if there is no menubar
+|         |            |
 |         |            | * adding new translations
 |         |            |    - zh_CN (thx mzs777)
+|         |            |
 |         |            | * update translations
 |         |            |    - hu_HU (thx to sámli)
+|         |            |
 | 2.1.6   | 2009/12/19 | * mantis: feature 1336
 |         |            |   Error message about an undefined var 'tabsheet' on
 |         |            |   the admin panel
+|         |            |
 | 2.2.0   | 2010/03/28 | * updated for Piwigo 2.1 compatibility
+|         |            |
 |         |            | * mantis: feature 1384
 |         |            |   Problem of length of title field in the custom menu
 |         |            |   module
+|         |            |
 |         |            | * mantis: bug 1476
 |         |            |   Error message on login screen
+|         |            |
 |         |            | * mantis: bug 1541
 |         |            |   Items order is not respected in admin pages
 |         |            |
-| 2.2.3   | 2011/01/20 | * Add languages
+| 3.0.0   | 2011/01/09 | * mantis: feature 1296
+|         |            |   . add permissions for managing personal menu
 |         |            |
+|         |            | * mantis: feature 1477
+|         |            |   . Possibility to pre-select the "random images"
 |         |            |
+|         |            | * mantis: bug 1680
+|         |            |   . Warning if a new lang is added in Piwigo
 |         |            |
+|         |            | * mantis: feature 1709
+|         |            |   . Change title links by sub tabs
+|         |            |
+|         |            | * mantis: feature 1723
+|         |            |   . Display links using user access right
+|         |            |
+|         |            | * mantis: bug 1776
+|         |            |   . Unable to set access for the administrator
+|         |            |
+|         |            | * mantis: bug 1910
+|         |            |   . Incompatibility with Internet Explorer
+|         |            |     (partially fixed : works, but lloks a little bit
+|         |            |      ugly)
+|         |            |
+|         |            | * mantis: feature 2052
+|         |            |   . Convert album to menu
+|         |            |
+|         |            | * mantis: feature 2128
+|         |            |   . Random picture : preload a set of picture
+|         |            |
+|         |            | * mantis: feature 2129
+|         |            |   . User & group access management is not consistent
+|         |            |
+|         |            | * plugin core rewrited
 |         |            |
 |         |            |
 |         |            |
