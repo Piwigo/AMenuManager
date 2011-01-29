@@ -309,7 +309,7 @@
       $this->config['amm_old_blk_menubar']=$conf['blk_menubar'];
       pwg_query("UPDATE ".CONFIG_TABLE." SET value = '' WHERE param='blk_menubar';");
 
-      if($updateMenu)
+      if($updateMenu and $conf['blk_menubar']!='')
       {
         $tmp=unserialize($conf['blk_menubar']);
         foreach($tmp as $key => $val)
@@ -324,7 +324,8 @@
      */
     private function restoreMenuConfig()
     {
-      pwg_query("UPDATE ".CONFIG_TABLE." SET value = '".pwg_db_real_escape_string($this->config['amm_old_blk_menubar'])."' WHERE param='blk_menubar';");
+      if($this->config['amm_old_blk_menubar']!='')
+        pwg_query("UPDATE ".CONFIG_TABLE." SET value = '".pwg_db_real_escape_string($this->config['amm_old_blk_menubar'])."' WHERE param='blk_menubar';");
     }
 
 
