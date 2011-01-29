@@ -34,15 +34,6 @@ class AMM_AIPRelease extends AMM_root
   }
 
   /*
-    initialize events call for the plugin
-  */
-  public function initEvents()
-  {
-    parent::initEvents();
-    add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
-  }
-
-  /*
     display administration page
   */
   public function manage()
@@ -57,7 +48,7 @@ class AMM_AIPRelease extends AMM_root
     );
 
     $template->assign('plugin', $pluginInfo);
-    $template->assign('GMAPS_BODY_PAGE', '<p class="warnings">'.sprintf(l10n('g002_gpc_not_up_to_date'),AMM_GPC_NEEDED, AMM_VERSION).'</p>');
+    $template->assign('AMM_BODY_PAGE', '<p class="warnings">'.sprintf(l10n('g002_gpc_not_up_to_date'),AMM_GPC_NEEDED, GPC_VERSION).'</p>');
     $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');
   }
 
