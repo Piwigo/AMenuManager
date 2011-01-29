@@ -119,5 +119,7 @@ $lang['g002_album_nfo'] = 'Allow to convert one or more album into a menu';
 $lang['g002_album2menu'] = "Converted album to menu";
 $lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Albums to convert to menu";
+$lang['gmaps_gpc_not_up_to_date']="It is necessary for the plugin that the <i>Grum Plugin Classes</i> version %s is installed.
+Currently, version %s is installed: please proceed with the update version of the plugin <i>Grum Plugin Classes</i>.";
 
 ?>

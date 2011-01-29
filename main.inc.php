@@ -169,7 +169,10 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 define('AMM_DIR' , basename(dirname(__FILE__)));
 define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
+include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php');
 include_once('amm_version.inc.php'); // => Don't forget to update this file !!
+include_once('amm_root.class.inc.php');
+
 
 global $prefixeTable, $page;
 
@@ -184,10 +187,15 @@ if(defined('IN_ADMIN'))
 }
 else
 {
-  //AMM public part loaded and active only if in public page
-  include_once("amm_pip.class.inc.php");
-  $obj = new AMM_PIP($prefixeTable, __FILE__);
-  set_plugin_data($plugin['id'], $obj);
+  if(CommonPlugin::checkGPCRelease(AMM_GPC_NEEDED))
+  {
+    AMM_root::checkPluginRelease();
+
+    //AMM public part loaded and active only if in public page
+    include_once("amm_pip.class.inc.php");
+    $obj = new AMM_PIP($prefixeTable, __FILE__);
+    set_plugin_data($plugin['id'], $obj);
+  }
 }
 
 

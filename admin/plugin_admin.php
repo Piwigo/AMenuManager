@@ -14,15 +14,29 @@
 
 if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 
-include(AMM_PATH."amm_aip.class.inc.php");
-
 global $prefixeTable;
 
 load_language('plugin.lang', AMM_PATH);
 
 $main_plugin_object = get_plugin_data($plugin_id);
 
-$plugin_ai = new AMM_AIP($prefixeTable, $main_plugin_object->getFileLocation());
+if(CommonPlugin::checkGPCRelease(AMM_GPC_NEEDED))
+{
+  AMM_root::checkPluginRelease();
+
+  include(AMM_PATH."amm_aip.class.inc.php");
+  $plugin_ai = new AMM_AIP($prefixeTable, $main_plugin_object->getFileLocation());
+}
+else
+{
+  /*
+   * plugin was upgraded, but GPC was not
+   * display a page to inform user to upgrade GPC
+   */
+  include(AMM_PATH."amm_aip_release.class.inc.php");
+  $plugin_ai = new AMM_AIPRelease($prefixeTable, $main_plugin_object->getFileLocation());
+}
+
 $plugin_ai->manage();
 
 ?>
