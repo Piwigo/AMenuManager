@@ -182,6 +182,8 @@
           $this->config['newInstall']='n';
           $this->updateFrom_020106();
         case '02.02.00':
+        case '02.02.01':
+        case '02.02.02':
           $this->config['newInstall']='n';
           $this->updateFrom_020200();
         default:
