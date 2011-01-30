@@ -309,6 +309,14 @@
         $this->config['amm_blocks_items']=$this->config['amm_sections_items'];
         unset($this->config['amm_sections_items']);
       }
+
+
+      $usersList=array('guest', 'generic', 'normal', 'webmaster', 'admin');
+      foreach($this->config['amm_blocks_items'] as $key => $item)
+      {
+        $tmp0=explode('/', $item['visibility']);
+        $this->config['amm_blocks_items'][$key]['visibility']=implode(',', array_diff($usersList, explode(',', $tmp0[0]))).'/'.$tmp0[1];
+      }
     }
 
     /**
