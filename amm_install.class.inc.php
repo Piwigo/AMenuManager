@@ -184,6 +184,7 @@
         case '02.02.00':
         case '02.02.01':
         case '02.02.02':
+        case '02.02.03':
           $this->config['newInstall']='n';
           $this->updateFrom_020200();
         default:
@@ -191,12 +192,12 @@
            * default is applied for fresh install
            */
 
-          if($this->config['installed']<='02.02.02' or
+          if($this->config['installed']<='02.02.03' or
              $this->config['newInstall']=='y')
           {
             /*
              * if    new install
-             *    or plugin updated from a release <= 2.2.0
+             *    or plugin updated from a release <= 2.2.3
              *    or plugin
              *
              * update AMM menu from piwigo's menu
