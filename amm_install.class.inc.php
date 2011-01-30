@@ -271,6 +271,10 @@
       );
 
       $tables_def = create_table_add_character_set($tables_def);
+      $this->tablef->setTables(array(
+        $this->tables['personalised_langs'],
+        $this->tables['blocks'])
+      );
       $result=$this->tablef->create($tables_def);
 
       $sql="INSERT INTO `".$this->tables['personalised_langs']."`
@@ -291,8 +295,13 @@
 
 
       $users=new GPCUsers();
+      $uList=array();
+      foreach($users->getList() as $user)
+      {
+        $uList[]=$user['id'];
+      }
       $sql="UPDATE `".$this->tables['urls']."`
-            SET accessUsers='".pwg_db_real_escape_string(implode(',', $users->getList()))."';";
+            SET accessUsers='".pwg_db_real_escape_string(implode(',', $uList))."';";
       pwg_query($sql);
 
       if(isset($this->config['amm_sections_items']))

@@ -20,10 +20,10 @@ $gpcInstalled=false;
 if(file_exists(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php'))
 {
   @include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php');
-  // need GPC release greater or equal than 3.3.3
-  if(CommonPlugin::checkGPCRelease(3,3,3))
+  // need GPC release greater or equal than 3.4.0
+  if(CommonPlugin::checkGPCRelease(3,4,0))
   {
-    @include_once("amm_install.class.inc.php");
+    include_once("amm_install.class.inc.php");
     $gpcInstalled=true;
   }
 }
