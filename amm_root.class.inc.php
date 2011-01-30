@@ -91,7 +91,8 @@ class AMM_root extends CommonPlugin
       'amm_randompicture_selectCat' => array(),  // categories id list
       'amm_blocks_items' => $this->defaultMenus,
       'amm_albums_to_menu' => array(),
-      'amm_old_blk_menubar' => ''                // keep a copy of piwigo's menubar config
+      'amm_old_blk_menubar' => '',                // keep a copy of piwigo's menubar config
+      'newInstall' => 'n'
     );
 
     $languages=get_languages();

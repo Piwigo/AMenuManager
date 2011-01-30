@@ -9,9 +9,9 @@ var randomPictOpt={
       pictures:[
         {foreach from=$data.pictures item=picture name=items}
           {ldelim}
-            'comment':"{$picture.comment}",
+            'comment':'{$picture.comment|escape:'quotes'|replace:"\n":'<br>'|replace:"\r":''}',
             'link':"{$picture.link}",
-            'name':"{$picture.name}",
+            'name':'{$picture.imgname|escape:'quotes'|replace:"\n":'<br>'|replace:"\r":''}',
             'thumb':"{$picture.thumb}"
           {rdelim}
           {if !$smarty.foreach.items.last},{/if}

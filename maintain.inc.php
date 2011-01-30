@@ -9,8 +9,6 @@ defined('AMM_DIR') || define('AMM_DIR' , basename(dirname(__FILE__)));
 defined('AMM_PATH') || define('AMM_PATH' , PHPWG_PLUGINS_PATH . AMM_DIR . '/');
 
 include_once('amm_version.inc.php'); // => Don't forget to update this file !!
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCCore.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCTables.class.inc.php');
 
 
 global $gpcInstalled, $lang; //needed for plugin manager compatibility
