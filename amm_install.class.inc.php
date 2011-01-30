@@ -290,7 +290,7 @@
 
       $sql="ALTER TABLE `".$this->tables['urls']."`
             ADD COLUMN `accessUsers` VARCHAR(1024)  NOT NULL AFTER `visible`,
-            ADD COLUMN `accessGroups` VARCHAR(1024)  NOT NULL AFTER `accessUser`;";
+            ADD COLUMN `accessGroups` VARCHAR(1024)  NOT NULL AFTER `accessUsers`;";
       pwg_query($sql);
 
 
