@@ -284,7 +284,7 @@
       pwg_query($sql);
 
 
-      $sql="DELETE FROM `".$this->tables['personalised']."` WHERE lang!='".$user['lang']."';"
+      $sql="DELETE FROM `".$this->tables['personalised']."` WHERE lang!='".$user['lang']."';";
       pwg_query($sql);
 
       $sql="ALTER TABLE `".$this->tables['personalised']."` DROP COLUMN `lang`,
