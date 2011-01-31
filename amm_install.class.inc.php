@@ -288,6 +288,19 @@
               WHERE pap.title!='' OR pap.content!='';";
       pwg_query($sql);
 
+
+      if(!isset($user['language']) or $user['language']=='')
+      {
+        $sql="SELECT language FROM ".USERS_INFOS_TABLE." WHERE id='1';";
+        pwg_query($sql);
+        if($result)
+        {
+          while($row=pwg_db_fetch_assoc($result))
+          {
+            $user['language']=$row['language'];
+          }
+        }
+      }
       $sql="DELETE FROM `".$this->tables['personalised']."` WHERE lang!='".$user['language']."';";
       pwg_query($sql);
 
