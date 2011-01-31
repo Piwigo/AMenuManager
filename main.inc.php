@@ -147,8 +147,15 @@ Author URI: http://piwigo.org
 |         |            |   . Album to menu : error message about number of
 |         |            |     pictures
 |         |            |
+|         |            | * mantis: feature 2159
+|         |            |   . Update process : users acess is not managed on links
 |         |            |
+|         |            | * mantis: feature 2162
+|         |            |   . Personalised blocks : when adding a new block,
+|         |            |     previous title & content are not reseted
 |         |            |
+|         |            | * mantis: feature 2163
+|         |            |   . Update process : error message on gallery side
 |         |            |
 |         |            |
 |         |            |

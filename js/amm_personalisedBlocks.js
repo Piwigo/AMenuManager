@@ -117,10 +117,10 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
         $('#iamm_personalised_nfo').inputText('value', '');
         $('#iamm_personalised_title')
           .inputText('value', '')
-          .inputText('languagesValues', {});
+          .inputText('languagesValues', ':clear');
         $('#iamm_personalised_content')
           .inputText('value', '')
-          .inputText('languagesValues', {});
+          .inputText('languagesValues', ':clear');
         $('#iamm_personalised_visible').inputRadio('value', 'y');
       }
       else
@@ -136,8 +136,8 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
         }
 
         $('#iamm_personalised_nfo').inputText('value', tmp.nfo);
-        $('#iamm_personalised_title').inputText('languagesValues', titles);
-        $('#iamm_personalised_content').inputText('languagesValues', contents);
+        $('#iamm_personalised_title').inputText('languagesValues', ':clear').inputText('languagesValues', titles);
+        $('#iamm_personalised_content').inputText('languagesValues', ':clear').inputText('languagesValues', contents);
         $('#iamm_personalised_visible').inputRadio('value', tmp.visible);
       }
     },
