@@ -187,6 +187,9 @@
         case '02.02.03':
           $this->config['newInstall']='n';
           $this->updateFrom_020200();
+        case '03.00.00':
+          $this->config['newInstall']='n';
+          $this->updateFrom_030000();
         default:
           /*
            * default is applied for fresh install
@@ -298,17 +301,6 @@
             ADD COLUMN `accessGroups` VARCHAR(1024)  NOT NULL AFTER `accessUsers`;";
       pwg_query($sql);
 
-/*
-      $users=new GPCUsers();
-      $uList=array();
-      foreach($users->getList() as $user)
-      {
-        $uList[]=$user['id'];
-      }
-      $sql="UPDATE `".$this->tables['urls']."`
-            SET accessUsers='".pwg_db_real_escape_string(implode(',', $uList))."';";
-      pwg_query($sql);
-*/
       if(isset($this->config['amm_sections_items']))
       {
         $this->config['amm_blocks_items']=$this->config['amm_sections_items'];
@@ -323,6 +315,24 @@
         $this->config['amm_blocks_items'][$key]['visibility']=implode(',', array_diff($usersList, explode(',', $tmp0[0]))).'/'.$tmp0[1];
       }
     }
+
+
+
+    /**
+     * update the database from the release 3.0.0
+     *
+     * - add auto increment on personnalised_lang table
+     */
+    private function updateFrom_030000()
+    {
+      global $user;
+
+      $sql="ALTER TABLE `".$this->tables['personalised']."` MODIFY COLUMN `id` INTEGER  NOT NULL AUTO_INCREMENT;";
+      pwg_query($sql);
+    }
+
+
+
 
     /**
      * report hidden menu from piwigo's config to AMM config
