@@ -251,6 +251,8 @@
      */
     private function updateFrom_020200()
     {
+      global $user;
+
       $tables_def=array(
 "CREATE TABLE `".$this->tables['personalised_langs']."` (
   `id` INTEGER UNSIGNED NOT NULL DEFAULT 0,
@@ -283,8 +285,7 @@
               WHERE pap.title!='' OR pap.content!='';";
       pwg_query($sql);
 
-
-      $sql="DELETE FROM `".$this->tables['personalised']."` WHERE lang!='".$user['lang']."';";
+      $sql="DELETE FROM `".$this->tables['personalised']."` WHERE lang!='".$user['language']."';";
       pwg_query($sql);
 
       $sql="ALTER TABLE `".$this->tables['personalised']."` DROP COLUMN `lang`,
@@ -351,8 +352,6 @@
       if($this->config['amm_old_blk_menubar']!='')
         pwg_query("UPDATE ".CONFIG_TABLE." SET value = '".pwg_db_real_escape_string($this->config['amm_old_blk_menubar'])."' WHERE param='blk_menubar';");
     }
-
-
 
   } //class
 
