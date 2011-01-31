@@ -23,7 +23,7 @@
   {/foreach}
   {'</li></ul>'|@str_repeat:$ref_level}
 
-  {if $data.nbPictures!=''}
+  {if $block->data.nbPictures!=''}
     <p class="totalImages">{$pwg->l10n_dec('%d image', '%d images', $block->data.nbPictures)}</p>
   {/if}
 </dd>

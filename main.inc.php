@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.0.0
+Version: 3.0.1
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -140,6 +140,12 @@ Author URI: http://piwigo.org
 |         |            |
 |         |            | * plugin core rewrited
 |         |            |
+| 3.0.1   | 2011/01/31 | * mantis: feature 2157
+|         |            |   . Personalised blocks : title & content are inverted
+|         |            |
+|         |            | * mantis: feature 2158
+|         |            |   . Album to menu : error message about number of
+|         |            |     pictures
 |         |            |
 |         |            |
 |         |            |

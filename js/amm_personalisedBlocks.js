@@ -1,7 +1,7 @@
 /**
  * userPersonnalisedBlockManage
  *
- * release 1.0.0
+ * release 1.0.1
  */
 function userPersonnalisedBlockManage(opt, keys, token, initValues)
 {
@@ -151,8 +151,8 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
 
       // build datas
       var langs=[],
-          titles=$('#iamm_personalised_content').inputText('languagesValues'),
-          contents=$('#iamm_personalised_title').inputText('languagesValues');
+          titles=$('#iamm_personalised_title').inputText('languagesValues'),
+          contents=$('#iamm_personalised_content').inputText('languagesValues');
 
       for(var lang in titles)
       {
