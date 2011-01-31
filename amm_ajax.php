@@ -471,7 +471,7 @@
       $this->config['amm_randompicture_showname']=$config['infosName'];
       $this->config['amm_randompicture_showcomment']=$config['infosComment'];
       $this->config['amm_randompicture_periodicchange']=$config['freqDelay'];
-      $this->config['amm_randompicture_height']=$config['blockHeight'];
+      $this->config['amm_randompicture_height']=($config['blockHeight']==99)?0:$config['blockHeight'];
       $this->config['amm_randompicture_title']=array();
       foreach($config['blockTitles'] as $title)
       {

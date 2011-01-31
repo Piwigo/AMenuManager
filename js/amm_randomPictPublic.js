@@ -75,7 +75,7 @@ function randomPict(opt)
 
   computePositionTop = function()
   {
-    $("#iamm_ill0").css({top:(options.fixedHeight-$("#iamm_ill0").innerHeight())/2});
+    $("#iamm_ill0").css({top:($('#irandompicinner').innerHeight()-$("#iamm_ill0").innerHeight())/2});
   },
 
   getNextPicture = function()

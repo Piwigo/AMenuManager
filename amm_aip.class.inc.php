@@ -227,7 +227,7 @@ class AMM_AIP extends AMM_root
           'freqDelay' => $this->config['amm_randompicture_periodicchange'],
           'selectMode' => $this->config['amm_randompicture_selectMode'],
           'selectCat' => json_encode($this->config['amm_randompicture_selectCat']),
-          'blockHeight' => $this->config['amm_randompicture_height'],
+          'blockHeight' => ($this->config['amm_randompicture_height']==0)?99:$this->config['amm_randompicture_height'],
           'blockTitles' => array()
         ),
       'selectedLang' => $user['language'],

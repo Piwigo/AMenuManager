@@ -646,12 +646,10 @@ class AMM_root extends CommonPlugin
 
   static public function checkPluginRelease()
   {
-    global $template;
+    global $template, $prefixeTable, $conf;
 
-    $config=Array();
-    GPCCore::loadConfig('amm', $config);
 
-    if($config['installed']!=AMM_VERSION2)
+    if($conf['amm_config']['installed']!=AMM_VERSION2)
     {
       /* the plugin was updated without being deactivated
        * deactivate + activate the plugin to process the database upgrade
@@ -660,7 +658,7 @@ class AMM_root extends CommonPlugin
       $amm=new AMM_Install($prefixeTable, dirname(__FILE__));
       $amm->deactivate();
       $amm->activate();
-      $template->delete_compiled_templates();
+      if(is_object($template)) $template->delete_compiled_templates();
     }
   }
 
