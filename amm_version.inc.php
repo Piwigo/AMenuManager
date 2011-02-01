@@ -16,5 +16,5 @@
 
   define('AMM_VERSION',  '3.0.1');
   define('AMM_VERSION2', '03.00.01');
-  define('AMM_GPC_NEEDED', '3.4.0');
+  define('AMM_GPC_NEEDED', '3.4.1');
 ?>

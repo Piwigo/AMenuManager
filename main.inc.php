@@ -157,6 +157,14 @@ Author URI: http://piwigo.org
 |         |            | * mantis: feature 2163
 |         |            |   . Update process : error message on gallery side
 |         |            |
+|         |            | * mantis: bug 2165
+|         |            |   . Database schema not completely updated
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
 |         |            |
 |         |            |
 
