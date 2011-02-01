@@ -291,8 +291,8 @@
 
       if(!isset($user['language']) or $user['language']=='')
       {
-        $sql="SELECT language FROM ".USERS_INFOS_TABLE." WHERE id='1';";
-        pwg_query($sql);
+        $sql="SELECT language FROM ".USER_INFOS_TABLE." WHERE user_id='1';";
+        $result=pwg_query($sql);
         if($result)
         {
           while($row=pwg_db_fetch_assoc($result))
