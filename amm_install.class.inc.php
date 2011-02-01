@@ -263,7 +263,7 @@
   `title` VARCHAR(255)  NOT NULL default '',
   `content` TEXT  NOT NULL,
   PRIMARY KEY (`id`, `lang`)
-)",
+)  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE,
 
 "CREATE TABLE `".$this->tables['blocks']."` (
   `id` VARCHAR(40)  NOT NULL,
@@ -272,7 +272,7 @@
   `groups` VARCHAR(1024)  NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `byOrder`(`order`)
-)"
+)  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE
       );
 
       $tables_def = create_table_add_character_set($tables_def);
@@ -397,10 +397,10 @@
         {
           return $query;
         }
-        $charset_collate = " DEFAULT CHARACTER SET ".DB_CHARSET;
+        $charset_collate = ;
         if (DB_COLLATE!='')
         {
-          $charset_collate .= " COLLATE ".DB_COLLATE;
+          $charset_collate .=
         }
         if ( is_array($query) )
         {
