@@ -379,57 +379,6 @@
   } //class
 
 
-  if(!function_exists('create_table_add_character_set') and !defined('IN_ADMIN'))
-  {
-    /**
-     * from admin/include/functions.php
-     *
-     * adds the caracter set to a create table sql query.
-     * all CREATE TABLE queries must call this function
-     * @param string query - the sql query
-     */
-    function create_table_add_character_set($query)
-    {
-      defined('DB_CHARSET') or fatal_error('create_table_add_character_set DB_CHARSET undefined');
-      if ('DB_CHARSET'!='')
-      {
-        if ( version_compare(mysql_get_server_info(), '4.1.0', '<') )
-        {
-          return $query;
-        }
-        $charset_collate = ;
-        if (DB_COLLATE!='')
-        {
-          $charset_collate .=
-        }
-        if ( is_array($query) )
-        {
-          foreach( $query as $id=>$q)
-          {
-            $q=trim($q);
-            $q=trim($q, ';');
-            if (preg_match('/^CREATE\s+TABLE/i',$q))
-            {
-              $q.=$charset_collate;
-            }
-            $q .= ';';
-            $query[$id] = $q;
-          }
-        }
-        else
-        {
-          $query=trim($query);
-          $query=trim($query, ';');
-          if (preg_match('/^CREATE\s+TABLE/i',$query))
-          {
-            $query.=$charset_collate;
-          }
-          $query .= ';';
-        }
-      }
-      return $query;
-    }
-  }
 
 
 ?>
