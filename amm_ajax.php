@@ -330,8 +330,6 @@
       $local_tpl->set_filename('body_page',
                     dirname($this->getFileLocation()).'/admin/amm_linkslinks_detail.tpl');
 
-
-
       $datas['links']=array();
 
       $links=$this->getLinks();
