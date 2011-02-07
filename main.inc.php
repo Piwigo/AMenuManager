@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.0.2
+Version: 3.0.3
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -160,9 +160,19 @@ Author URI: http://piwigo.org
 |         |            | * mantis: bug 2165
 |         |            |   . Database schema not completely updated
 |         |            |
-| 3.0.2   | 2011/02/01 | * mantis: feature 2166
+| 3.0.2   | 2011/02/01 | * mantis: bug 2166
 |         |            |   . Error message on gallery side about
 |         |            |             create_table_add_character_set()
+|         |            |
+| 3.0.3   | 2011/02/07 | * mantis: bug 2166
+|         |            |   . Error message on gallery side about
+|         |            |             create_table_add_character_set()
+|         |            |
+|         |            | * mantis: bug 2182
+|         |            |   . links and personnal blocks : double quote are not
+|         |            |     correctly managed
+|         |            |
+|         |            |
 |         |            |
 |         |            |
 |         |            |

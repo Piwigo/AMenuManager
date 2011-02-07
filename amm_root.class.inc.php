@@ -238,8 +238,8 @@ class AMM_root extends CommonPlugin
     {
       $sql="INSERT INTO ".$this->tables['urls']." VALUES
             ('',
-             '".pwg_db_real_escape_string($label)."',
-             '".pwg_db_real_escape_string($url)."',
+             '".$label."',
+             '".$url."',
              '$mode',
              '$icon',
              0,
@@ -251,13 +251,13 @@ class AMM_root extends CommonPlugin
     else
     {
       $sql="UPDATE ".$this->tables['urls']."
-            SET label='".pwg_db_real_escape_string($label)."',
-                url='".pwg_db_real_escape_string($url)."',
+            SET label='".$label."',
+                url='".$url."',
                 mode='$mode',
                 icon='$icon',
                 visible='$visible',
-                accessUsers='".pwg_db_real_escape_string($accessUsers)."',
-                accessGroups='".pwg_db_real_escape_string($accessGroups)."'
+                accessUsers='".$accessUsers."',
+                accessGroups='".$accessGroups."'
             WHERE id='$id';";
     }
     $result=pwg_query($sql);
@@ -444,7 +444,7 @@ class AMM_root extends CommonPlugin
       $sql="INSERT INTO ".$this->tables['personalised']." VALUES
             ('',
              '$visible',
-             '".pwg_db_real_escape_string($nfo)."'
+             '".$nfo."'
             );";
       $result=pwg_query($sql);
       if($result) $ok=true;
@@ -454,7 +454,7 @@ class AMM_root extends CommonPlugin
     {
       $sql="UPDATE ".$this->tables['personalised']."
             SET visible='$visible',
-                nfo='".pwg_db_real_escape_string($nfo)."'
+                nfo='".$nfo."'
             WHERE id='$id';";
       $result=pwg_query($sql);
       if($result)
@@ -474,8 +474,8 @@ class AMM_root extends CommonPlugin
       {
         $values[]="('$id',
                     '".$lang['lang']."',
-                    '".pwg_db_real_escape_string($lang['title'])."',
-                    '".pwg_db_real_escape_string($lang['content'])."')";
+                    '".$lang['title']."',
+                    '".$lang['content']."')";
       }
       $sql="INSERT INTO ".$this->tables['personalised_langs']." VALUES ".implode(',', $values);
       $result=pwg_query($sql);
@@ -631,10 +631,10 @@ class AMM_root extends CommonPlugin
     foreach($blocks as $block)
     {
       $sql="INSERT INTO ".$this->tables['blocks']." VALUES (
-            '".pwg_db_real_escape_string($block['id'])."',
+            '".$block['id']."',
             '".$block['order']."',
-            '".pwg_db_real_escape_string(implode(',', $block['users']))."',
-            '".pwg_db_real_escape_string(implode(',', $block['groups']))."'
+            '".implode(',', $block['users'])."',
+            '".implode(',', $block['groups'])."'
             );";
       $result=pwg_query($sql);
       if(!$result) $returned=false;

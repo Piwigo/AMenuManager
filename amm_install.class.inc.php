@@ -275,7 +275,6 @@
 )  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE
       );
 
-      $tables_def = create_table_add_character_set($tables_def);
       $this->tablef->setTables(array(
         $this->tables['personalised_langs'],
         $this->tables['blocks'])
