@@ -119,5 +119,7 @@ $lang['g002_album_nfo'] = 'Povolit přeměnu jednoho nebo více názvů alb na m
 $lang['g002_album2menu'] = "Přeměnit album na menu";
 $lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Alba ke konvertování na menu"; 
+$lang['gmaps_gpc_not_up_to_date']= "Tohle je nezbytné pokud je nainstalován <i>Grum Plugin Classes</i> ver. %s.
+Aktuálně je nainstalována verze  %s : prosím aktualizujte plugin <i>Grum Plugin Classes</i> na novou verzi.";
 
 ?>
