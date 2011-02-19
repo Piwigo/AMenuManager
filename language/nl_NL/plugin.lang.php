@@ -99,4 +99,25 @@ $lang['g002_config_saved'] = "De configuratie is opgeslagen";
 $lang['g002_adviser_not_allowed'] = "Het is een Adviser niet toegestaan om wijzigingen te amken";
 $lang['g002_click_to_manage_rights'] = "Rechten management";
 
+
+// v3.0.0
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Config opgeslagen";
+$lang['g002_config_not_saved'] = "Config is niet opgeslagen";
+$lang['g002_selected_all_gallery'] = "Alle albums";
+$lang['g002_selected_favorites_wm'] = "Webmaster's favoriete afbeeldingen";
+$lang['g002_selected_categories'] = "Alle geselecteerde albums";
+$lang['g002_loading'] = "Laden...";
+$lang['g002_valid_order'] = "uitvoeren volgorde";
+$lang['g002_reset_order'] = "Herstel volgorde";
+$lang['g002_accessibility'] = "Toegankelijkheid";
+$lang['g002_setting_core_blocks_content'] = "Inhoud voor 'Menu' & 'Specials' menu\'s";
+$lang['g002_setting_blocks_position'] = "Zichtbaarheid & volgorde van menu\'s ";
+$lang['g002_plugin'] = "Plugin";
+$lang['g002_selectedpict'] = "Geselecteerde afbeeldingen";
+$lang['g002_album_nfo'] = 'Toestaan om één of meer albums in een menu te converteren';
+$lang['g002_album2menu'] = "Album naar menu geconverteerd";
+$lang['g002_album'] = "Album &rArr; menu";
+$lang['g002_setting_albums_menus'] = "Album naar menu te converteren"; 
+
 ?>
