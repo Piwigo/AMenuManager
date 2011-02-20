@@ -99,4 +99,25 @@ $lang['g002_config_saved'] = "Конфигурация сохранена";
 $lang['g002_adviser_not_allowed'] = "Консультант не уполномочен совершать изменения";
 $lang['g002_click_to_manage_rights'] = "Управление правами";
 
+
+// v3.0.0
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Настройки сохранены";
+$lang['g002_config_not_saved'] = "Настройки не будут сохранены";
+$lang['g002_selected_all_gallery'] = "Все альбомы";
+$lang['g002_selected_favorites_wm'] = "Выбранные вебмастером изображения";
+$lang['g002_selected_categories'] = "Все выбранные альбомы";
+$lang['g002_loading'] = "Загрузка...";
+$lang['g002_valid_order'] = "Применить сортировку";
+$lang['g002_reset_order'] = "Отменить сортировку";
+$lang['g 002_accessibility'] = "Доступность";
+$lang['g002_setting_core_blocks_content'] = "Содержимое пунктов 'Меню' & 'Спец функции'";
+$lang['g002_setting_blocks_position'] = "Видимость и порядок пунктов меню";
+$lang['g002_plugin'] = "Плагин";
+$lang['g002_selectedpict'] = "Выбранные изображения";
+$lang['g002_album_nfo'] = 'Разрешить преобразовать один или несколько альбомов в меню';
+$lang['g002_album2menu'] = "Преобразовать альбом в меню";
+$lang['g002_album'] = "Альбом ⇒ меню";
+$lang['g002_setting_albums_menus'] = "Альбомы для преобразования в меню";
+
 ?>
