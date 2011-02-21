@@ -110,6 +110,8 @@ $lang['g002_album_nfo'] = 'Die Konvertierung eines oder mehrere Alben in einem M
 $lang['g002_album2menu'] = "Konvertierter Album zum Menü"; 
 $lang['g002_album'] = "Album &rArr; Menü"; 
 $lang['g002_setting_albums_menus'] = "Zu konvertierenden Alben in Menüs.";
+$lang['gmaps_gpc_not_up_to_date']="Es ist für den Plug-In notwendig, dass <i>Grum Plugin Classes</i> mit der Version %s installiert ist.
+Zurzeit ist die Version %s installiert: bitte fahren Sie mit der Updateversion des Plug-Ins <i>Grum Plugin Classes</i> fort.";
 
 
 ?>

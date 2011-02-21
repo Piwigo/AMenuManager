@@ -118,7 +118,7 @@ $lang['g002_album_nfo'] = 'Autorizzare la conversione di uno o più album in un 
 $lang['g002_album2menu'] = "Convertire album in menu"; 
 $lang['g002_album'] = "Album &rArr; menu"; 
 $lang['g002_setting_albums_menus'] = "Album da convertire in menu";
-
-
+$lang['gmaps_gpc_not_up_to_date']= "È necessario per il funzionamento del plug-in che <i>Grum Plugin Classes</i> con la versione %s sia installata.
+Attualmente , la versione %s è installata: la preghiamo di procedure con l'update del plug-in <i>Grum Plugin Classes</i>.";
 
 ?>
