@@ -99,4 +99,27 @@ $lang['g002_config_saved'] = 'Konfigurácia je uložená';
 $lang['g002_adviser_not_allowed'] = 'Poradca nie je povolený na vytvorenie zmien';
 $lang['g002_click_to_manage_rights'] = 'Práva manažmentu';
 
+
+// v3.0.0
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Konfigurácia uložená";
+$lang['g002_config_not_saved'] = "Konfigurácia nebola uložená";
+$lang['g002_selected_all_gallery'] = "Všetky albumy";
+$lang['g002_selected_favorites_wm'] = "Webmastrové najobľúbenejšie fotografie";
+$lang['g002_selected_categories'] = "Všetky označené albumy";
+$lang['g002_loading'] = "Nahrávam...";
+$lang['g002_valid_order'] = "Pridaj zoradenie";
+$lang['g002_reset_order'] = "Zruš zoradenie";
+$lang['g002_accessibility'] = "Prípustnosť";
+$lang['g002_setting_core_blocks_content'] = "Obsah pre 'Menu' & 'Špeciálne menu";
+$lang['g002_setting_blocks_position'] = "Viditeľnosť & zoradenie pre menu ";
+$lang['g002_plugin'] = "Doplnok";
+$lang['g002_selectedpict'] = "Označené fotografie";
+$lang['g002_album_nfo'] = 'Povoliť konvertovanie jedného alebo viacerých albumov do menu';
+$lang['g002_album2menu'] = "Konvertovaný album do menu";
+$lang['g002_album'] = "Album &rArr; menu";
+$lang['g002_setting_albums_menus'] = "Albumy na konvertovanie do menu";
+$lang['gmaps_gpc_not_up_to_date']="Pre doplnok je potrebné mať inštalovaný <i>Grum Plugin Classes</i> verzie %s.
+Momentálne je inštalovaná verzia %s: urobte update na novú verziu doplnku <i>Grum Plugin Classes</i>."; 
+
 ?>
