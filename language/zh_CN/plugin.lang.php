@@ -119,6 +119,6 @@ $lang['g002_album_nfo'] = '允许将一个或多个相册转换成菜单';
 $lang['g002_album2menu'] = "已将相册转换成菜单"; 
 $lang['g002_album'] = "相册 &rArr; 菜单"; 
 $lang['g002_setting_albums_menus'] = "相册转换成菜单"; 
-
+$lang['gmaps_gpc_not_up_to_date']="插件所必须的<i>Grum插件类</i>版本 %s 已安装。现在版本 %s 已安装：请进行插件<i>Grum插件类</i>的版本升级.";
 
 ?>
