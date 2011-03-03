@@ -99,4 +99,26 @@ $lang['g002_config_saved'] = "保存配置";
 $lang['g002_adviser_not_allowed'] = "顾问是不允许进行更改";
 $lang['g002_click_to_manage_rights'] = "设置权限";
 
+
+// v3.0.0
+$lang['g002_ok'] = "确定"; 
+$lang['g002_config_saved'] = "配置已保存"; 
+$lang['g002_config_not_saved'] = "配置不能保存"; 
+$lang['g002_selected_all_gallery'] = "全部相册"; 
+$lang['g002_selected_favorites_wm'] = "站长的喜爱图片"; 
+$lang['g002_selected_categories'] = "全部选择的相册"; 
+$lang['g002_loading'] = "加载中..."; 
+$lang['g002_valid_order'] = "应用排序"; 
+$lang['g002_reset_order'] = "重置排序"; 
+$lang['g002_accessibility'] = "可访问性"; 
+$lang['g002_setting_core_blocks_content'] = "'菜单' 和 '特殊' 菜单内容"; 
+$lang['g002_setting_blocks_position'] = "菜单的可见性和排序 "; 
+$lang['g002_plugin'] = "插件"; 
+$lang['g002_selectedpict'] = "已选择的图片"; 
+$lang['g002_album_nfo'] = '允许将一个或多个相册转换成菜单'; 
+$lang['g002_album2menu'] = "已将相册转换成菜单"; 
+$lang['g002_album'] = "相册 &rArr; 菜单"; 
+$lang['g002_setting_albums_menus'] = "相册转换成菜单"; 
+
+
 ?>
