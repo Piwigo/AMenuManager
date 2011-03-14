@@ -99,4 +99,28 @@ $lang['g002_config_saved'] = "Konfiguráció mentve";
 $lang['g002_adviser_not_allowed'] = "Nincs jogosultság a módosításhoz";
 $lang['g002_click_to_manage_rights'] = "Jogkezelés";
 
+// v3.0.0
+$lang['g002_ok'] = "OK";
+$lang['g002_edit'] = "Blokk módosítása";
+$lang['g002_delete'] = "Blokk törlése";
+$lang['g002_config_saved'] = "Konfiguráció mentve";
+$lang['g002_config_not_saved'] = "A konfiguráció nem került mentésre";
+$lang['g002_selected_all_gallery'] = "Összes album";
+$lang['g002_selected_favorites_wm'] = "Webmester kedvenc képei";
+$lang['g002_selected_categories'] = "Összes kijelölt album";
+$lang['g002_loading'] = "Töltés...";
+$lang['g002_valid_order'] = "Sorrend alkalmazása";
+$lang['g002_reset_order'] = "Sorrend alaphelyzetbe";
+$lang['g002_accessibility'] = "Láthatja:";
+$lang['g002_setting_core_blocks_content'] = "Menü és Speciális összetevők";
+$lang['g002_setting_blocks_position'] = "Láthatóság és menü sorrend ";
+$lang['g002_plugin'] = "Bővítmény";
+$lang['g002_selectedpict'] = "Kijelölt képek";
+$lang['g002_album_nfo'] = 'Egy vagy több albumból menü készítése';
+$lang['g002_album2menu'] = "Album menüvé konvertálása";
+$lang['g002_album'] = "Album &rArr; menü";
+$lang['g002_setting_albums_menus'] = "Menüvé konvertálandó albumok";
+$lang['gmaps_gpc_not_up_to_date']="A bővítmény használatához szükség van a <i>Grum Plugin Classes</i> %s változatának telepítésére.
+Jelenleg a %s változat van telepítve. Lépj tovább és frissítsd a <i>Grum Plugin Classes</i> bővítményt.";
+
 ?>
