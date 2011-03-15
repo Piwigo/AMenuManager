@@ -98,4 +98,28 @@ $lang['g002_apply_changes'] = "Validar";
 $lang['g002_config_saved'] = "Configuración guardada";
 $lang['g002_adviser_not_allowed'] = "El consejero no esta autorizado a efectuar modificaciones";
 $lang['g002_click_to_manage_rights'] = "Administrar los derechos de acceso";
+
+
+// v3.0.0
+$lang['g002_ok'] = "OK";
+$lang['g002_config_saved'] = "Se ha guardado la configuración";
+$lang['g002_config_not_saved'] = "No se ha podido guardar la configuración";
+$lang['g002_selected_all_gallery'] = "En todos los álbumes";
+$lang['g002_selected_favorites_wm'] = "Imágenes favoritas del Webmaster";
+$lang['g002_selected_categories'] = "En los álbumes seleccionados";
+$lang['g002_loading'] = "Realizando la carga...";
+$lang['g002_valid_order'] = "Validar el orden de las imágenes";
+$lang['g002_reset_order'] = "Reinicializar el orden de las imágenes";
+$lang['g002_accessibility'] = "Accesibilidad";
+$lang['g002_setting_core_blocks_content'] = "Contenido de los menús 'Menú' & 'Especiales'";
+$lang['g002_setting_blocks_position'] = "Posicionamiento y visibilidad de los menús";
+$lang['g002_plugin'] = "Plugin";
+$lang['g002_selectedpict'] = "Selección";
+$lang['g002_album_nfo'] = 'Permitir la conversión de uno o varios álbumes en bloques de menú';
+$lang['g002_album2menu'] = "Conversión álbum &rArr; menú";
+$lang['g002_album'] = "álbum &rArr; menú";
+$lang['g002_setting_albums_menus'] = "Álbum a convertir en menú";
+$lang['g002_gpc_not_up_to_date']="Es necesario que el plugin <i>Grum Plugin Classes</i> versión %ª se encuentre instalado.
+Actualmente está instalada la versión %s: gracias por proceder a la actualización de la versión del plugin <i>Grum Plugin Classes</i>."; 
+
 ?>
