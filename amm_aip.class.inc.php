@@ -180,7 +180,7 @@ class AMM_AIP extends AMM_root
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_links.tpl');
 
-    $linksTabsheet = new GPCTabSheet('linksTabsheet', $this->tabsheet->get_titlename(), 'tabsheet2 gcBorder', 'itab2');
+    $linksTabsheet = new GPCTabSheet('linksTabsheet', $this->tabsheet->get_titlename(), 'tabsheet2 gcBorder2', 'itab2');
     $linksTabsheet->select($tab);
     $linksTabsheet->add('links',
                           l10n('g002_setting_link_links'),
@@ -291,7 +291,7 @@ class AMM_AIP extends AMM_root
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_coreBlocks.tpl');
 
-    $blocksTabsheet = new GPCTabSheet('blocksTabsheet', $this->tabsheet->get_titlename(), 'tabsheet2 gcBorder', 'itab2');
+    $blocksTabsheet = new GPCTabSheet('blocksTabsheet', $this->tabsheet->get_titlename(), 'tabsheet2 gcBorder2', 'itab2');
     $blocksTabsheet->add('position',
                           l10n('g002_setting_blocks_position'),
                           '', false, "cbm.displayTabContent('position');");
