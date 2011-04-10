@@ -115,11 +115,11 @@ $lang['g002_setting_core_blocks_content'] = "Inhoud voor 'Menu' & 'Specials' men
 $lang['g002_setting_blocks_position'] = "Zichtbaarheid & volgorde van menu\'s ";
 $lang['g002_plugin'] = "Plugin";
 $lang['g002_selectedpict'] = "Geselecteerde afbeeldingen";
-$lang['g002_album_nfo'] = 'Toestaan om één of meer albums in een menu te converteren';
+$lang['g002_album_nfo'] = 'Toestaan om Ã©Ã©n of meer albums in een menu te converteren';
 $lang['g002_album2menu'] = "Album naar menu geconverteerd";
 $lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Album naar menu te converteren";
-$lang['gmaps_gpc_not_up_to_date']= "Voor de pluginis het nodig dat de <i>Grum Plugin klasse</i> versie %s is geïnstalleerd.
-Nu, is versie %s geïnstalleerd: Ga door met de update naar versie van de plugin <i>Grum Plugin klasse</i>.";
+$lang['gmaps_gpc_not_up_to_date']= "Voor de pluginis het nodig dat de <i>Grum Plugin klasse</i> versie %s is geÃ¯nstalleerd.
+Nu, is versie %s geÃ¯nstalleerd: Ga door met de update naar versie van de plugin <i>Grum Plugin klasse</i>.";
 
 ?>

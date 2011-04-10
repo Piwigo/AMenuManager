@@ -1,7 +1,7 @@
 /**
  * userPersonnalisedBlockManage
  *
- * release 1.0.1
+ * release 1.0.2
  */
 function userPersonnalisedBlockManage(opt, keys, token, initValues)
 {
@@ -273,7 +273,7 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
         }
       );
 
-    $('#islang').inputList({popupMode:'mouseout'});
+    $('#islang').inputList({popupMode:'mouseout', listMaxHeight:300});
 
 
     $('#iamm_personalised_nfo').inputText(

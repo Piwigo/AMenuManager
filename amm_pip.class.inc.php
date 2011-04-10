@@ -81,8 +81,8 @@ class AMM_PIP extends AMM_root
         isset($this->config['amm_randompicture_title'][$user['language']])
       )
     {
-      GPCCore::addHeaderJS('jquery', 'themes/default/js/jquery.packed.js');
-      GPCCore::addHeaderJS('amm.randomPictPublic', 'plugins/AMenuManager/js/amm_randomPictPublic'.GPCCore::getMinified().'.js');
+      GPCCore::addHeaderJS('jquery', 'themes/default/js/jquery.min.js');
+      GPCCore::addHeaderJS('amm.randomPictPublic', 'plugins/AMenuManager/js/amm_randomPictPublic'.GPCCore::getMinified().'.js', array('jquery'));
 
       $block->set_title(base64_decode($this->config['amm_randompicture_title'][$user['language']]));
       $block->template=dirname(__FILE__).'/menu_templates/menubar_randompic.tpl';

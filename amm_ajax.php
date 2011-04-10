@@ -111,8 +111,8 @@
           if(!isset($_REQUEST['datas']['icon'])) $_REQUEST['datas']['icon']='';
           if(!isset($_REQUEST['datas']['mode'])) $_REQUEST['datas']['mode']='0';
           if(!isset($_REQUEST['datas']['visible'])) $_REQUEST['datas']['visible']='n';
-          if(!isset($_REQUEST['datas']['accessUsers'])) $_REQUEST['datas']['accessUsers']=array();
-          if(!isset($_REQUEST['datas']['accessGroups'])) $_REQUEST['datas']['accessGroups']=array();
+          if(!isset($_REQUEST['datas']['accessUsers']) or $_REQUEST['datas']['accessUsers']=='') $_REQUEST['datas']['accessUsers']=array();
+          if(!isset($_REQUEST['datas']['accessGroups']) or $_REQUEST['datas']['accessGroups']=='') $_REQUEST['datas']['accessGroups']=array();
 
           if($_REQUEST['token']!=get_pwg_token() or
              $_REQUEST['datas']['label']=='' or
@@ -143,7 +143,7 @@
          */
         if($_REQUEST['ajaxfct']=='admin.links.order')
         {
-          if(!isset($_REQUEST['datas']['links'])) $_REQUEST['datas']['links']=array();
+          if(!isset($_REQUEST['datas']['links']) or $_REQUEST['datas']['links']=='') $_REQUEST['datas']['links']=array();
 
           if(count($_REQUEST['datas']['links'])<=1 or
              $_REQUEST['token']!=get_pwg_token()
@@ -157,7 +157,7 @@
         if($_REQUEST['ajaxfct']=='admin.links.setConfig')
         {
           if(!isset($_REQUEST['datas']['showIcons'])) $_REQUEST['datas']['showIcons']='';
-          if(!isset($_REQUEST['datas']['title'])) $_REQUEST['datas']['title']=array();
+          if(!isset($_REQUEST['datas']['title']) or $_REQUEST['datas']['title']=='') $_REQUEST['datas']['title']=array();
 
           if($_REQUEST['token']!=get_pwg_token() or
              $_REQUEST['datas']['showIcons']=='' or
@@ -173,12 +173,12 @@
         if($_REQUEST['ajaxfct']=='admin.randomPict.setConfig')
         {
           if(!isset($_REQUEST['datas']['blockHeight'])) $_REQUEST['datas']['blockHeight']='';
-          if(!isset($_REQUEST['datas']['blockTitles'])) $_REQUEST['datas']['blockTitles']=array();
+          if(!isset($_REQUEST['datas']['blockTitles']) or $_REQUEST['datas']['blockTitles']=='') $_REQUEST['datas']['blockTitles']=array();
           if(!isset($_REQUEST['datas']['infosName'])) $_REQUEST['datas']['infosName']='';
           if(!isset($_REQUEST['datas']['infosComment'])) $_REQUEST['datas']['infosComment']='';
           if(!isset($_REQUEST['datas']['freqDelay'])) $_REQUEST['datas']['freqDelay']='';
           if(!isset($_REQUEST['datas']['selectMode'])) $_REQUEST['datas']['selectMode']='';
-          if(!isset($_REQUEST['datas']['selectCat'])) $_REQUEST['datas']['selectCat']=array();
+          if(!isset($_REQUEST['datas']['selectCat']) or $_REQUEST['datas']['selectCat']=='') $_REQUEST['datas']['selectCat']=array();
 
           if($_REQUEST['token']!=get_pwg_token() or
              !is_numeric($_REQUEST['datas']['blockHeight']) or
@@ -207,7 +207,7 @@
           if(!isset($_REQUEST['id'])) $_REQUEST['id']='';
           if(!isset($_REQUEST['datas']['nfo'])) $_REQUEST['datas']['nfo']='';
           if(!isset($_REQUEST['datas']['visible'])) $_REQUEST['datas']['visible']='';
-          if(!isset($_REQUEST['datas']['langs'])) $_REQUEST['datas']['langs']=array();
+          if(!isset($_REQUEST['datas']['langs']) or $_REQUEST['datas']['langs']=='') $_REQUEST['datas']['langs']=array();
 
           if($_REQUEST['token']!=get_pwg_token() or
              $_REQUEST['datas']['nfo']=='' or
@@ -224,8 +224,8 @@
          */
         if($_REQUEST['ajaxfct']=='admin.coreBlocks.setConfig')
         {
-          if(!isset($_REQUEST['datas']['menuItems'])) $_REQUEST['datas']['menuItems']=array();
-          if(!isset($_REQUEST['datas']['blocks'])) $_REQUEST['datas']['blocks']=array();
+          if(!isset($_REQUEST['datas']['menuItems']) or $_REQUEST['datas']['menuItems']=='') $_REQUEST['datas']['menuItems']=array();
+          if(!isset($_REQUEST['datas']['blocks']) or $_REQUEST['datas']['blocks']=='') $_REQUEST['datas']['blocks']=array();
 
           if($_REQUEST['token']!=get_pwg_token() or
              count($_REQUEST['datas']['menuItems'])!=count($this->defaultMenus)
@@ -238,7 +238,7 @@
          */
         if($_REQUEST['ajaxfct']=='admin.album.setConfig')
         {
-          if(!isset($_REQUEST['datas']['selectCat'])) $_REQUEST['datas']['selectCat']=array();
+          if(!isset($_REQUEST['datas']['selectCat']) or $_REQUEST['datas']['selectCat']=='') $_REQUEST['datas']['selectCat']=array();
 
           if($_REQUEST['token']!=get_pwg_token()) $_REQUEST['ajaxfct']='';
         }
@@ -329,6 +329,8 @@
       $local_tpl = new Template(AMM_PATH."admin/", "");
       $local_tpl->set_filename('body_page',
                     dirname($this->getFileLocation()).'/admin/amm_linkslinks_detail.tpl');
+
+
 
       $datas['links']=array();
 
@@ -595,8 +597,8 @@
     {
       foreach($subMenu as $key=>$val)
       {
-        if(!isset($subMenu[$key]['visibilityUser'])) $subMenu[$key]['visibilityUser']=array();
-        if(!isset($subMenu[$key]['visibilityGroup'])) $subMenu[$key]['visibilityGroup']=array();
+        if(!isset($subMenu[$key]['visibilityUser']) or $subMenu[$key]['visibilityUser']=='') $subMenu[$key]['visibilityUser']=array();
+        if(!isset($subMenu[$key]['visibilityGroup']) or $subMenu[$key]['visibilityGroup']=='') $subMenu[$key]['visibilityGroup']=array();
 
         $subMenu[$key]['visibility']=implode(',', $subMenu[$key]['visibilityUser']).'/'.implode(',', $subMenu[$key]['visibilityGroup']);
         unset($subMenu[$key]['visibilityUser']);
@@ -608,8 +610,8 @@
 
       foreach($menus as $key=>$val)
       {
-        if(!isset($menus[$key]['users'])) $menus[$key]['users']=array();
-        if(!isset($menus[$key]['groups'])) $menus[$key]['groups']=array();
+        if(!isset($menus[$key]['users']) or $menus[$key]['users']=='') $menus[$key]['users']=array();
+        if(!isset($menus[$key]['groups']) or $menus[$key]['groups']=='') $menus[$key]['groups']=array();
       }
       $this->setRegisteredBlocks($menus);
 

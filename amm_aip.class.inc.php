@@ -173,9 +173,9 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
 
-    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
-    GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/packed/ui.sortable.packed.js');
-    GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/packed/ui.dialog.packed.js');
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/minified/jquery.ui.core.min.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/minified/jquery.ui.sortable.min.js', array('jquery.ui'));
+    GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/minified/jquery.ui.dialog.min.js', array('jquery.ui'));
 
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_links.tpl');
@@ -211,11 +211,11 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
 
-    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
-    GPCCore::addHeaderJS('jquery.ui.slider', 'themes/default/js/ui/packed/ui.slider.packed.js');
-    GPCCore::addHeaderJS('gpc.categorySelector', 'plugins/GrumPluginClasses/js/ui.categorySelector'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/minified/jquery.ui.core.min.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.slider', 'themes/default/js/ui/minified/jquery.ui.slider.min.js');
+    GPCCore::addHeaderJS('gpc.categorySelector', 'plugins/GrumPluginClasses/js/ui.categorySelector'.GPCCore::getMinified().'.js', array('jquery.ui'));
     GPCCore::addUI('inputList,inputText,inputRadio,categorySelector,googleTranslate');
-    GPCCore::addHeaderJS('amm.rpc', 'plugins/AMenuManager/js/amm_randomPictConfig'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('amm.rpc', 'plugins/AMenuManager/js/amm_randomPictConfig'.GPCCore::getMinified().'.js', array('jquery', 'gpc.inputList', 'gpc.inputText', 'gpc.inputRadio', 'gpc.categorySelector', 'gpc.googleTranslate'));
 
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_randompicconfig.tpl');
@@ -227,7 +227,7 @@ class AMM_AIP extends AMM_root
           'freqDelay' => $this->config['amm_randompicture_periodicchange'],
           'selectMode' => $this->config['amm_randompicture_selectMode'],
           'selectCat' => json_encode($this->config['amm_randompicture_selectCat']),
-          'blockHeight' => ($this->config['amm_randompicture_height']==0)?99:$this->config['amm_randompicture_height'],
+          'blockHeight' => $this->config['amm_randompicture_height'],
           'blockTitles' => array()
         ),
       'selectedLang' => $user['language'],
@@ -255,10 +255,10 @@ class AMM_AIP extends AMM_root
   {
     global $template, $user;
 
-    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
-    GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/packed/ui.dialog.packed.js');
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/minified/jquery.ui.core.min.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/minified/jquery.ui.dialog.min.js', array('jquery'));
     GPCCore::addUI('inputList,inputText,inputRadio,googleTranslate');
-    GPCCore::addHeaderJS('amm.upbm', 'plugins/AMenuManager/js/amm_personalisedBlocks'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('amm.upbm', 'plugins/AMenuManager/js/amm_personalisedBlocks'.GPCCore::getMinified().'.js', array('jquery', 'gpc.inputList', 'gpc.inputText', 'gpc.inputRadio', 'gpc.googleTranslate'));
 
 
     $template->set_filename('body_page',
@@ -283,10 +283,10 @@ class AMM_AIP extends AMM_root
   {
     global $template, $conf;
 
-    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
-    GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/packed/ui.sortable.packed.js');
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/minified/jquery.ui.core.min.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/minified/jquery.ui.sortable.min.js', array('jquery.ui'));
     GPCCore::addUI('inputList');
-    GPCCore::addHeaderJS('amm.cbm', 'plugins/AMenuManager/js/amm_blocks'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('amm.cbm', 'plugins/AMenuManager/js/amm_blocks'.GPCCore::getMinified().'.js', array('jquery', 'jquery.ui.sortable', 'gpc.inputList'));
 
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_coreBlocks.tpl');
@@ -349,9 +349,9 @@ class AMM_AIP extends AMM_root
     global $template, $user;
 
     GPCCore::addHeaderCSS('gpc.categorySelector', 'plugins/GrumPluginClasses/css/categorySelector_'.$template->get_themeconf('name').'.css');
-    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/packed/ui.core.packed.js');
-    GPCCore::addHeaderJS('gpc.categorySelector', 'plugins/GrumPluginClasses/js/ui.categorySelector'.GPCCore::getMinified().'.js');
-    GPCCore::addHeaderJS('amm.ac', 'plugins/AMenuManager/js/amm_albumConfig'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/minified/jquery.ui.core.min.js', array('jquery'));
+    GPCCore::addHeaderJS('gpc.categorySelector', 'plugins/GrumPluginClasses/js/ui.categorySelector'.GPCCore::getMinified().'.js', array('jquery.ui'));
+    GPCCore::addHeaderJS('amm.ac', 'plugins/AMenuManager/js/amm_albumConfig'.GPCCore::getMinified().'.js', array('jquery','gpc.categorySelector'));
 
     $template->set_filename('body_page',
                             dirname($this->getFileLocation()).'/admin/amm_album.tpl');
@@ -381,7 +381,7 @@ class AMM_AIP extends AMM_root
     global $template, $user;
 
     GPCCore::addUI('inputList,inputRadio,inputText,inputCheckbox');
-    GPCCore::addHeaderJS('amm.ulm', 'plugins/AMenuManager/js/amm_links'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('amm.ulm', 'plugins/AMenuManager/js/amm_links'.GPCCore::getMinified().'.js', array('jquery', 'gpc.inputList', 'gpc.inputText', 'gpc.inputRadio', 'gpc.inputCheckbox'));
 
     $template->set_filename('sheet_page',
                             dirname($this->getFileLocation()).'/admin/amm_linkslinks.tpl');
@@ -430,7 +430,7 @@ class AMM_AIP extends AMM_root
     global $template, $user;
 
     GPCCore::addUI('inputList,inputRadio,inputText,googleTranslate');
-    GPCCore::addHeaderJS('amm.ulc', 'plugins/AMenuManager/js/amm_linksConfig'.GPCCore::getMinified().'.js');
+    GPCCore::addHeaderJS('amm.ulc', 'plugins/AMenuManager/js/amm_linksConfig'.GPCCore::getMinified().'.js', array('jquery', 'gpc.inputList', 'gpc.inputText', 'gpc.inputRadio', 'gpc.googleTranslate'));
 
     $template->set_filename('sheet_page',
                             dirname($this->getFileLocation()).'/admin/amm_linksconfig.tpl');
@@ -499,6 +499,5 @@ class AMM_AIP extends AMM_root
 
 
 } // AMM_AIP class
-
 
 ?>

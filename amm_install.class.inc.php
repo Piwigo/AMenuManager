@@ -375,9 +375,8 @@
         pwg_query("UPDATE ".CONFIG_TABLE." SET value = '".pwg_db_real_escape_string($this->config['amm_old_blk_menubar'])."' WHERE param='blk_menubar';");
     }
 
+
+
   } //class
-
-
-
 
 ?>

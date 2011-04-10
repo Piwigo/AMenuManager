@@ -39,7 +39,7 @@ class AMM_AIM extends AMM_root
   {
     global $template;
 
-    $template->append('footer_elements', "<script>$(document).ready(function () { $('li a[href=".$template->get_template_vars('U_CONFIG_MENUBAR')."]').attr('href', '".$this->getAdminLink()."&amp;fAMM_tabsheet=setmenu&amp;fAMM_page=position'); });</script>");
+    $template->append('footer_elements', "<script>$(document).ready(function () { $('li a[href=\"".$template->get_template_vars('U_CONFIG_MENUBAR')."\"]').attr('href', '".$this->getAdminLink()."&amp;fAMM_tabsheet=setmenu&amp;fAMM_page=position'); });</script>");
   }
 
 } // amm_aim  class
