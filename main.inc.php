@@ -172,8 +172,25 @@ Author URI: http://piwigo.org
 |         |            |   . links and personnal blocks : double quote are not
 |         |            |     correctly managed
 |         |            |
+|         |            | ===> note: the release 3.0.3 was never officially
+|         |            |            published
+|         |            |
 | 3.1.0   | 2011/04/10 | * mantis: bug 2144
 |         |            |   . Compatibility with Piwigo 2.2
+|         |            |
+|         |            | * mantis: bug 2166 (fixed in 3.0.3)
+|         |            |   . Error message on gallery side about
+|         |            |             create_table_add_character_set()
+|         |            |
+|         |            | * mantis: bug 2182 (fixed in 3.0.3)
+|         |            |   . links and personnal blocks : double quote are not
+|         |            |     correctly managed
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
+|         |            |
 |         |            |
 |         |            |
 |         |            |
