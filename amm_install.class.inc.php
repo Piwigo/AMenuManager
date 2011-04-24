@@ -62,14 +62,14 @@
   `accessGroups` varchar(1024) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `order_key` (`position`)
-) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE,
+) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE utf8_general_ci",
 
 "CREATE TABLE  `".$this->tables['personalised']."` (
   `id` int(11) NOT NULL auto_increment,
   `visible` char(1) NOT NULL default 'y',
   `nfo` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE,
+) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE utf8_general_ci",
 
 "CREATE TABLE `".$this->tables['personalised_langs']."` (
   `id` INTEGER UNSIGNED NOT NULL DEFAULT 0,
@@ -77,7 +77,7 @@
   `title` VARCHAR(255)  NOT NULL default '',
   `content` TEXT  NOT NULL,
   PRIMARY KEY (`id`, `lang`)
-) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE,
+) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE utf8_general_ci",
 
 "CREATE TABLE `".$this->tables['blocks']."` (
   `id` VARCHAR(40)  NOT NULL,
@@ -86,7 +86,7 @@
   `groups` VARCHAR(1024)  NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `byOrder`(`order`)
-) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE
+) DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE utf8_general_ci"
 
 );
       //$table_def array
@@ -263,7 +263,7 @@
   `title` VARCHAR(255)  NOT NULL default '',
   `content` TEXT  NOT NULL,
   PRIMARY KEY (`id`, `lang`)
-)  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE,
+)  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE utf8_general_ci",
 
 "CREATE TABLE `".$this->tables['blocks']."` (
   `id` VARCHAR(40)  NOT NULL,
@@ -272,7 +272,7 @@
   `groups` VARCHAR(1024)  NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `byOrder`(`order`)
-)  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE ".DB_COLLATE
+)  DEFAULT CHARACTER SET ".DB_CHARSET." COLLATE utf8_general_ci"
       );
 
       $this->tablef->setTables(array(
