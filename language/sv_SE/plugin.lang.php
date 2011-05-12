@@ -79,5 +79,34 @@ $lang['g002_setting_personalised_content'] = 'Blockinnehåll';
 $lang['g002_setting_personalised_properties'] = 'Egenskaper';
 $lang['g002_setting_personalised_nfo'] = 'Beskrivning'; 
 
+$lang['g002_all_languages'] = 'Alla språk';
+
+$lang['g002_modmenu'] = '\'meny\' block';
+$lang['g002_modspecial'] = '\'special\' block';
+$lang['g002_labelmenu'] = 'Menyetikett';
+
+$lang['g002_setting_randompic_periodicchange'] = 'Periodisk änrding av bilden';
+$lang['g002_setting_randompic_periodicchange_delay'] = 'Fördröjning';
+$lang['g002_setting_randompic_periodicchange_deactivated'] = 'Inaktiverad';
+$lang['g002_setting_randompic_height'] = 'Höjd på menyblock';
+$lang['g002_setting_randompic_height_auto'] = 'Automatisk';
+
+// v2.1.3
+$lang['g002_cancel'] = 'Avbryt';
+$lang['g002_piwigo_default'] = 'Piwigo standard sortering';
+$lang['g002_apply_changes'] = 'Applicera ändringar';
+$lang['g002_config_saved'] = 'Konfigurering sparad';
+$lang['g002_adviser_not_allowed'] = 'Du har inte rätt att göra ändringar';
+$lang['g002_click_to_manage_rights'] = 'Tillståndshantering';
+
+
+// v3.0.0
+$lang['g002_ok'] = 'OK';
+$lang['g002_config_not_saved'] = 'Konfigureringen sparades inte';
+$lang['g002_selected_all_gallery'] = 'Alla album';
+$lang['g002_selected_favorites_wm'] = 'Webmaster\'s favoritbilder';
+$lang['g002_selected_categories'] = 'Alla valda album'; 
+
+
 
 ?>
