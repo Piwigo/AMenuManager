@@ -106,6 +106,21 @@ $lang['g002_config_not_saved'] = 'Konfigureringen sparades inte';
 $lang['g002_selected_all_gallery'] = 'Alla album';
 $lang['g002_selected_favorites_wm'] = 'Webmaster\'s favoritbilder';
 $lang['g002_selected_categories'] = 'Alla valda album'; 
+$lang['g002_loading'] = 'Laddar...';
+$lang['g002_valid_order'] = 'Appliceringsordning';
+$lang['g002_reset_order'] = 'Återställningsordning';
+$lang['g002_accessibility'] = 'Åtkomst';
+$lang['g002_setting_core_blocks_content'] = 'Innehåll  \'Mener\' & \'Special\' menyer';
+$lang['g002_setting_blocks_position'] = 'Synlighet & sorteringsordning  menyer ';
+$lang['g002_plugin'] = 'Plugin';
+$lang['g002_selectedpict'] = 'Vaalda bilder';
+$lang['g002_album_nfo'] = 'Tillåt konvertering av ett eller flera album till menyer';
+$lang['g002_album2menu'] = 'Konvertera album till meny';
+$lang['g002_album'] = 'Album &rArr; meny';
+$lang['g002_setting_albums_menus'] = 'Album att konvertera till meny';
+$lang['gmaps_gpc_not_up_to_date'] = 'Det är nödvändigt för denna plugin att <i>Grum Plugin Classes</i> version %s är installerad.
+Aktuell, version %s är installerad: v v fortsätt med att uppdatera denna version av denna plugin <i>Grum Plugin Classes</i>.';
+
 
 
 
