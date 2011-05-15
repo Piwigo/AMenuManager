@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.1.1
+Version: 3.1.2
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -189,6 +189,7 @@ Author URI: http://piwigo.org
 | 3.1.1   | 2011/04/24 | * mantis: bug 2275
 |         |            |   . Install don't create tables
 |         |            |
+| 3.1.2   | 2011/05/15 | * add sv_SE language
 |         |            |
 |         |            |
 |         |            |
