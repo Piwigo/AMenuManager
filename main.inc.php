@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.1.2
+Version: 3.1.3
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -190,6 +190,12 @@ Author URI: http://piwigo.org
 |         |            |   . Install don't create tables
 |         |            |
 | 3.1.2   | 2011/05/15 | * add sv_SE language
+|         |            |
+| 3.1.3   | 2011/05/24 | * mantis bug:2311
+|         |            |   . broken javascript if random pic set is empty 
+|         |            |
+|         |            | * mantis bug:2312
+|         |            |   . randomPictureJS is loaded even if menu is hidden 
 |         |            |
 |         |            |
 |         |            |

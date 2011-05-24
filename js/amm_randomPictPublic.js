@@ -1,7 +1,10 @@
 /**
- * randomPict
+ * randomPict v1.0.1
  *
- * release 1.0.0
+ * | release | date       |
+ * | 1.0.1   | 2011-05-24 | * mantis bug:2311
+ * |         |            |   . broken javascript if random pic set is empty 
+ * |         |            |
  */
 function randomPict(opt)
 {
@@ -104,7 +107,15 @@ function randomPict(opt)
 
 $(document).ready(
   function ()
-  {
-    var rPict=new randomPict(randomPictOpt);
+  {    
+    var rPict;
+    if(typeof randomPictOpt!=='undefined')
+    {
+      rPict=new randomPict(randomPictOpt);
+    }
+    else
+    {
+      $('#mbAMM_randompict').remove();
+    }
   }
 );

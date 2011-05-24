@@ -78,7 +78,8 @@ class AMM_PIP extends AMM_root
     if((
         ($block=$menu->get_block('mbAMM_randompict'))!=null) and
         ($user['nb_total_images']>0) and
-        isset($this->config['amm_randompicture_title'][$user['language']])
+        isset($this->config['amm_randompicture_title'][$user['language']]) and
+        $this->displayRandomImageBlock
       )
     {
       GPCCore::addHeaderJS('jquery', 'themes/default/js/jquery.min.js');
@@ -350,6 +351,8 @@ class AMM_PIP extends AMM_root
   public function blockmanagerSortBlocks($blocks)
   {
     $this->registeredBlocks=$this->getRegisteredBlocks(true);
+
+    if(!isset($this->registeredBlocks['mbAMM_randompict'])) $this->displayRandomImageBlock=false;
 
     foreach($blocks[0]->get_registered_blocks() as $key => $block)
     {
