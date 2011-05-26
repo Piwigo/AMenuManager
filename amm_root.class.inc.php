@@ -364,7 +364,7 @@ class AMM_root extends CommonPlugin
           FROM ".$this->tables['personalised']." pt
             LEFT JOIN ".$this->tables['personalised_langs']." ptl
             ON pt.id=ptl.id
-          WHERE (ptl.lang = '*' OR ptl.lang = '".$lang."') ";
+          WHERE (ptl.lang = '*' OR ptl.lang = '".pwg_db_real_escape_string($lang)."') ";
 
     if($onlyVisible) $sql.=" AND pt.visible = 'y' ";
     if($emptyContent==false) $sql.=" AND ptl.content != '' ";

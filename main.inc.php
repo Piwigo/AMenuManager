@@ -197,8 +197,8 @@ Author URI: http://piwigo.org
 |         |            | * mantis bug:2312
 |         |            |   . randomPictureJS is loaded even if menu is hidden 
 |         |            |
-|         |            |
-|         |            |
+|         |            | * mantis bug:2281
+|         |            |   . Custom language value is use in queries unescaped. 
 |         |            |
 |         |            |
 
