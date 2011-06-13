@@ -91,4 +91,30 @@ $lang['g002_setting_randompic_periodicchange_deactivated'] = "Wyłączony";
 $lang['g002_setting_randompic_height'] = "Wysokość bloku menu";
 $lang['g002_setting_randompic_height_auto'] = "Automatycznie";
 
+$lang['g002_cancel'] = 'Anuluj';
+$lang['g002_piwigo_default'] = 'Domyślne sortowanie Piwigo';
+$lang['g002_apply_changes'] = 'Zastosuj zmiany';
+$lang['g002_config_saved'] = 'Konfiguracja zapisana';
+$lang['g002_adviser_not_allowed'] = 'Konsultant nie może zmienić ustawień';
+
+$lang['g002_click_to_manage_rights'] = 'Zarządzanie uprawnieniami';
+$lang['g002_ok'] = 'OK';
+$lang['g002_config_not_saved'] = 'Konfiguracja nie została zapisana';
+$lang['g002_selected_all_gallery'] = 'Wszystkie albumy';
+$lang['g002_selected_favorites_wm'] = 'Ulubione zdjęcia Webmastera';
+$lang['g002_selected_categories'] = 'Wszystkie zaznaczone albumy';
+$lang['g002_loading'] = 'Ładowanie...';
+$lang['g002_valid_order'] = 'Zastosuj sortowanie';
+$lang['g002_reset_order'] = 'Resetuj sortowanie';
+$lang['g002_accessibility'] = 'Dostępność';
+$lang['g002_setting_core_blocks_content'] = 'Zawartość menu \'Specjalne\' i \'Menu\'';
+$lang['g002_setting_blocks_position'] = 'Sortowanie i widoczność menu ';
+$lang['g002_plugin'] = 'Wtyczka';
+$lang['g002_selectedpict'] = 'Zaznaczone zdjęcia';
+$lang['g002_album_nfo'] = 'Pozwól przekonwertować jeden lub więcej albumów w menu';
+$lang['g002_album2menu'] = 'Przekonwertowany album w menu';
+$lang['g002_album'] = 'Album ⇒ menu';
+$lang['g002_setting_albums_menus'] = 'Albumy do przekonwertowania w menu';
+$lang['gmaps_gpc_not_up_to_date'] = 'Do działania wtyczki potrzebna jest <i>Grum Plugin Classes</i> wersja %s Obecnie zainstalowana jest wersja %s: proszę zaktualizować wersję wtyczki <i>Grum Plugin Classes</i>.';
+
 ?>
