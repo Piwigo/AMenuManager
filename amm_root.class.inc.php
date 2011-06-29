@@ -539,6 +539,19 @@ class AMM_root extends CommonPlugin
     $menu->load_registered_blocks();
     $registeredBlocks = $menu->get_registered_blocks();
 
+    $userGroups=array();
+    $sql="SELECT group_id
+          FROM ".USER_GROUP_TABLE."
+          WHERE user_id = '".$user['id']."';";
+    $result=pwg_query($sql);
+    if($result)
+    {
+      while($row=pwg_db_fetch_assoc($result))
+      {
+        $userGroups[$row['group_id']]='';
+      }
+    }
+
     $sql="SELECT id, `order`, users, groups
           FROM ".$this->tables['blocks']."
           ORDER BY `order`;";
@@ -547,8 +560,8 @@ class AMM_root extends CommonPlugin
     {
       while($row=pwg_db_fetch_assoc($result))
       {
-        $row['users']=explode(',', $row['users']);
-        $row['groups']=explode(',', $row['groups']);
+        $row['users']=(trim($row['users'])=='')?array():explode(',', $row['users']);
+        $row['groups']=(trim($row['groups'])=='')?array():explode(',', $row['groups']);
 
         if(isset($registeredBlocks[$row['id']]))
         {
@@ -558,10 +571,17 @@ class AMM_root extends CommonPlugin
             $users->setAlloweds($row['users'], false);
             if($users->isAllowed($user['status']))
             {
-              $groups->setAlloweds($row['groups'], false);
-              foreach($row['groups'] as $val)
+              if(count($userGroups))
               {
-                if(!$groups->isAllowed($val)) $ok=false;
+                $groups->setAlloweds($row['groups'], false);
+                foreach($row['groups'] as $val)
+                {
+                  if(isset($userGroups[$val]) and !$groups->isAllowed($val)) $ok=false;
+                }
+              }
+              else
+              {
+                if(count($row['groups'])==0) $ok=false;
               }
             }
             else

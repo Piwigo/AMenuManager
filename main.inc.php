@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.1.3
+Version: 3.1.4
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -192,13 +192,20 @@ Author URI: http://piwigo.org
 | 3.1.2   | 2011/05/15 | * add sv_SE language
 |         |            |
 | 3.1.3   | 2011/05/24 | * mantis bug:2311
-|         |            |   . broken javascript if random pic set is empty 
+|         |            |   . broken javascript if random pic set is empty
 |         |            |
 |         |            | * mantis bug:2312
-|         |            |   . randomPictureJS is loaded even if menu is hidden 
+|         |            |   . randomPictureJS is loaded even if menu is hidden
 |         |            |
 |         |            | * mantis bug:2281
-|         |            |   . Custom language value is use in queries unescaped. 
+|         |            |   . Custom language value is use in queries unescaped.
+|         |            |
+| 3.1.4   | 2011/06/29 | * mantis bug:2371
+|         |            |   . User access management don't work if user is linked
+|         |            |     to a group
+|         |            |
+|         |            |
+|         |            |
 |         |            |
 |         |            |
 
