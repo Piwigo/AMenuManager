@@ -5,9 +5,7 @@ $lang['Grum Plugin Classes is not installed'] = 'Plugin <b>Grum Plugin Classes</
 $lang['g002_title_page'] = 'Zaawansowane Zarządzanie Menu';
 $lang['g002_version'] = 'r';
 
-$lang['g002_error_invalid_ajax_call'] = "Niepoprawne wywołanie funkcji !";
-
-$lang['g002_setmenu'] = 'Zarządzanie menu';
+$lang['g002_error_invalid_ajax_call'] = 'Niepoprawne wywołanie funkcji!';
 $lang['g002_addlinks'] = 'Linki';
 $lang['g002_randompict'] = 'Losowy obraz';
 $lang['g002_personnalblock'] = 'Menu spersonalizowane';
@@ -27,8 +25,7 @@ $lang['g002_mode'] = 'Tryb';
 $lang['g002_icon'] = 'Obraz reprezentant';
 $lang['g002_visible'] = 'Widoczny';
 $lang['g002_linkslist'] = "Lista linków";
-$lang['g002_confirm_delete_link'] = "Usunąć link ?";
-$lang['g002_nolinks'] = 'Brak linków';
+$lang['g002_confirm_delete_link'] = 'Usunąć link?';
 $lang['g002_link'] = 'link';
 $lang['g002_links'] = 'linki';
 
