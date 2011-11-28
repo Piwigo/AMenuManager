@@ -48,7 +48,7 @@ class AMM_PIP extends AMM_root
     parent::initEvents();
 
     add_event_handler('blockmanager_prepare_display', array(&$this, 'blockmanagerSortBlocks') );
-    add_event_handler('blockmanager_apply', array(&$this, 'blockmanagerApply') );
+    add_event_handler('blockmanager_apply', array(&$this, 'blockmanagerApply'), 45 );
     add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
     add_event_handler('loc_end_page_header', array(&$this, 'applyJS'));
     add_event_handler('get_categories_menu_sql_where', array(&$this, 'buildMenuFromCat'), 75);
@@ -223,6 +223,14 @@ class AMM_PIP extends AMM_root
               'link' => make_index_url(array('category' => $row)),
               'nbPictures' => ''
             );
+/*
+            $nbImages=0;
+            foreach($block->data['album'] as $val)
+            {
+              $nbImages+=$val['nb_images'];
+            }
+            $block->data['nbPictures']="*** $nbImages";
+*/
           }
         }
       }

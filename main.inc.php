@@ -204,7 +204,9 @@ Author URI: http://piwigo.org
 |         |            |   . User access management don't work if user is linked
 |         |            |     to a group
 |         |            |
-|         |            |
+|         |            | * mantis bug:2522
+|         |            |   . Incompatibility with other plugin managing the menu
+|         |            |     content
 |         |            |
 |         |            |
 |         |            |
