@@ -117,14 +117,6 @@ $lang['g002_album_nfo'] = 'Permet de convertir un ou plusieurs albums en blocs d
 $lang['g002_album2menu'] = "Conversion album &rArr; menu";
 $lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Album à convertir en menu";
-Actuellement, la version %s est installée : merci de procéder à la mise à jour de version du plugin <i>Grum Plugin Classes</i>.";
-
-
-/* --- removed keys ---
-$lang['g002_configrandompic'] = 'Configuration des images aléatoires';
-
-*/
-
 
 $lang['gmaps_gpc_not_up_to_date'] = 'Le plugin <i>Grum Plugin Classes</i> version %s doit être installé. Actuellement, vous disposez de la version %s : Veuillez mettre à jour le plugin <i>Grum Plugin Classes</i>.';
 $lang['Grum Plugin Classes is not installed'] = 'Le plugin <b>Grum Plugin Classes</b> n\'est pas installé';
