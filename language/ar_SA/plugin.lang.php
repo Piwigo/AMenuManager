@@ -99,4 +99,16 @@ $lang['g002_config_saved'] = "الاعدادات حفظت";
 $lang['g002_adviser_not_allowed'] = "المراقب لايسمح له بعمل تغييرات";
 $lang['g002_click_to_manage_rights'] = "تنطيم الحقوق";
 
+$lang['g002_accessibility'] = 'امكانية الوصول';
+$lang['g002_config_not_saved'] = 'التكوينات غير محفوظة';
+$lang['g002_loading'] = 'تحميل ..';
+$lang['g002_ok'] = 'موافق';
+$lang['g002_plugin'] = 'إضافة';
+$lang['g002_reset_order'] = 'امسح الطلب';
+$lang['g002_selectedpict'] = 'الصور المحددة';
+$lang['g002_selected_all_gallery'] = 'جميع الألبومات';
+$lang['g002_selected_categories'] = 'جميع الألبومات المحدده';
+$lang['g002_selected_favorites_wm'] = 'الصورة المفضلة لمدير المعرض';
+$lang['g002_setting_core_blocks_content'] = 'محتوى قائمة ’ القائمة الرئيسية ’ و ’ خاص ’ .';
+$lang['g002_valid_order'] = 'نفذ الأمر';
 ?>
