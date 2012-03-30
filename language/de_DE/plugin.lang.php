@@ -114,4 +114,8 @@ $lang['gmaps_gpc_not_up_to_date']="Es ist für den Plug-In notwendig, dass <i>Gr
 Zurzeit ist die Version %s installiert: bitte fahren Sie mit der Updateversion des Plug-Ins <i>Grum Plugin Classes</i> fort.";
 
 
+$lang['g002_apply_changes'] = 'Änderungen anwenden';
+$lang['g002_cancel'] = 'Abbrechen';
+$lang['g002_click_to_manage_rights'] = 'Rechteverwaltung';
+$lang['g002_piwigo_default'] = 'Piwigo Standard-Sortierung';
 ?>
