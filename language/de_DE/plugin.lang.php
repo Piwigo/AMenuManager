@@ -118,4 +118,5 @@ $lang['g002_apply_changes'] = 'Änderungen anwenden';
 $lang['g002_cancel'] = 'Abbrechen';
 $lang['g002_click_to_manage_rights'] = 'Rechteverwaltung';
 $lang['g002_piwigo_default'] = 'Piwigo Standard-Sortierung';
+$lang['g002_adviser_not_allowed'] = 'Ein Berater darf keine Änderungen vornehmen';
 ?>
