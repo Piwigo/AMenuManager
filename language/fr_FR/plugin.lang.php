@@ -120,4 +120,5 @@ $lang['g002_setting_albums_menus'] = "Album à convertir en menu";
 
 $lang['gmaps_gpc_not_up_to_date'] = 'Le plugin <i>Grum Plugin Classes</i> version %s doit être installé. Actuellement, vous disposez de la version %s : Veuillez mettre à jour le plugin <i>Grum Plugin Classes</i>.';
 $lang['Grum Plugin Classes is not installed'] = 'Le plugin <b>Grum Plugin Classes</b> n\'est pas installé';
+$lang['g002_configrandompic'] = 'Réglages de l\'image au hasard';
 ?>
