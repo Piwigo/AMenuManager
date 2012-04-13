@@ -111,4 +111,9 @@ $lang['g002_selected_categories'] = 'جميع الألبومات المحدده'
 $lang['g002_selected_favorites_wm'] = 'الصورة المفضلة لمدير المعرض';
 $lang['g002_setting_core_blocks_content'] = 'محتوى قائمة ’ القائمة الرئيسية ’ و ’ خاص ’ .';
 $lang['g002_valid_order'] = 'نفذ الأمر';
+$lang['g002_album2menu'] = 'الألبومات المحولة إلى قائمة';
+$lang['g002_album_nfo'] = 'السماح بتحويل واحد أو أكثر من ألبوم إلى القائمة';
+$lang['g002_album'] = 'ألبوم  &rArr; قائمة';
+$lang['g002_setting_albums_menus'] = 'تحويل ألبوم إلى قائمة';
+$lang['g002_setting_blocks_position'] = 'الرؤية وترتيب للقوائم';
 ?>
