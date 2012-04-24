@@ -116,4 +116,6 @@ $lang['g002_album_nfo'] = 'السماح بتحويل واحد أو أكثر من
 $lang['g002_album'] = 'ألبوم  &rArr; قائمة';
 $lang['g002_setting_albums_menus'] = 'تحويل ألبوم إلى قائمة';
 $lang['g002_setting_blocks_position'] = 'الرؤية وترتيب للقوائم';
+$lang['gmaps_gpc_not_up_to_date'] = 'من الضروري تفعيل الاضافة  <i>Grum Plugin Classes</i> اصدار %s .
+حالياً الاصدار %s مثبت ،  الرجاء تحديث اصدار  الاضافة  <i>Grum Plugin Classes</i>. ';
 ?>
