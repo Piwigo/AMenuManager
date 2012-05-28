@@ -83,7 +83,7 @@ class AMM_PIP extends AMM_root
       )
     {
       GPCCore::addHeaderJS('jquery', 'themes/default/js/jquery.min.js');
-      GPCCore::addHeaderJS('amm.randomPictPublic', 'plugins/AMenuManager/js/amm_randomPictPublic'.GPCCore::getMinified().'.js', array('jquery'));
+      GPCCore::addHeaderJS('amm.randomPictPublic', 'plugins/AMenuManager/js/amm_randomPictPublic.js', array('jquery'));
 
       $block->set_title(base64_decode($this->config['amm_randompicture_title'][$user['language']]));
       $block->template=dirname(__FILE__).'/menu_templates/menubar_randompic.tpl';
@@ -384,7 +384,6 @@ class AMM_PIP extends AMM_root
    *  'imageFile' => (String)
    *  'comment'   => (String)
    *  'path'      => (String)
-   *  'tn_ext'    => (String)
    *  'catId'     => (String)
    *  'name'      => (String)
    *  'permalink' => (String)
@@ -401,7 +400,7 @@ class AMM_PIP extends AMM_root
 
     $sql=array();
 
-    $sql['select']="SELECT i.id as image_id, i.file as image_file, i.comment, i.path, i.tn_ext, c.id as catid, c.name, c.permalink, RAND() as rndvalue, i.name as imgname ";
+    $sql['select']="SELECT i.id as image_id, i.file as image_file, i.comment, i.path, c.id as catid, c.name, c.permalink, RAND() as rndvalue, i.name as imgname ";
     $sql['from']="FROM ".CATEGORIES_TABLE." c, ".IMAGES_TABLE." i, ".IMAGE_CATEGORY_TABLE." ic ";
     $sql['where']="WHERE c.id = ic.category_id
             AND ic.image_id = i.id
@@ -446,7 +445,7 @@ class AMM_PIP extends AMM_root
         );
 
         $row['link']=make_picture_url($row);
-        $row['thumb']=get_thumbnail_url($row);
+        $row['thumb']=DerivativeImage::thumb_url(array('id'=>$row['image_id'], 'path'=>$row['path']));
 
         $returned[]=$row;
       }

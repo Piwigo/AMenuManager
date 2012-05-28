@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Eigenaar';
 $lang['g002_sectionid'] = 'Identifier';
 $lang['g002_name'] = 'Label';
 
-$lang['g002_translate'] = 'Vertaal met Google Vertalen';
-
 $lang['g002_configrandompic'] = 'Instellingen van de willekeurige afbeelding';
 $lang['g002_setting_randompic_aboutpicture'] = 'Weergegeven gegevens';
 $lang['g002_setting_randompic_showname'] = 'Geef de naam van de afbeelding weer';

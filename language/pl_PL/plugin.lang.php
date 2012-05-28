@@ -52,8 +52,6 @@ $lang['g002_owner'] = 'Właściciel';
 $lang['g002_sectionid'] = 'Identyfikator';
 $lang['g002_name'] = 'Nazwa';
 
-$lang['g002_translate'] = 'Przetłumacz Translatorem Google';
-
 $lang['g002_configrandompic'] = 'Ustawienia losowych obrazów';
 $lang['g002_setting_randompic_aboutpicture'] = 'Wyświetlane daty';
 $lang['g002_setting_randompic_showname'] = 'Pokazuj nazwy obrazów';
@@ -114,6 +112,4 @@ $lang['g002_album'] = 'Album ⇒ menu';
 $lang['g002_setting_albums_menus'] = 'Albumy do przekonwertowania w menu';
 $lang['gmaps_gpc_not_up_to_date'] = 'Do działania wtyczki potrzebna jest <i>Grum Plugin Classes</i> wersja %s Obecnie zainstalowana jest wersja %s: proszę zaktualizować wersję wtyczki <i>Grum Plugin Classes</i>.';
 
-$lang['g002_nolinks'] = 'Brak linków';
-$lang['g002_setmenu'] = 'Zarządzanie menu';
 ?>

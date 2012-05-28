@@ -1,4 +1,3 @@
-<?php
 
 $lang['g002_title_page'] = 'Speciális menükezelő';
 $lang['g002_version'] = 'r';
@@ -52,8 +51,6 @@ $lang['g002_owner'] = 'Tulajdonos';
 $lang['g002_sectionid'] = 'Azonosító';
 $lang['g002_name'] = 'Címke';
 
-$lang['g002_translate'] = 'Fordítás a Google Translate használatával';
-
 $lang['g002_configrandompic'] = 'Véletlen kép beállításai';
 $lang['g002_setting_randompic_aboutpicture'] = 'Egyéb jellemzők megjelenítése';
 $lang['g002_setting_randompic_showname'] = 'Kép nevének megjelenítése';
@@ -88,5 +85,6 @@ $lang['g002_album'] = 'Album ⇒ menü';
 $lang['g002_setting_albums_menus'] = "Menüvé konvertálandó albumok";
 $lang['gmaps_gpc_not_up_to_date'] = 'A bővítmény használatához szükség van a <i>Grum Plugin Classes</i> %s változatának telepítésére.
 Jelenleg a %s változat van telepítve. Lépjen tovább és frissítse a <i>Grum Plugin Classes</i> bővítményt.';
+Jelenleg a %s változat van telepítve. Lépj tovább és frissítsd a <i>Grum Plugin Classes</i> bővítményt.";
 
 ?>

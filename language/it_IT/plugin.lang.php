@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Proprietario';
 $lang['g002_sectionid'] = 'Id';
 $lang['g002_name'] = 'Etichetta';
 
-$lang['g002_translate'] = 'Tradurre con Google Translate';
-
 $lang['g002_configrandompic'] = 'Configurazione del\'immagine aleatoria';
 $lang['g002_setting_randompic_aboutpicture'] = 'Dati visualizzati';
 $lang['g002_setting_randompic_showname'] = 'Visualizzare il nome della foto';
@@ -100,23 +98,23 @@ $lang['g002_adviser_not_allowed'] = "Il consiglier non è autorizzato ad effettu
 $lang['g002_click_to_manage_rights'] = "Gestire gli accessi";
 
 $lang['g002_ok'] = "OK";
-$lang['g002_config_saved'] = "Configurazione salvata"; 
-$lang['g002_config_not_saved'] = "Configurazione non salvata"; 
-$lang['g002_selected_all_gallery'] = "Tutti gli album"; 
+$lang['g002_config_saved'] = "Configurazione salvata";
+$lang['g002_config_not_saved'] = "Configurazione non salvata";
+$lang['g002_selected_all_gallery'] = "Tutti gli album";
 $lang['g002_selected_favorites_wm'] = "Le immagini preferite del webmaster";
 
-$lang['g002_selected_categories'] = "Tutti gli album selezionati"; 
-$lang['g002_loading'] = "carica..."; 
-$lang['g002_valid_order'] = "Applicare l'ordine"; 
-$lang['g002_reset_order'] = "Resettare l'ordine"; 
-$lang['g002_accessibility'] = "Accessibilità"; 
-$lang['g002_setting_core_blocks_content'] = "Contenuto per i menu 'Menu' & 'Speciale'"; 
-$lang['g002_setting_blocks_position'] = "Visibilità e ordine dei menu "; 
+$lang['g002_selected_categories'] = "Tutti gli album selezionati";
+$lang['g002_loading'] = "carica...";
+$lang['g002_valid_order'] = "Applicare l'ordine";
+$lang['g002_reset_order'] = "Resettare l'ordine";
+$lang['g002_accessibility'] = "Accessibilità";
+$lang['g002_setting_core_blocks_content'] = "Contenuto per i menu 'Menu' & 'Speciale'";
+$lang['g002_setting_blocks_position'] = "Visibilità e ordine dei menu ";
 $lang['g002_plugin'] = "Plug-in";
-$lang['g002_selectedpict'] = "Immagini selezionate"; 
-$lang['g002_album_nfo'] = 'Autorizzare la conversione di uno o più album in un  menu '; 
-$lang['g002_album2menu'] = "Convertire album in menu"; 
-$lang['g002_album'] = "Album &rArr; menu"; 
+$lang['g002_selectedpict'] = "Immagini selezionate";
+$lang['g002_album_nfo'] = 'Autorizzare la conversione di uno o più album in un  menu ';
+$lang['g002_album2menu'] = "Convertire album in menu";
+$lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Album da convertire in menu";
 $lang['gmaps_gpc_not_up_to_date']= "È necessario per il funzionamento del plug-in che <i>Grum Plugin Classes</i> con la versione %s sia installata.
 Attualmente , la versione %s è installata: la preghiamo di procedure con l'update del plug-in <i>Grum Plugin Classes</i>.";

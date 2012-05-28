@@ -108,7 +108,6 @@ $lang['g002_show_o'] = 'Εμφάνιση πάνω από την εικόνα';
 $lang['g002_show_u'] = 'Εμφάνιση κάτω από την εικόνα';
 $lang['g002_title_page'] = 'Διαχείρισης Προηγμένου Μενού';
 $lang['g002_title'] = 'Τίτλος';
-$lang['g002_translate'] = 'Μετάφραση με το Google Translate';
 $lang['g002_url'] = 'URL';
 $lang['g002_valid_order'] = 'Εφαρμογή ταξυνόμησης';
 $lang['g002_visible'] = 'Ορατό';

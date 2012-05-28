@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'مالك';
 $lang['g002_sectionid'] = 'المعرف';
 $lang['g002_name'] = 'لاصق';
 
-$lang['g002_translate'] = 'ترجم بواسطة جوجل';
-
 $lang['g002_configrandompic'] = 'اعدادات الصورة العشوائية';
 $lang['g002_setting_randompic_aboutpicture'] = 'المعلومات المعروضة';
 $lang['g002_setting_randompic_showname'] = 'اظهر اسم الصورة';
@@ -99,23 +97,4 @@ $lang['g002_config_saved'] = "الاعدادات حفظت";
 $lang['g002_adviser_not_allowed'] = "المراقب لايسمح له بعمل تغييرات";
 $lang['g002_click_to_manage_rights'] = "تنطيم الحقوق";
 
-$lang['g002_accessibility'] = 'امكانية الوصول';
-$lang['g002_config_not_saved'] = 'التكوينات غير محفوظة';
-$lang['g002_loading'] = 'تحميل ..';
-$lang['g002_ok'] = 'موافق';
-$lang['g002_plugin'] = 'إضافة';
-$lang['g002_reset_order'] = 'امسح الطلب';
-$lang['g002_selectedpict'] = 'الصور المحددة';
-$lang['g002_selected_all_gallery'] = 'جميع الألبومات';
-$lang['g002_selected_categories'] = 'جميع الألبومات المحدده';
-$lang['g002_selected_favorites_wm'] = 'الصورة المفضلة لمدير المعرض';
-$lang['g002_setting_core_blocks_content'] = 'محتوى قائمة ’ القائمة الرئيسية ’ و ’ خاص ’ .';
-$lang['g002_valid_order'] = 'نفذ الأمر';
-$lang['g002_album2menu'] = 'الألبومات المحولة إلى قائمة';
-$lang['g002_album_nfo'] = 'السماح بتحويل واحد أو أكثر من ألبوم إلى القائمة';
-$lang['g002_album'] = 'ألبوم  &rArr; قائمة';
-$lang['g002_setting_albums_menus'] = 'تحويل ألبوم إلى قائمة';
-$lang['g002_setting_blocks_position'] = 'الرؤية وترتيب للقوائم';
-$lang['gmaps_gpc_not_up_to_date'] = 'من الضروري تفعيل الاضافة  <i>Grum Plugin Classes</i> اصدار %s .
-حالياً الاصدار %s مثبت ،  الرجاء تحديث اصدار  الاضافة  <i>Grum Plugin Classes</i>. ';
 ?>

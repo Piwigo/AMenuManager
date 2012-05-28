@@ -117,7 +117,6 @@
       <td>{'g002_setting_block_title'|@translate}</td>
       <td>
         <div id="iamm_personalised_title"></div>
-        <a style="cursor:pointer;font-size:80%;"  onclick="$('#iamm_personalised_title').inputText('doTranslation');">{'g002_translate'|@translate}</a>
       </td>
     </tr>
 

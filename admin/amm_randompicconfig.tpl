@@ -91,13 +91,6 @@
       </tr>
 
       <tr>
-        <td></td>
-        <td style="font-size:80%;" colspan="2">
-          <a style="cursor:pointer;" onclick="$('#iamm_randompicture_title').inputText('doTranslation');">{'g002_translate'|@translate}</a>
-        </td>
-      </tr>
-
-      <tr>
         <td>{'g002_setting_randompic_height'|@translate}</td>
         <td>
           <div id="iamm_rp_height_slider" class="gcBgInput gcBorderInput"></div>

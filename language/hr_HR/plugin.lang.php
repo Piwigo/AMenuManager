@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Vlasnik';
 $lang['g002_sectionid'] = 'Identifikator';
 $lang['g002_name'] = 'Naziv';
 
-$lang['g002_translate'] = 'Prevedi sa Google Translate';
-
 $lang['g002_configrandompic'] = 'Postavke slučajno odabrane slike';
 $lang['g002_setting_randompic_aboutpicture'] = 'Prikazani podaci';
 $lang['g002_setting_randompic_showname'] = 'Prikaži naziv slike';

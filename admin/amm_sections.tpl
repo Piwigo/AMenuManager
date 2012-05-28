@@ -1,5 +1,8 @@
-{combine_script id="jquery.ui" path="themes/default/js/ui/minified/jquery.ui.core.min.js"}
-{combine_script id="jquery.ui.sortable" path="themes/default/js/ui/minified/jquery.ui.sortable.min.js"}
+{combine_script id="jquery.ui" require='jquery' path="themes/default/js/ui/jquery.ui.core.js"}
+{combine_script id="jquery.ui.widget" require='jquery.ui' path="themes/default/js/ui/jquery.ui.widget.js"}
+{combine_script id="jquery.ui.mouse" require='jquery.ui.widget' path="themes/default/js/ui/jquery.ui.mouse.js"}
+{combine_script id="jquery.ui.position" require='jquery.ui.widget' path="themes/default/js/ui/jquery.ui.position.js"}
+
 
 <div id="containerMenu">
   {foreach from=$sections item=sectionName key=section}

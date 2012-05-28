@@ -55,15 +55,13 @@ $lang['g002_owner'] = 'Owner';
 $lang['g002_sectionid'] = 'Identifier';
 $lang['g002_name'] = 'Label';
 
-$lang['g002_translate'] = 'Translate with Google Translate';
-
 $lang['g002_configrandompic'] = 'Random picture settings';
 $lang['g002_setting_randompic_aboutpicture'] = 'Displayed datas';
 $lang['g002_setting_randompic_showname'] = 'Show picture\'s name';
 $lang['g002_setting_randompic_showcomment'] = 'Show picure\'s comment';
 $lang['g002_show_n'] = 'No';
 $lang['g002_show_o'] = 'Display over the picture';
-$lang['g002_show_u'] = 'Display under the picture';
+$lang['g002_show_u'] = 'Display under thpicture';
 
 $lang['g002_personalisedlist'] = "Liste of personalised blocks";
 $lang['g002_notitle'] = '[No title]';

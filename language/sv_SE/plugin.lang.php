@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Ägare';
 $lang['g002_sectionid'] = 'Identifierare';
 $lang['g002_name'] = 'Etikett';
 
-$lang['g002_translate'] = 'Översätt med Google Translate';
-
 $lang['g002_configrandompic'] = 'Inställningar slumpvisa bilder';
 $lang['g002_setting_randompic_aboutpicture'] = 'Visad information';
 $lang['g002_setting_randompic_showname'] = 'Visa bildens namn';
@@ -77,7 +75,7 @@ $lang['g002_editofpersonalised'] = 'Ändra ett personligt block';
 $lang['g002_setting_block_langchoice'] = 'Språkval';
 $lang['g002_setting_personalised_content'] = 'Blockinnehåll';
 $lang['g002_setting_personalised_properties'] = 'Egenskaper';
-$lang['g002_setting_personalised_nfo'] = 'Beskrivning'; 
+$lang['g002_setting_personalised_nfo'] = 'Beskrivning';
 
 $lang['g002_all_languages'] = 'Alla språk';
 
@@ -105,7 +103,7 @@ $lang['g002_ok'] = 'OK';
 $lang['g002_config_not_saved'] = 'Konfigureringen sparades inte';
 $lang['g002_selected_all_gallery'] = 'Alla album';
 $lang['g002_selected_favorites_wm'] = 'Webmaster\'s favoritbilder';
-$lang['g002_selected_categories'] = 'Alla valda album'; 
+$lang['g002_selected_categories'] = 'Alla valda album';
 $lang['g002_loading'] = 'Laddar...';
 $lang['g002_valid_order'] = 'Appliceringsordning';
 $lang['g002_reset_order'] = 'Återställningsordning';

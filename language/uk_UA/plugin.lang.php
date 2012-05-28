@@ -107,7 +107,6 @@ $lang['g002_show_o'] = 'Відображення над фотографією';
 $lang['g002_show_u'] = 'Відображення під фотографією';
 $lang['g002_title'] = 'Назва';
 $lang['g002_title_page'] = 'Розширене управління меню';
-$lang['g002_translate'] = 'Перекласти з Google Translate';
 $lang['g002_url'] = 'URL';
 $lang['g002_valid_order'] = 'Застосувати порядок';
 $lang['g002_version'] = 'Версія';

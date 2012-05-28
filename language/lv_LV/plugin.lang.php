@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Saimnieks';
 $lang['g002_sectionid'] = 'Identifikators';
 $lang['g002_name'] = 'Uzraksts';
 
-$lang['g002_translate'] = 'Tulkot ar Google Translate';
-
 $lang['g002_configrandompic'] = 'Gadījuma attēla iestatījumi';
 $lang['g002_setting_randompic_aboutpicture'] = 'Attēlojamie dati';
 $lang['g002_setting_randompic_showname'] = 'Parādīt attēla nosaukumu';
@@ -116,6 +114,6 @@ $lang['g002_selectedpict'] = "Atlasītie attēli";
 $lang['g002_album_nfo'] = 'Atļaut konvertēt vienu vai vairākus albūmus izvēlnē';
 $lang['g002_album2menu'] = "Izvēlnē konvertētais albūms";
 $lang['g002_album'] = "Albūma &rArr; izvēlne";
-$lang['g002_setting_albums_menus'] = "Albūmi, ko konvertēt izvēlnē"; 
+$lang['g002_setting_albums_menus'] = "Albūmi, ko konvertēt izvēlnē";
 
 ?>

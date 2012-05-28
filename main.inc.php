@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.1.4
+Version: 3.2.0
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -207,6 +207,11 @@ Author URI: http://piwigo.org
 |         |            | * mantis bug:2522
 |         |            |   . Incompatibility with other plugin managing the menu
 |         |            |     content
+|         |            |
+| 3.2.0   | 2012/05/27 | * mantis: bug 2642
+|         |            |   . Compatibility with Piwigo 2.4
+|         |            |
+|         |            |
 |         |            |
 |         |            |
 |         |            |

@@ -52,12 +52,6 @@
           </div>
         </td>
       </tr>
-      <tr>
-        <td></td>
-        <td style="font-size:80%;">
-          <a style="cursor:pointer;" onclick="$('#iamm_links_title').inputText('doTranslation');">{'g002_translate'|@translate}</a>
-        </td>
-      </tr>
 
     </table>
   </fieldset>

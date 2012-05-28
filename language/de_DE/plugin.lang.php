@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Eigentümer';
 $lang['g002_sectionid'] = 'Benutzername';
 $lang['g002_name'] = 'Wortlaut';
 
-$lang['g002_translate'] = 'Übersetzen mit Google Translate';
-
 $lang['g002_configrandompic'] = 'Konfiguration des Zufallsbild';
 $lang['g002_setting_randompic_aboutpicture'] = 'Angezeigt Daten';
 $lang['g002_setting_randompic_showname'] = 'Anzuzeigen des Bildes Namen';
@@ -93,30 +91,25 @@ $lang['g002_setting_randompic_height'] = "Höhe der Block Menü";
 $lang['g002_setting_randompic_height_auto'] = "Auto";
 
 $lang['g002_ok'] = "OK";
-$lang['g002_config_saved'] = "Einstellungen wurden gespeichert"; 
-$lang['g002_config_not_saved'] = "Einstellungen wurden nicht gespeichert"; 
-$lang['g002_selected_all_gallery'] = "Alle Alben"; 
-$lang['g002_selected_favorites_wm'] = "Die Favoriten des Webmasters"; 
-$lang['g002_selected_categories'] = "Alle ausgewählten Alben"; 
-$lang['g002_loading'] = "Laden..."; 
-$lang['g002_valid_order'] = "Befehl anwenden"; 
-$lang['g002_reset_order'] = "Befehl zurücksetzen"; 
-$lang['g002_accessibility'] = "Zugänglichkeit"; 
-$lang['g002_setting_core_blocks_content'] = "Inhalt der Menüs 'Menu' & 'Specials'"; 
-$lang['g002_setting_blocks_position'] = "Sichtbarkeit und Reihenfolge für die Menüs "; 
-$lang['g002_plugin'] = "Plug-In"; 
-$lang['g002_selectedpict'] = "Ausgewählte Bilder"; 
-$lang['g002_album_nfo'] = 'Die Konvertierung eines oder mehrere Alben in einem Menü erlauben'; 
-$lang['g002_album2menu'] = "Konvertierter Album zum Menü"; 
-$lang['g002_album'] = "Album &rArr; Menü"; 
+$lang['g002_config_saved'] = "Einstellungen wurden gespeichert";
+$lang['g002_config_not_saved'] = "Einstellungen wurden nicht gespeichert";
+$lang['g002_selected_all_gallery'] = "Alle Alben";
+$lang['g002_selected_favorites_wm'] = "Die Favoriten des Webmasters";
+$lang['g002_selected_categories'] = "Alle ausgewählten Alben";
+$lang['g002_loading'] = "Laden...";
+$lang['g002_valid_order'] = "Befehl anwenden";
+$lang['g002_reset_order'] = "Befehl zurücksetzen";
+$lang['g002_accessibility'] = "Zugänglichkeit";
+$lang['g002_setting_core_blocks_content'] = "Inhalt der Menüs 'Menu' & 'Specials'";
+$lang['g002_setting_blocks_position'] = "Sichtbarkeit und Reihenfolge für die Menüs ";
+$lang['g002_plugin'] = "Plug-In";
+$lang['g002_selectedpict'] = "Ausgewählte Bilder";
+$lang['g002_album_nfo'] = 'Die Konvertierung eines oder mehrere Alben in einem Menü erlauben';
+$lang['g002_album2menu'] = "Konvertierter Album zum Menü";
+$lang['g002_album'] = "Album &rArr; Menü";
 $lang['g002_setting_albums_menus'] = "Zu konvertierenden Alben in Menüs.";
 $lang['gmaps_gpc_not_up_to_date']="Es ist für den Plug-In notwendig, dass <i>Grum Plugin Classes</i> mit der Version %s installiert ist.
 Zurzeit ist die Version %s installiert: bitte fahren Sie mit der Updateversion des Plug-Ins <i>Grum Plugin Classes</i> fort.";
 
 
-$lang['g002_apply_changes'] = 'Änderungen anwenden';
-$lang['g002_cancel'] = 'Abbrechen';
-$lang['g002_click_to_manage_rights'] = 'Rechteverwaltung';
-$lang['g002_piwigo_default'] = 'Piwigo Standard-Sortierung';
-$lang['g002_adviser_not_allowed'] = 'Ein Berater darf keine Änderungen vornehmen';
 ?>

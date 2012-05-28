@@ -37,14 +37,6 @@
     objhidden[objnames.indexOf(input_id)][objlang.options.selectedIndex].value = obj.value;
   }
 
-  function do_translation()
-  {
-    var inputid = document.getElementById('iamm_personalised_title');
-    var tolang = objlang.options[objlang.options.selectedIndex].value.substr(0,2);
-
-    google_translate(inputid.value, '{/literal}{$datas.fromlang}{literal}', tolang, inputid, 'value', apply_changes, inputid.id);
-  }
-
 </script>
 {/literal}
 
@@ -117,12 +109,6 @@
         <td>{'g002_setting_block_title'|@translate}</td>
         <td>
           <input type="text" id="iamm_personalised_title" value="" maxlength="255" onkeyup="apply_changes('iamm_personalised_title');" onblur="apply_changes('iamm_personalised_title');"/>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td style="font-size:80%;">
-          <a style="cursor:pointer;" onclick="do_translation()">{'g002_translate'|@translate}</a>
         </td>
       </tr>
 

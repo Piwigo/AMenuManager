@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Proprietário';
 $lang['g002_sectionid'] = 'Identificador';
 $lang['g002_name'] = 'Etiqueta';
 
-$lang['g002_translate'] = 'Traduzir com o Google Tradutor';
-
 $lang['g002_configrandompic'] = 'Configurar Imagem Aleatória';
 $lang['g002_setting_randompic_aboutpicture'] = 'Dados visíveis';
 $lang['g002_setting_randompic_showname'] = 'Mostrar Nome da Imagem';

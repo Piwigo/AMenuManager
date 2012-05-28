@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Propietario';
 $lang['g002_sectionid'] = 'Identificador';
 $lang['g002_name'] = 'Redacción';
 
-$lang['g002_translate'] = 'Traducir con Google Translate';
-
 $lang['g002_configrandompic'] = 'Configuración de la imagen aleatoria';
 $lang['g002_setting_randompic_aboutpicture'] = 'Datos visualizados';
 $lang['g002_setting_randompic_showname'] = 'Visualizar el nombre de la foto';
@@ -120,6 +118,6 @@ $lang['g002_album2menu'] = "Conversión álbum &rArr; menú";
 $lang['g002_album'] = "álbum &rArr; menú";
 $lang['g002_setting_albums_menus'] = "Álbum a convertir en menú";
 $lang['g002_gpc_not_up_to_date']="Es necesario que el plugin <i>Grum Plugin Classes</i> versión %ª se encuentre instalado.
-Actualmente está instalada la versión %s: gracias por proceder a la actualización de la versión del plugin <i>Grum Plugin Classes</i>."; 
+Actualmente está instalada la versión %s: gracias por proceder a la actualización de la versión del plugin <i>Grum Plugin Classes</i>.";
 
 ?>

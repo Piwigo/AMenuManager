@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Eier';
 $lang['g002_sectionid'] = 'Identifiser';
 $lang['g002_name'] = 'Etikett';
 
-$lang['g002_translate'] = 'Oversett med Google Translate';
-
 $lang['g002_configrandompic'] = 'Tilfelsig bilde instillinger';
 $lang['g002_setting_randompic_aboutpicture'] = 'Viste data';
 $lang['g002_setting_randompic_showname'] = 'Vis bilde navn';
@@ -118,6 +116,4 @@ $lang['g002_album2menu'] = "Konverter album til meny";
 $lang['g002_album'] = "Album &rArr; meny";
 $lang['g002_setting_albums_menus'] = "Album å konvertere til meny";
 
-$lang['gmaps_gpc_not_up_to_date'] = 'Det er nødvendig for tillegget <i>Grum Plugin Classes</i> versjon %s er installert.
-Versjon %s er nå installert: vennligst oppdater tillegget <i>Grum Plugin Classes</i>.';
 ?>

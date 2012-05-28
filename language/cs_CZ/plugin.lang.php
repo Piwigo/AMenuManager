@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Vlastník';
 $lang['g002_sectionid'] = 'Identifikátor';
 $lang['g002_name'] = 'Popisek';
 
-$lang['g002_translate'] = 'Přeložit pomocí Google Translate';
-
 $lang['g002_configrandompic'] = 'Náhodný obrázek nastaevní';
 $lang['g002_setting_randompic_aboutpicture'] = 'Zobrazená data';
 $lang['g002_setting_randompic_showname'] = 'Ukaž název obrázku';
@@ -118,7 +116,7 @@ $lang['g002_selectedpict'] = "Označené fotky";
 $lang['g002_album_nfo'] = 'Povolit přeměnu jednoho nebo více názvů alb na menu';
 $lang['g002_album2menu'] = "Přeměnit album na menu";
 $lang['g002_album'] = "Album &rArr; menu";
-$lang['g002_setting_albums_menus'] = "Alba ke konvertování na menu"; 
+$lang['g002_setting_albums_menus'] = "Alba ke konvertování na menu";
 $lang['gmaps_gpc_not_up_to_date']= "Tohle je nezbytné pokud je nainstalován <i>Grum Plugin Classes</i> ver. %s.
 Aktuálně je nainstalována verze  %s : prosím aktualizujte plugin <i>Grum Plugin Classes</i> na novou verzi.";
 

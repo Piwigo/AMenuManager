@@ -109,7 +109,6 @@ $lang['g002_show_n'] = 'No';
 $lang['g002_show_o'] = 'Mostra sobre la imatge';
 $lang['g002_show_u'] = 'Mostra sota la imatge';
 $lang['g002_title'] = 'Títol';
-$lang['g002_translate'] = 'Traduir amb el traductor de Google';
 $lang['g002_url'] = 'URL';
 $lang['g002_valid_order'] = 'Ordenar';
 $lang['g002_visible'] = 'Visible';

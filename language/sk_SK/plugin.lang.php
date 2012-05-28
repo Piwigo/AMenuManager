@@ -55,8 +55,6 @@ $lang['g002_owner'] = 'Majiteľ';
 $lang['g002_sectionid'] = 'Identifikátor';
 $lang['g002_name'] = 'Označenie';
 
-$lang['g002_translate'] = 'Preložiť s prekladačom Google';
-
 $lang['g002_configrandompic'] = 'Nastavenie náhodných fotografií';
 $lang['g002_setting_randompic_aboutpicture'] = 'Zobrazené údaje';
 $lang['g002_setting_randompic_showname'] = 'Ukázať názov fotografie';
@@ -120,6 +118,6 @@ $lang['g002_album2menu'] = "Konvertovaný album do menu";
 $lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Albumy na konvertovanie do menu";
 $lang['gmaps_gpc_not_up_to_date']="Pre doplnok je potrebné mať inštalovaný <i>Grum Plugin Classes</i> verzie %s.
-Momentálne je inštalovaná verzia %s: urobte update na novú verziu doplnku <i>Grum Plugin Classes</i>."; 
+Momentálne je inštalovaná verzia %s: urobte update na novú verziu doplnku <i>Grum Plugin Classes</i>.";
 
 ?>

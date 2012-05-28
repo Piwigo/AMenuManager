@@ -55,8 +55,6 @@ $lang['g002_owner'] = '所有者';
 $lang['g002_sectionid'] = '标识符';
 $lang['g002_name'] = '标签';
 
-$lang['g002_translate'] = '翻译与谷歌翻译';
-
 $lang['g002_configrandompic'] = '随机图片设置';
 $lang['g002_setting_randompic_aboutpicture'] = '随机图片拥有者评论显示设置';
 $lang['g002_setting_randompic_showname'] = '显示图片拥有者';
@@ -101,24 +99,24 @@ $lang['g002_click_to_manage_rights'] = "设置权限";
 
 
 // v3.0.0
-$lang['g002_ok'] = "确定"; 
-$lang['g002_config_saved'] = "配置已保存"; 
-$lang['g002_config_not_saved'] = "配置不能保存"; 
-$lang['g002_selected_all_gallery'] = "全部相册"; 
-$lang['g002_selected_favorites_wm'] = "站长的喜爱图片"; 
-$lang['g002_selected_categories'] = "全部选择的相册"; 
-$lang['g002_loading'] = "加载中..."; 
-$lang['g002_valid_order'] = "应用排序"; 
-$lang['g002_reset_order'] = "重置排序"; 
-$lang['g002_accessibility'] = "可访问性"; 
-$lang['g002_setting_core_blocks_content'] = "'菜单' 和 '特殊' 菜单内容"; 
-$lang['g002_setting_blocks_position'] = "菜单的可见性和排序 "; 
-$lang['g002_plugin'] = "插件"; 
-$lang['g002_selectedpict'] = "已选择的图片"; 
-$lang['g002_album_nfo'] = '允许将一个或多个相册转换成菜单'; 
-$lang['g002_album2menu'] = "已将相册转换成菜单"; 
-$lang['g002_album'] = "相册 &rArr; 菜单"; 
-$lang['g002_setting_albums_menus'] = "相册转换成菜单"; 
+$lang['g002_ok'] = "确定";
+$lang['g002_config_saved'] = "配置已保存";
+$lang['g002_config_not_saved'] = "配置不能保存";
+$lang['g002_selected_all_gallery'] = "全部相册";
+$lang['g002_selected_favorites_wm'] = "站长的喜爱图片";
+$lang['g002_selected_categories'] = "全部选择的相册";
+$lang['g002_loading'] = "加载中...";
+$lang['g002_valid_order'] = "应用排序";
+$lang['g002_reset_order'] = "重置排序";
+$lang['g002_accessibility'] = "可访问性";
+$lang['g002_setting_core_blocks_content'] = "'菜单' 和 '特殊' 菜单内容";
+$lang['g002_setting_blocks_position'] = "菜单的可见性和排序 ";
+$lang['g002_plugin'] = "插件";
+$lang['g002_selectedpict'] = "已选择的图片";
+$lang['g002_album_nfo'] = '允许将一个或多个相册转换成菜单';
+$lang['g002_album2menu'] = "已将相册转换成菜单";
+$lang['g002_album'] = "相册 &rArr; 菜单";
+$lang['g002_setting_albums_menus'] = "相册转换成菜单";
 $lang['gmaps_gpc_not_up_to_date']="插件所必须的<i>Grum插件类</i>版本 %s 已安装。现在版本 %s 已安装：请进行插件<i>Grum插件类</i>的版本升级.";
 
 ?>
