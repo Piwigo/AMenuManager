@@ -108,7 +108,6 @@ $lang['g002_selected_categories'] = "Все выбранные альбомы";
 $lang['g002_loading'] = "Загрузка...";
 $lang['g002_valid_order'] = "Применить сортировку";
 $lang['g002_reset_order'] = "Отменить сортировку";
-$lang['g 002_accessibility'] = "Доступность";
 $lang['g002_setting_core_blocks_content'] = "Содержимое пунктов 'Меню' & 'Спец функции'";
 $lang['g002_setting_blocks_position'] = "Видимость и порядок пунктов меню";
 $lang['g002_plugin'] = "Плагин";
@@ -120,4 +119,5 @@ $lang['g002_setting_albums_menus'] = "Альбомы для преобразов
 $lang['gmaps_gpc_not_up_to_date']="Плагин <i>Grum Plugin Classes</i> версия %s.
 На данный момент установлена версия %s: обновите Вашу версию плагина <i>Grum Plugin Classes</i>.";
 
+$lang['g002_accessibility'] = 'Доступ';
 ?>
