@@ -1,6 +1,5 @@
 <?php
 
-$lang['To install this plugin, you need to install Grum Plugin Classes %s before'] = 'Para instalar este plugin, usted debe previamente, instalar el plugin Grum Plugin Classes %s';
 
 $lang['g002_title_page'] = 'Gestión avanzada del menú';
 $lang['g002_version'] = 'version';
@@ -117,7 +116,9 @@ $lang['g002_album_nfo'] = 'Permitir la conversión de uno o varios álbumes en b
 $lang['g002_album2menu'] = "Conversión álbum &rArr; menú";
 $lang['g002_album'] = "álbum &rArr; menú";
 $lang['g002_setting_albums_menus'] = "Álbum a convertir en menú";
-$lang['g002_gpc_not_up_to_date']="Es necesario que el plugin <i>Grum Plugin Classes</i> versión %ª se encuentre instalado.
 Actualmente está instalada la versión %s: gracias por proceder a la actualización de la versión del plugin <i>Grum Plugin Classes</i>.";
 
+$lang['Grum Plugin Classes is not installed'] = 'El plugin <b>Grum Plugin Classes</b> no está instalado';
+$lang['gmaps_gpc_not_up_to_date'] = 'Para el correcto funcionamiento de este plugin, es necesario que la versión %s de <i>Grum classes Plugin</i> esté instalada.
+La versión actual instalada es la %s. Por favor, actualice este plugin.';
 ?>
