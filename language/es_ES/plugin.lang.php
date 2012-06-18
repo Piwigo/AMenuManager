@@ -116,7 +116,7 @@ $lang['g002_album_nfo'] = 'Permitir la conversión de uno o varios álbumes en b
 $lang['g002_album2menu'] = "Conversión álbum &rArr; menú";
 $lang['g002_album'] = "álbum &rArr; menú";
 $lang['g002_setting_albums_menus'] = "Álbum a convertir en menú";
-Actualmente está instalada la versión %s: gracias por proceder a la actualización de la versión del plugin <i>Grum Plugin Classes</i>.";
+
 
 $lang['Grum Plugin Classes is not installed'] = 'El plugin <b>Grum Plugin Classes</b> no está instalado';
 $lang['gmaps_gpc_not_up_to_date'] = 'Para el correcto funcionamiento de este plugin, es necesario que la versión %s de <i>Grum classes Plugin</i> esté instalada.
