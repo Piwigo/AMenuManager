@@ -1,0 +1,30 @@
+/* AMM ADMIN -ROMA- */
+
+div#iList.roma table tr:hover { background:#303030; }
+
+li.menuListItem span.menuListMove,
+li.pluginBox span.listMove,
+li.menuItem span.listMove {
+  width:15px;
+  display:inline-block;
+  height:15px;
+  position:relative;
+  background:url(./../GrumPluginClasses/icons/buttons.png) transparent no-repeat -285px -15px;
+}
+li.menuListItem:hover span.menuListMove,
+li.pluginBox:hover span.listMove,
+li.menuItem:hover span.listMove {
+  background-position:-285px 0px;
+}
+span.buttonEdit {
+  background-position:-240px -15px;
+}
+span.buttonDelete {
+  background-position:-255px -15px;
+}
+span.buttonEdit:hover {
+  background-position:-240px 0px;
+}
+span.buttonDelete:hover {
+  background-position:-255px 0px;
+}

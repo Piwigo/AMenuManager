@@ -20,15 +20,13 @@
 
 
   define('PHPWG_ROOT_PATH',dirname(dirname(dirname(__FILE__))).'/');
+  if(!defined('AJAX_CALL')) define('AJAX_CALL', true);
 
   /*
    * set ajax module in admin mode if request is used for admin interface
    */
   if(!isset($_REQUEST['ajaxfct'])) $_REQUEST['ajaxfct']='';
-  if(preg_match('/^admin\./i', $_REQUEST['ajaxfct']))
-  {
-    define('IN_ADMIN', true);
-  }
+  if(preg_match('/^admin\./i', $_REQUEST['ajaxfct'])) define('IN_ADMIN', true);
 
   // the common.inc.php file loads all the main.inc.php plugins files
   include_once(PHPWG_ROOT_PATH.'include/common.inc.php' );
@@ -59,30 +57,29 @@
     {
       global $user;
 
-      if(!isset($_REQUEST['ajaxfct'])) $_REQUEST['ajaxfct']='';
       if(!isset($_REQUEST['errcode'])) $_REQUEST['errcode']='';
-      if(!isset($_REQUEST['token'])) $_REQUEST['token']='';
+      GPCAjax::checkToken();
 
       // check if asked function is valid
-      if(!($_REQUEST['ajaxfct']=='admin.links.get' or
-           $_REQUEST['ajaxfct']=='admin.links.set' or
-           $_REQUEST['ajaxfct']=='admin.links.list' or
-           $_REQUEST['ajaxfct']=='admin.links.delete' or
-           $_REQUEST['ajaxfct']=='admin.links.order' or
-           $_REQUEST['ajaxfct']=='admin.links.setConfig' or
-           $_REQUEST['ajaxfct']=='admin.randomPict.setConfig' or
-           $_REQUEST['ajaxfct']=='admin.blocks.get' or
-           $_REQUEST['ajaxfct']=='admin.blocks.set' or
-           $_REQUEST['ajaxfct']=='admin.blocks.delete' or
-           $_REQUEST['ajaxfct']=='admin.blocks.list' or
-           $_REQUEST['ajaxfct']=='admin.album.setConfig' or
-           $_REQUEST['ajaxfct']=='admin.coreBlocks.setConfig'
-           )) $_REQUEST['ajaxfct']='';
+      if(!($_REQUEST[GPC_AJAX]=='admin.links.get' or
+           $_REQUEST[GPC_AJAX]=='admin.links.set' or
+           $_REQUEST[GPC_AJAX]=='admin.links.list' or
+           $_REQUEST[GPC_AJAX]=='admin.links.delete' or
+           $_REQUEST[GPC_AJAX]=='admin.links.order' or
+           $_REQUEST[GPC_AJAX]=='admin.links.setConfig' or
+           $_REQUEST[GPC_AJAX]=='admin.randomPict.setConfig' or
+           $_REQUEST[GPC_AJAX]=='admin.blocks.get' or
+           $_REQUEST[GPC_AJAX]=='admin.blocks.set' or
+           $_REQUEST[GPC_AJAX]=='admin.blocks.delete' or
+           $_REQUEST[GPC_AJAX]=='admin.blocks.list' or
+           $_REQUEST[GPC_AJAX]=='admin.album.setConfig' or
+           $_REQUEST[GPC_AJAX]=='admin.coreBlocks.setConfig'
+           )) $_REQUEST[GPC_AJAX]='';
 
-      if(preg_match('/^admin\./i', $_REQUEST['ajaxfct']) and !is_admin()) $_REQUEST['ajaxfct']='';
+      if(preg_match('/^admin\./i', $_REQUEST[GPC_AJAX]) and !is_admin()) $_REQUEST[GPC_AJAX]='';
 
 
-      if($_REQUEST['ajaxfct']!='')
+      if($_REQUEST[GPC_AJAX]!='')
       {
         /*
          * no check for admin.links.list request
@@ -92,18 +89,18 @@
          * check admin.links.get request
          * check admin.blocks.get request
          */
-        if($_REQUEST['ajaxfct']=='admin.links.get' or
-           $_REQUEST['ajaxfct']=='admin.blocks.get request')
+        if($_REQUEST[GPC_AJAX]=='admin.links.get' or
+           $_REQUEST[GPC_AJAX]=='admin.blocks.get request')
         {
           if(!isset($_REQUEST['id'])) $_REQUEST['id']='';
 
-          if($_REQUEST['id']=='') $_REQUEST['ajaxfct']='';
+          if($_REQUEST['id']=='') $_REQUEST[GPC_AJAX]='';
         }
 
         /*
          * check admin.links.set request
          */
-        if($_REQUEST['ajaxfct']=='admin.links.set')
+        if($_REQUEST[GPC_AJAX]=='admin.links.set')
         {
           if(!isset($_REQUEST['id'])) $_REQUEST['id']='';
           if(!isset($_REQUEST['datas']['label'])) $_REQUEST['datas']['label']='';
@@ -114,13 +111,12 @@
           if(!isset($_REQUEST['datas']['accessUsers']) or $_REQUEST['datas']['accessUsers']=='') $_REQUEST['datas']['accessUsers']=array();
           if(!isset($_REQUEST['datas']['accessGroups']) or $_REQUEST['datas']['accessGroups']=='') $_REQUEST['datas']['accessGroups']=array();
 
-          if($_REQUEST['token']!=get_pwg_token() or
-             $_REQUEST['datas']['label']=='' or
+          if($_REQUEST['datas']['label']=='' or
              $_REQUEST['datas']['url']=='' or
              $_REQUEST['datas']['icon']=='' or
              !($_REQUEST['datas']['mode']=='0' or $_REQUEST['datas']['mode']=='1') or
              !($_REQUEST['datas']['visible']=='y' or $_REQUEST['datas']['visible']=='n')
-            ) $_REQUEST['ajaxfct']='';
+            ) $_REQUEST[GPC_AJAX]='';
         }
 
         /*
@@ -128,41 +124,36 @@
          * check admin.blocks.delete request
          *
          */
-        if($_REQUEST['ajaxfct']=='admin.links.delete' or
-           $_REQUEST['ajaxfct']=='admin.blocks.delete')
+        if($_REQUEST[GPC_AJAX]=='admin.links.delete' or
+           $_REQUEST[GPC_AJAX]=='admin.blocks.delete')
         {
           if(!isset($_REQUEST['id'])) $_REQUEST['id']='';
 
-          if($_REQUEST['id']=='' or
-             $_REQUEST['token']!=get_pwg_token()
-            ) $_REQUEST['ajaxfct']='';
+          if($_REQUEST['id']=='') $_REQUEST[GPC_AJAX]='';
         }
 
         /*
          * check admin.links.order request
          */
-        if($_REQUEST['ajaxfct']=='admin.links.order')
+        if($_REQUEST[GPC_AJAX]=='admin.links.order')
         {
           if(!isset($_REQUEST['datas']['links']) or $_REQUEST['datas']['links']=='') $_REQUEST['datas']['links']=array();
 
-          if(count($_REQUEST['datas']['links'])<=1 or
-             $_REQUEST['token']!=get_pwg_token()
-            ) $_REQUEST['ajaxfct']='';
+          if(count($_REQUEST['datas']['links'])<=1) $_REQUEST[GPC_AJAX]='';
         }
 
 
         /*
          * check admin.links.setConfig request
          */
-        if($_REQUEST['ajaxfct']=='admin.links.setConfig')
+        if($_REQUEST[GPC_AJAX]=='admin.links.setConfig')
         {
           if(!isset($_REQUEST['datas']['showIcons'])) $_REQUEST['datas']['showIcons']='';
           if(!isset($_REQUEST['datas']['title']) or $_REQUEST['datas']['title']=='') $_REQUEST['datas']['title']=array();
 
-          if($_REQUEST['token']!=get_pwg_token() or
-             $_REQUEST['datas']['showIcons']=='' or
+          if($_REQUEST['datas']['showIcons']=='' or
              count($_REQUEST['datas']['title'])==0
-            ) $_REQUEST['ajaxfct']='';
+            ) $_REQUEST[GPC_AJAX]='';
         }
 
 
@@ -170,7 +161,7 @@
         /*
          * check admin.randomPict.setConfig request
          */
-        if($_REQUEST['ajaxfct']=='admin.randomPict.setConfig')
+        if($_REQUEST[GPC_AJAX]=='admin.randomPict.setConfig')
         {
           if(!isset($_REQUEST['datas']['blockHeight'])) $_REQUEST['datas']['blockHeight']='';
           if(!isset($_REQUEST['datas']['blockTitles']) or $_REQUEST['datas']['blockTitles']=='') $_REQUEST['datas']['blockTitles']=array();
@@ -180,8 +171,7 @@
           if(!isset($_REQUEST['datas']['selectMode'])) $_REQUEST['datas']['selectMode']='';
           if(!isset($_REQUEST['datas']['selectCat']) or $_REQUEST['datas']['selectCat']=='') $_REQUEST['datas']['selectCat']=array();
 
-          if($_REQUEST['token']!=get_pwg_token() or
-             !is_numeric($_REQUEST['datas']['blockHeight']) or
+          if(!is_numeric($_REQUEST['datas']['blockHeight']) or
              count($_REQUEST['datas']['blockTitles'])==0 or
              !($_REQUEST['datas']['infosName']=='n' or
                $_REQUEST['datas']['infosName']=='o' or
@@ -195,25 +185,24 @@
                $_REQUEST['datas']['selectMode']=='c') or
              ($_REQUEST['datas']['selectMode']=='c' and
               count($_REQUEST['datas']['selectCat'])==0)
-            ) $_REQUEST['ajaxfct']='';
+            ) $_REQUEST[GPC_AJAX]='';
         }
 
 
         /*
          * check admin.blocks.set request
          */
-        if($_REQUEST['ajaxfct']=='admin.blocks.set')
+        if($_REQUEST[GPC_AJAX]=='admin.blocks.set')
         {
           if(!isset($_REQUEST['id'])) $_REQUEST['id']='';
           if(!isset($_REQUEST['datas']['nfo'])) $_REQUEST['datas']['nfo']='';
           if(!isset($_REQUEST['datas']['visible'])) $_REQUEST['datas']['visible']='';
           if(!isset($_REQUEST['datas']['langs']) or $_REQUEST['datas']['langs']=='') $_REQUEST['datas']['langs']=array();
 
-          if($_REQUEST['token']!=get_pwg_token() or
-             $_REQUEST['datas']['nfo']=='' or
+          if($_REQUEST['datas']['nfo']=='' or
              !($_REQUEST['datas']['visible']=='y' or $_REQUEST['datas']['visible']=='n') or
              count($_REQUEST['datas']['langs'])==0
-            ) $_REQUEST['ajaxfct']='';
+            ) $_REQUEST[GPC_AJAX]='';
         }
 
 
@@ -222,27 +211,23 @@
         /*
          * check admin.coreBlocks.setConfig request
          */
-        if($_REQUEST['ajaxfct']=='admin.coreBlocks.setConfig')
+        if($_REQUEST[GPC_AJAX]=='admin.coreBlocks.setConfig')
         {
           if(!isset($_REQUEST['datas']['menuItems']) or $_REQUEST['datas']['menuItems']=='') $_REQUEST['datas']['menuItems']=array();
           if(!isset($_REQUEST['datas']['blocks']) or $_REQUEST['datas']['blocks']=='') $_REQUEST['datas']['blocks']=array();
 
-          if($_REQUEST['token']!=get_pwg_token() or
-             count($_REQUEST['datas']['menuItems'])!=count($this->defaultMenus)
-            ) $_REQUEST['ajaxfct']='';
+          if(count($_REQUEST['datas']['menuItems'])!=count($this->defaultMenus)
+            ) $_REQUEST[GPC_AJAX]='';
         }
 
 
         /*
          * check admin.album.setConfig request
          */
-        if($_REQUEST['ajaxfct']=='admin.album.setConfig')
+        if($_REQUEST[GPC_AJAX]=='admin.album.setConfig')
         {
           if(!isset($_REQUEST['datas']['selectCat']) or $_REQUEST['datas']['selectCat']=='') $_REQUEST['datas']['selectCat']=array();
-
-          if($_REQUEST['token']!=get_pwg_token()) $_REQUEST['ajaxfct']='';
         }
-
 
       }
 
@@ -255,7 +240,7 @@
     protected function returnAjaxContent()
     {
       $result="KO!".l10n('g002_error_invalid_ajax_call');
-      switch($_REQUEST['ajaxfct'])
+      switch($_REQUEST[GPC_AJAX])
       {
         case 'admin.links.get':
           $result=$this->ajax_amm_admin_linksGet($_REQUEST['id']);
@@ -346,7 +331,6 @@
           'visible' => l10n('g002_yesno_'.$link['visible'])
         );
       }
-
       $local_tpl->assign('themeconf', $template->get_template_vars('themeconf'));
       $local_tpl->assign('datas', $datas);
       $local_tpl->assign('plugin', array('PATH' => AMM_PATH));

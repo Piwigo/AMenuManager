@@ -33,7 +33,7 @@ function userLinksManage (opt, keys, token)
           type: "POST",
           url: options.ajaxUrl,
           async: true,
-          data: { ajaxfct:"admin.links.list" },
+          data: { ajaxfct:"admin.links.list", token:properties.token },
           success:
             function(msg)
             {
@@ -302,7 +302,7 @@ function userLinksManage (opt, keys, token)
                 type: "POST",
                 url: options.ajaxUrl,
                 async: true,
-                data: { ajaxfct:"admin.links.get", id:properties.id },
+                data: { ajaxfct:"admin.links.get", id:properties.id, token:properties.token },
                 success:
                   function(msg)
                   {
@@ -340,9 +340,9 @@ function userLinksManage (opt, keys, token)
         colsCss:['iconColImg','iconColText'],
         popupMode:'mouseout'
       }
-    );
+    ).css('display', 'block');
 
-    $('#iamm_mode').inputList({popupMode:'mouseout'});
+    $('#iamm_mode').inputList({popupMode:'mouseout'}).css('display', 'block');
 
     $('#iamm_visible').inputRadio();
 

@@ -16,7 +16,6 @@
 if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 
 include_once(PHPWG_PLUGINS_PATH.'AMenuManager/amm_root.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCAjax.class.inc.php');
 
 class AMM_PIP extends AMM_root
 {
@@ -30,7 +29,6 @@ class AMM_PIP extends AMM_root
   function AMM_PIP($prefixeTable, $filelocation)
   {
     parent::__construct($prefixeTable, $filelocation);
-    $this->css = new GPCCss(dirname($this->getFileLocation()).'/'.$this->getPluginNameFiles()."2.css");
 
     $this->users=new GPCUsers();
     $this->groups=new GPCGroups();
@@ -47,11 +45,17 @@ class AMM_PIP extends AMM_root
   {
     parent::initEvents();
 
+    add_event_handler('blockmanager_register_blocks', array(&$this, 'registerBlocks') );
     add_event_handler('blockmanager_prepare_display', array(&$this, 'blockmanagerSortBlocks') );
     add_event_handler('blockmanager_apply', array(&$this, 'blockmanagerApply'), 45 );
-    add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
     add_event_handler('loc_end_page_header', array(&$this, 'applyJS'));
     add_event_handler('get_categories_menu_sql_where', array(&$this, 'buildMenuFromCat'), 75);
+  }
+
+  public function loadCSS()
+  {
+    parent::loadCSS();
+    GPCCore::addHeaderCSS('amm_main', 'plugins/'.$this->getDirectory().'/'.$this->getPluginNameFiles()."2.css");
   }
 
 

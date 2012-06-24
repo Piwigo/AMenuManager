@@ -19,12 +19,10 @@ if (!defined('PHPWG_ROOT_PATH')) { die('Hacking attempt!'); }
 include_once(PHPWG_ROOT_PATH.'include/block.class.php');
 include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/CommonPlugin.class.inc.php');
 include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCUsersGroups.class.inc.php');
-include_once(PHPWG_PLUGINS_PATH.'GrumPluginClasses/classes/GPCCss.class.inc.php');
 
 
 class AMM_root extends CommonPlugin
 {
-  protected $css;   //the css object
   protected $defaultMenus = array(
     /* about visibility & accessibility system :
      *  - by default, everything is visible (users & groups)
@@ -62,7 +60,6 @@ class AMM_root extends CommonPlugin
 
   public function __destruct()
   {
-    unset($this->css);
     unset($this->defaultMenus);
     parent::__destruct();
   }
@@ -109,16 +106,6 @@ class AMM_root extends CommonPlugin
         $this->config['amm_randompicture_title'][$key]=base64_encode('A random picture');
       }
     }
-  }
-
-  public function loadConfig()
-  {
-    parent::loadConfig();
-  }
-
-  public function initEvents()
-  {
-    add_event_handler('blockmanager_register_blocks', array(&$this, 'registerBlocks') );
   }
 
   public function registerBlocks( $menu_ref_arr )

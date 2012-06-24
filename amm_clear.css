@@ -1,0 +1,30 @@
+div#iList.clear table tr:hover { color: #D54E21; background:#dbe8f3; }
+
+
+li.menuListItem span.menuListMove,
+li.pluginBox span.listMove,
+li.menuItem span.listMove {
+  width:15px;
+  display:inline-block;
+  height:15px;
+  position:relative;
+  background:url(./../GrumPluginClasses/icons/buttons.png) transparent no-repeat -285px -90px;
+}
+li.menuListItem:hover span.menuListMove,
+li.pluginBox:hover span.listMove,
+li.menuItem:hover span.listMove {
+  background-position:-285px -105px;
+}
+
+span.buttonEdit {
+  background-position:-240px -90px;
+}
+span.buttonDelete {
+  background-position:-255px -90px;
+}
+span.buttonEdit:hover {
+  background-position:-240px -105px;
+}
+span.buttonDelete:hover {
+  background-position:-255px -105px;
+}

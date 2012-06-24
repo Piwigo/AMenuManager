@@ -14,7 +14,7 @@
         <li class="categoryLi menuItem {if $id=='qsearch'}menuItemDisabled{/if}" id="i{$id}">
           {if $id=="qsearch"}
           {else}
-          <img src="{$themeconf.admin_icon_dir}/cat_move.png" class="button drag_button" alt="{'Drag to re-order'|@translate}" title="{'Drag to re-order'|@translate}"/>
+          <span class='listMove' title="{'Drag to re-order'|@translate}"></span>
           {/if}
           {$data.translation|@translate}
           <a  onclick="switchVisibility('i{$id}_visibility');">

@@ -7,15 +7,12 @@
     <td style='width:80px;'>{$block.visible}</td>
 
     <td width="40px">
-      <img src="{$themeconf.admin_icon_dir}/edit_s.png"
-           class="button" alt="{'g002_edit'|@translate}"
+      <span class="buttonEdit"
            title="{'g002_edit'|@translate}"
            onclick='upbm.edit({$block.id});'/>
-      <img src="{$themeconf.admin_icon_dir}/delete.png"
-           class="button"
-           alt="{'g002_delete'|@translate}"
-           title="{'g002_delete'|@translate}"
-           onclick='upbm.remove({$block.id});'/>
+      <span class="buttonDelete"
+            title="{'g002_delete'|@translate}"
+            onclick='upbm.remove({$block.id});'/>
     </td>
   </tr>
   {/foreach}

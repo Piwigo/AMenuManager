@@ -4,8 +4,6 @@ div#iList { width:100%; border:1px solid; height:280px; border-top:0px; overflow
 
 #iList table, table.listLinks { width:100%; text-align:left; border-collapse: collapse; }
 
-div#iList.roma table tr:hover { background:#303030; }
-div#iList.clear table tr:hover { color: #D54E21; background:#dbe8f3; }
 #iList table tr.connectedSortable,
 #iList li.connectedSortable { cursor: move; }
 #iList table tr.alignTop { vertical-align:top; }
@@ -13,7 +11,6 @@ div#iList.clear table tr:hover { color: #D54E21; background:#dbe8f3; }
 div.addLink, div.addBlock { text-align:left; }
 
 img.button { cursor:pointer; }
-
 
 
 .littlefont { font-size:90%; }
@@ -60,12 +57,10 @@ li.menuListItem {
   min-height:30px;
 }
 li.menuListItem span.menuListMove {
-  position:absolute;
-  width:22px;
-  display:inline-block;
+  top:-15px;
 }
 li.menuListItem span.menuListName {
-  margin-left:26px;
+  margin-left:0px;
   display:inline-block;
 }
 li.menuListItem div.menuListUsers,
@@ -91,3 +86,14 @@ table.menuListAccess {
 table.menuListAccess tr {
   vertical-align:top;
 }
+span.buttonEdit, span.buttonDelete {
+  display:inline-block;
+  width:15px;
+  height:15px;
+  position:relative;
+  background-color:transparent;
+  background-image:url(./../GrumPluginClasses/icons/buttons.png);
+  background-repeat:no-repeat;
+  cursor:pointer;
+}
+

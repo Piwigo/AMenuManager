@@ -80,7 +80,7 @@
         <td colspan="2">
           <div id="iamm_randompicture_title"></div>
 
-          <div id="islang">
+          <div id="islang" style='display:none;'>
             [
             {foreach from=$datas.langs key=langCode item=langLabel name=items}
               {ldelim}"value":"{$langCode}","cols":["{$langLabel}"]{rdelim}{if !$smarty.foreach.items.last},{/if}
@@ -111,7 +111,7 @@
         <tr>
           <td>{'g002_setting_randompic_showname'|@translate}</td>
           <td>
-            <div id="iamm_randompicture_showname">
+            <div id="iamm_randompicture_showname" style='display:none;'>
               [
                 {ldelim}"value":"n","cols":["{'g002_show_n'|@translate}"]{rdelim},
                 {ldelim}"value":"o","cols":["{'g002_show_o'|@translate}"]{rdelim},
@@ -124,7 +124,7 @@
         <tr>
           <td>{'g002_setting_randompic_showcomment'|@translate}</td>
           <td>
-            <div id="iamm_randompicture_showcomment">
+            <div id="iamm_randompicture_showcomment" style='display:none;'>
               [
                 {ldelim}"value":"n","cols":["{'g002_show_n'|@translate}"]{rdelim},
                 {ldelim}"value":"o","cols":["{'g002_show_o'|@translate}"]{rdelim},

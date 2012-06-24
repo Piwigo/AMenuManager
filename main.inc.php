@@ -245,27 +245,30 @@ include_once('amm_root.class.inc.php');
 
 global $prefixeTable, $page;
 
-
-if(defined('IN_ADMIN'))
+if(!defined('AJAX_CALL'))
 {
-  //AMM admin part loaded and active only if in admin page
-  include_once("amm_aim.class.inc.php");
-  $obj = new AMM_AIM($prefixeTable, __FILE__);
-  $obj->initEvents();
-  set_plugin_data($plugin['id'], $obj);
-}
-else
-{
-  if(CommonPlugin::checkGPCRelease(AMM_GPC_NEEDED))
+  if(defined('IN_ADMIN'))
   {
-    AMM_root::checkPluginRelease();
-
-    //AMM public part loaded and active only if in public page
-    include_once("amm_pip.class.inc.php");
-    $obj = new AMM_PIP($prefixeTable, __FILE__);
+    //AMM admin part loaded and active only if in admin page
+    include_once("amm_aim.class.inc.php");
+    $obj = new AMM_AIM($prefixeTable, __FILE__);
+    $obj->initEvents();
     set_plugin_data($plugin['id'], $obj);
   }
+  else
+  {
+    if(CommonPlugin::checkGPCRelease(AMM_GPC_NEEDED) and !mobile_theme())
+    {
+      AMM_root::checkPluginRelease();
+
+      //AMM public part loaded and active only if in public page
+      include_once("amm_pip.class.inc.php");
+      $obj = new AMM_PIP($prefixeTable, __FILE__);
+      set_plugin_data($plugin['id'], $obj);
+    }
+  }
 }
+
 
 
 ?>

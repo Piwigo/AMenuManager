@@ -61,7 +61,7 @@
     <tr>
       <td>{'g002_icon'|@translate}</td>
       <td>
-        <div id="iamm_icon">
+        <div id="iamm_icon" style='display:none;'>
           [
           {foreach from=$datas.iconsValues key=name item=icon name=items}
             {ldelim}"value":"{$icon.value}","cols":["&lt;img src='{$icon.img}'&gt;", "{$icon.label}"]{rdelim}{if !$smarty.foreach.items.last},{/if}
@@ -74,7 +74,7 @@
     <tr>
       <td>{'g002_mode'|@translate}</td>
       <td>
-        <div id="iamm_mode">
+        <div id="iamm_mode" style='display:none;'>
           [
           {foreach from=$datas.modesValues key=name item=mode name=items}
             {ldelim}"value":"{$mode.value}","cols":["{$mode.label}"]{rdelim}{if !$smarty.foreach.items.last},{/if}

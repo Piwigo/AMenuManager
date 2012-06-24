@@ -50,7 +50,6 @@ class AMM_AIP extends AMM_root
     $this->tabsheet->add('album',
                           l10n('g002_album'),
                           $this->getAdminLink().'-album');
-    $this->css = new GPCCss(dirname($this->getFileLocation()).'/'.$this->getPluginNameFiles().".css");
   }
 
 
@@ -75,8 +74,7 @@ class AMM_AIP extends AMM_root
     $template_plugin["PATH"] = AMM_PATH;
 
     $template->assign('plugin', $template_plugin);
-    $template->assign('token', get_pwg_token());
-
+    GPCCore::setTemplateToken();
 
     switch($_GET['tab'])
     {
@@ -104,16 +102,22 @@ class AMM_AIP extends AMM_root
     $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');
   }
 
-
-  /**
-   * initialize events call for the plugin
-   */
   public function initEvents()
   {
-    add_event_handler('loc_end_page_header', array(&$this->css, 'applyCSS'));
-    GPCCss::applyGpcCss();
+    parent::initEvents();
+    add_event_handler('blockmanager_register_blocks', array(&$this, 'registerBlocks') );
   }
 
+
+  public function loadCSS()
+  {
+    global $template;
+
+    parent::loadCSS();
+    GPCCore::addUI('gpcCSS');
+    GPCCore::addHeaderCSS('amm.css', 'plugins/'.$this->getDirectory().'/'.$this->getPluginNameFiles().".css");
+    GPCCore::addHeaderCSS('amm.cssT', 'plugins/'.$this->getDirectory().'/'.$this->getPluginNameFiles().'_'.$template->get_themeconf('name').".css");
+  }
 
   /**
    * if empty, initialize the $_REQUEST var

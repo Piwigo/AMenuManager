@@ -13,8 +13,16 @@
         <td>{$section.nfo}</td>
         <td>{$section.title}</td>
         <td style="text-align:center;">{$section.visible}</td>
-        <td width="15px"><a href="{$section.edit}"><img src='{$themeconf.icon_dir}/category_edit.png'/></a></td>
-        <td width="15px"><a style="cursor:pointer;" onclick="load_list('delete', {$section.ID})"><img src='{$themeconf.icon_dir}/delete.png'/></a></td>
+        <td width="15px">
+          <a href="{$section.edit}">
+            <span class='buttonEdit'/>
+          </a>
+        </td>
+        <td width="15px">
+          <a style="cursor:pointer;" onclick="load_list('delete', {$section.ID})">
+            <span class='buttonDelete'/>
+          </a>
+        </td>
       </tr>
     {/foreach}
 

@@ -32,7 +32,7 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
           type: "POST",
           url: options.ajaxUrl,
           async: true,
-          data: { ajaxfct:"admin.blocks.list" },
+          data: { ajaxfct:"admin.blocks.list", token:properties.token },
           success:
             function(msg)
             {
@@ -256,7 +256,7 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
                 type: "POST",
                 url: options.ajaxUrl,
                 async: true,
-                data: { ajaxfct:"admin.blocks.get", id:properties.id },
+                data: { ajaxfct:"admin.blocks.get", token:properties.token, id:properties.id },
                 success:
                   function(msg)
                   {

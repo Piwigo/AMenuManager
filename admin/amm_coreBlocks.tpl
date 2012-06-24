@@ -49,7 +49,7 @@
         <table class='menuListAccess'>
           <tr>
             <td style='min-width: 250px;'>
-              <span class='menuListMove'><img src="{$themeconf.admin_icon_dir}/cat_move.png" class="drag_button" alt="{'Drag to re-order'|@translate}" title="{'Drag to re-order'|@translate}"/></span>
+              <span class='menuListMove' title="{'Drag to re-order'|@translate}">&nbsp;</span>
               <span class='menuListName'>
                 <span style='font-weight:bold;' class='pluginBoxNameCell'>{$block.name|@translate}</span>&nbsp;[{$block.id}]<br>
                 <span style='font-style:italic;'>{if $block.owner=='piwigo'}Piwigo{else}{'g002_plugin'|@translate}&nbsp;:&nbsp;{$block.owner}{/if}</span>
@@ -57,7 +57,7 @@
             </td>
             <td style='min-width: 100px;text-align:right;'>{'g002_accessibility'|@translate}</td>
             <td style='width:30%;'>
-              <div id='users_{$block.id}' class='menuListUsers'>
+              <div id='users_{$block.id}' class='menuListUsers' style='display:none;'>
               {ldelim}
                 "selected":{$block.users},
                 "values":
@@ -70,7 +70,7 @@
               </div>
             </td>
             <td style='width:30%;'>
-              <div id='groups_{$block.id}' class='menuListGroups'>
+              <div id='groups_{$block.id}' class='menuListGroups' style:'display:none;'>
               {ldelim}
                 "selected":{$block.groups},
                 "values":
@@ -113,7 +113,7 @@
                 <div class='pluginBoxNameCell'>
                   {if $id=="qsearch"}
                   {else}
-                  <img src="{$themeconf.admin_icon_dir}/cat_move.png" class="button drag_button" alt="{'Drag to re-order'|@translate}" title="{'Drag to re-order'|@translate}"/>
+                  <span class='listMove' title="{'Drag to re-order'|@translate}"></span>
                   {/if}
                   {$data.translation|@translate}
 

@@ -39,7 +39,7 @@ function randomPictConfig(opt, keys, token, initValues)
 
 
 
-      list=$('#iamm_randompicture_title').inputText('languagesValues');
+      list=$('#iamm_randompicture_title').inputText('languagesValues').css('display', 'block');
       for(var id in list)
       {
         datas.blockTitles.push({id:id, value:list[id]});
@@ -153,14 +153,14 @@ function randomPictConfig(opt, keys, token, initValues)
         popupMode:'mouseout',
         change: function () { $('#iConfigState').hide(); }
       }
-    ).inputList('value', initValues.infosName);
+    ).inputList('value', initValues.infosName).css('display', 'block');
     $('#iamm_randompicture_showcomment').inputList(
       {
         colsWidth:[300],
         popupMode:'mouseout',
         change: function () { $('#iConfigState').hide(); }
       }
-    ).inputList('value', initValues.infosComment);
+    ).inputList('value', initValues.infosComment).css('display', 'block');
 
 
     $('#islang').inputList(
@@ -168,7 +168,7 @@ function randomPictConfig(opt, keys, token, initValues)
         popupMode:'mouseout',
         change: function () { $('#iConfigState').hide(); }
       }
-    );
+    ).css('display', 'block');
 
     $('#iamm_randompicture_title').inputText(
       {
@@ -182,7 +182,7 @@ function randomPictConfig(opt, keys, token, initValues)
       }
     );
 
-    $('#islang').inputList('value', initValues.userLang);
+    $('#islang').inputList('value', initValues.userLang).css('display', 'block');
 
 
 

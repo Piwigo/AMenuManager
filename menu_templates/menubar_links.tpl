@@ -3,7 +3,7 @@
   <dt>{$block->get_title()}</dt>
 {/if}
 <dd>
-  <ul {if $block->data.icons=='y'}style="padding-left:4px;list-style:none;"{/if}>
+  <ul {if $block->data.icons=='y'} class="amm-MenuBar-links-icons"{else}class="amm-MenuBar-links"{/if}>
     {foreach from=$block->data.LINKS item=link}
       <li>
         {if $block->data.icons=='y'}<img src='{$link.icon}' style="position:relative;top:3px;"/>{/if}

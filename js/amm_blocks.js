@@ -259,7 +259,7 @@ function coreBlocks(opt, keys, token, initValues)
               $('#iConfigState').hide();
             }
         }
-      ).inputList('value', ':invert');
+      ).inputList('value', ':invert').css('display', 'block');
 
 
       displayTabContent(initValues.tab);
