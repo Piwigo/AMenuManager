@@ -3,8 +3,7 @@
   Plugin     : Advanced Menu Manager
   Author     : Grum
     email    : grum@piwigo.org
-    website  : http://photos.grum.dnsalias.com
-    PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
+    website  : http://www.grum.fr
 
     << May the Little SpaceFrog be with you ! >>
   ------------------------------------------------------------------------------

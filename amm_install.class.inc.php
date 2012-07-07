@@ -3,14 +3,13 @@
   Plugin     : Advanced Menu Manager
   Author     : Grum
     email    : grum@piwigo.org
-    website  : http://photos.grum.fr
-    PWG user : http://forum.phpwebgallery.net/profile.php?id=3706
+    website  : http://www.grum.fr
 
     << May the Little SpaceFrog be with you ! >>
   ------------------------------------------------------------------------------
   See main.inc.php for release information
 
-  MyPolls_Install : classe to manage plugin install
+  AMM_Install : classe to manage plugin install
 
   --------------------------------------------------------------------------- */
   include_once('amm_version.inc.php');

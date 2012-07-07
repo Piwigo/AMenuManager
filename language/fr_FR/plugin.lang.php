@@ -125,5 +125,5 @@ $lang['g002_configrandompic'] = 'Paramètres images aléatoires';
 
 $lang['Grum Plugin Classes is not installed'] = 'Le plugin <b>Grum Plugin Classes</b> n\'est pas installé';
 $lang['gmaps_gpc_not_up_to_date'] = 'La présence du plugin <i>Grum Plugin Classes</i> en version %s est nécessaire.
-Actuellement, le version %s est installée : Merci de procéder à la mise à jour de la version du plugin <i>Grum Plugin Classes</i>.';
+Actuellement, la version %s est installée : merci de procéder à la mise à jour de la version du plugin <i>Grum Plugin Classes</i>.';
 ?>
