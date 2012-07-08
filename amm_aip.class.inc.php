@@ -327,18 +327,20 @@ class AMM_AIP extends AMM_root
 
     $this->sortCoreBlocksItems();
 
-    foreach($this->config['amm_blocks_items'] as $menuId=>$menu)
-    {
-      $this->config['amm_blocks_items'][$menuId]['visibilityForm'] = $this->makeBlockVisibility($menu['visibility'], $menuId);
-      $this->config['amm_blocks_items'][$menuId]['translation']=$this->defaultMenus[$menuId]['translation'];
-      $this->defaultMenus[$menuId]['visibilityForm'] = $this->makeBlockVisibility("/", $menuId);
-    }
-
     $registeredBlocks=$this->getRegisteredBlocks();
     foreach($registeredBlocks as $key=>$val)
     {
       $registeredBlocks[$key]['users']=json_encode($registeredBlocks[$key]['users']);
       $registeredBlocks[$key]['groups']=json_encode($registeredBlocks[$key]['groups']);
+    }
+
+
+
+    foreach($this->config['amm_blocks_items'] as $menuId=>$menu)
+    {
+      $this->config['amm_blocks_items'][$menuId]['visibilityForm'] = $this->makeBlockVisibility($menu['visibility'], $menuId);
+      $this->config['amm_blocks_items'][$menuId]['translation']=$this->defaultMenus[$menuId]['translation'];
+      $this->defaultMenus[$menuId]['visibilityForm'] = $this->makeBlockVisibility("/", $menuId);
     }
 
     $datas=array(
