@@ -325,8 +325,6 @@ class AMM_AIP extends AMM_root
     $users=new GPCUsers();
     $groups=new GPCGroups();
 
-    $this->sortCoreBlocksItems();
-
     $registeredBlocks=$this->getRegisteredBlocks();
     foreach($registeredBlocks as $key=>$val)
     {
@@ -334,7 +332,7 @@ class AMM_AIP extends AMM_root
       $registeredBlocks[$key]['groups']=json_encode($registeredBlocks[$key]['groups']);
     }
 
-
+    $this->sortCoreBlocksItems();
 
     foreach($this->config['amm_blocks_items'] as $menuId=>$menu)
     {
