@@ -526,6 +526,19 @@ class AMM_root extends CommonPlugin
     $menu->load_registered_blocks();
     $registeredBlocks = $menu->get_registered_blocks();
 
+    $nbExistingGroups=0;
+    $sql="SELECT COUNT(id) AS nbGroup
+          FROM ".GROUPS_TABLE.";";
+    $result=pwg_query($sql);
+    if($result)
+    {
+      while($row=pwg_db_fetch_assoc($result))
+      {
+        $nbExistingGroups=$row['nbGroup'];
+      }
+    }
+
+
     $userGroups=array();
     $sql="SELECT group_id
           FROM ".USER_GROUP_TABLE."
@@ -555,24 +568,37 @@ class AMM_root extends CommonPlugin
           $ok=true;
           if($userFiltered)
           {
+            // filter access enabled
+
             $users->setAlloweds($row['users'], false);
             if($users->isAllowed($user['status']))
             {
+              // user is authorized, check group
               if(count($userGroups))
               {
+                // users is attached to one group or more, check access for each group
+                // at least, one group must have right access
+                $nbOk=count($userGroups);
+
                 $groups->setAlloweds($row['groups'], false);
                 foreach($row['groups'] as $val)
                 {
-                  if(isset($userGroups[$val]) and !$groups->isAllowed($val)) $ok=false;
+                  if(isset($userGroups[$val]) and !$groups->isAllowed($val)) $nbOk--;
                 }
+
+                // no group is authorized to access the menu
+                if($nbOk==0) $ok=false;
               }
-              else
+              elseif($nbExistingGroups>0 and count($row['groups'])>0)
               {
-                if(count($row['groups'])==0) $ok=false;
+                // if user is not attached to any group and if at least there 1
+                // existing group, no authorization to access to the menu
+                $ok=false;
               }
             }
             else
             {
+              // user not authorized
               $ok=false;
             }
           }
