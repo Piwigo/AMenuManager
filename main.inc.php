@@ -221,6 +221,10 @@ Author URI: http://piwigo.org
 | 3.2.2   | 2012/07/15 | * mantis: bug 2696
 |         |            |   . When applying config on "random pict", admin page is blocked on waiting icon
 |         |            |
+| 3.2.3   | 2012/07/15 | * mantis: bug 2697
+|         |            |   . hu_HU language file is not correct
+|         |            |
+|         |            |
 |         |            |
 |         |            |
 |         |            |
