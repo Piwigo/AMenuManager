@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.0
+Version: 3.2.1
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -211,6 +211,12 @@ Author URI: http://piwigo.org
 | 3.2.0   | 2012/05/27 | * mantis: bug 2642
 |         |            |   . Compatibility with Piwigo 2.4
 |         |            |
+|         |            | * mantis bug:2371
+|         |            |   . User access management don't work if user is linked
+|         |            |     to a group => seems to be definitively fixed...
+|         |            |
+| 3.2.1   | 2012/07/15 | * mantis: bug 2695
+|         |            |   . In admin page, it's not possible to manage "random pict"
 |         |            |
 |         |            |
 |         |            |

@@ -180,7 +180,7 @@ class AMM_AIP extends AMM_root
     global $template, $user;
 
     GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/jquery.ui.core.js', array('jquery'));
-    GPCCore::addHeaderJS('jquery.ui.widget', 'themes/default/js/ui/jquery.ui.widget.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.widget', 'themes/default/js/ui/jquery.ui.widget.js', array('jquery.ui'));
     GPCCore::addHeaderJS('jquery.ui.mouse', 'themes/default/js/ui/jquery.ui.mouse.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.position', 'themes/default/js/ui/jquery.ui.position.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/jquery.ui.sortable.js', array('jquery.ui.widget'));
@@ -221,9 +221,9 @@ class AMM_AIP extends AMM_root
     global $template, $user;
 
     GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/jquery.ui.core.js', array('jquery'));
-    GPCCore::addHeaderJS('jquery.ui.widget', 'themes/default/js/ui/jquery.ui.widget.js', array('jquery'));
-    GPCCore::addHeaderJS('jquery.ui.mouse', 'themes/default/js/ui/jquery.ui.mouse.js', array('jquery'));
-    GPCCore::addHeaderJS('jquery.ui.position', 'themes/default/js/ui/jquery.ui.position.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.widget', 'themes/default/js/ui/jquery.ui.widget.js', array('jquery.ui'));
+    GPCCore::addHeaderJS('jquery.ui.mouse', 'themes/default/js/ui/jquery.ui.mouse.js', array('jquery.ui.widget'));
+    GPCCore::addHeaderJS('jquery.ui.position', 'themes/default/js/ui/jquery.ui.position.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/jquery.ui.sortable.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.dialog', 'themes/default/js/ui/jquery.ui.dialog.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.slider', 'themes/default/js/ui/jquery.ui.slider.js', array('jquery.ui.widget'));
@@ -301,7 +301,7 @@ class AMM_AIP extends AMM_root
     global $template, $conf;
 
     GPCCore::addHeaderJS('jquery.ui', 'themes/default/js/ui/jquery.ui.core.js', array('jquery'));
-    GPCCore::addHeaderJS('jquery.ui.widget', 'themes/default/js/ui/jquery.ui.widget.js', array('jquery'));
+    GPCCore::addHeaderJS('jquery.ui.widget', 'themes/default/js/ui/jquery.ui.widget.js', array('jquery.ui'));
     GPCCore::addHeaderJS('jquery.ui.mouse', 'themes/default/js/ui/jquery.ui.mouse.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.position', 'themes/default/js/ui/jquery.ui.position.js', array('jquery.ui.widget'));
     GPCCore::addHeaderJS('jquery.ui.sortable', 'themes/default/js/ui/jquery.ui.sortable.js', array('jquery.ui.widget'));
