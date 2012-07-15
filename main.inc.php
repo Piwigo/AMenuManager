@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.1
+Version: 3.2.2
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -217,6 +217,9 @@ Author URI: http://piwigo.org
 |         |            |
 | 3.2.1   | 2012/07/15 | * mantis: bug 2695
 |         |            |   . In admin page, it's not possible to manage "random pict"
+|         |            |
+| 3.2.2   | 2012/07/15 | * mantis: bug 2696
+|         |            |   . When applying config on "random pict", admin page is blocked on waiting icon
 |         |            |
 |         |            |
 |         |            |

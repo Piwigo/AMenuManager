@@ -273,7 +273,7 @@ function userPersonnalisedBlockManage(opt, keys, token, initValues)
         }
       );
 
-    $('#islang').inputList({popupMode:'mouseout', listMaxHeight:300});
+    $('#islang').inputList({popupMode:'mouseout', listMaxHeight:250});
 
 
     $('#iamm_personalised_nfo').inputText(

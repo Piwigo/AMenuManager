@@ -103,7 +103,12 @@ function userLinksConfig(opt, keys, token, initValues)
     $('#iamm_links_show_icons').inputRadio();
     $('#iamm_links_show_icons').inputRadio('value', initValues.showIcons);
 
-    $('#islang').inputList({popupMode:'mouseout'});
+    $('#islang').inputList(
+      {
+        popupMode:'mouseout',
+        listMaxHeight:250
+      }
+    );
 
     $('#iamm_links_title').inputText(
       {

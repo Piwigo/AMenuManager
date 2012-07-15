@@ -39,7 +39,7 @@ function randomPictConfig(opt, keys, token, initValues)
 
 
 
-      list=$('#iamm_randompicture_title').inputText('languagesValues').css('display', 'block');
+      list=$('#iamm_randompicture_title').inputText('languagesValues');
       for(var id in list)
       {
         datas.blockTitles.push({id:id, value:list[id]});
@@ -165,6 +165,7 @@ function randomPictConfig(opt, keys, token, initValues)
 
     $('#islang').inputList(
       {
+        listMaxHeight:250,
         popupMode:'mouseout',
         change: function () { $('#iConfigState').hide(); }
       }
