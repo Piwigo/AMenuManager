@@ -116,4 +116,5 @@ $lang['g002_album2menu'] = "Izvēlnē konvertētais albūms";
 $lang['g002_album'] = "Albūma &rArr; izvēlne";
 $lang['g002_setting_albums_menus'] = "Albūmi, ko konvertēt izvēlnē";
 
+$lang['gmaps_gpc_not_up_to_date'] = 'Spraudnim nepieciešams lai būtu uzinstalēta spraudņa <i>Grum Plugin Classes</i> versija %s. Patlaban ir uzinstalēta versija %s: lūdzu pielietojiet spraudņa <i>Grum Plugin Classes</i> jauninājumu.    ';
 ?>
