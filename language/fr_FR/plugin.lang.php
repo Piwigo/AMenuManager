@@ -119,7 +119,7 @@ $lang['g002_setting_albums_menus'] = "Album à convertir en menu";
 
 
 /* --- removed keys ---
-$lang['g002_configrandompic'] = 'Paramètres images aléatoires';
+$lang['g002_configrandompic'] = 'Configuration des images aléatoires';
 */
 
 
