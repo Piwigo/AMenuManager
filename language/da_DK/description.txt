@@ -1,0 +1,1 @@
+Advanced Menu Manager giver mulighed for let at ændre menuens udseende i galleriet.
