@@ -363,6 +363,7 @@ class AMM_root extends CommonPlugin
     {
       while($row=pwg_db_fetch_assoc($result))
       {
+        $row['content'] = trigger_event('get_extended_desc', $row['content']);
         $returned[]=$row;
       }
     }
