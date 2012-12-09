@@ -363,7 +363,6 @@ class AMM_root extends CommonPlugin
     {
       while($row=pwg_db_fetch_assoc($result))
       {
-        $row['content'] = trigger_event('get_extended_desc', $row['content']);
         $returned[]=$row;
       }
     }
@@ -682,8 +681,10 @@ class AMM_root extends CommonPlugin
   {
     global $template, $prefixeTable, $conf;
 
+    $config=array();
+    GPCCore::loadConfig('amm', $config);
 
-    if($conf['amm_config']['installed']!=AMM_VERSION2)
+    if($config['installed']!=AMM_VERSION2)
     {
       /* the plugin was updated without being deactivated
        * deactivate + activate the plugin to process the database upgrade
