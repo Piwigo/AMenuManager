@@ -97,4 +97,21 @@ $lang['g002_config_saved'] = "الاعدادات حفظت";
 $lang['g002_adviser_not_allowed'] = "المراقب لايسمح له بعمل تغييرات";
 $lang['g002_click_to_manage_rights'] = "تنطيم الحقوق";
 
+$lang['g002_accessibility'] = 'إمكانية الوصول';
+$lang['g002_album'] = 'ألبوم ⇒ القائمة';
+$lang['g002_album2menu'] = 'تحويل الألبوم إلى قائمة';
+$lang['g002_album_nfo'] = 'السمح لتحويل ألبوم أو أكثر إلى قائمة ';
+$lang['g002_config_not_saved'] = 'لم يتم حفظ التكوين الترتيب';
+$lang['g002_loading'] = '...تحميل';
+$lang['g002_ok'] = 'تمام';
+$lang['g002_plugin'] = 'البرنامج المساعد';
+$lang['g002_reset_order'] = 'إعادة الترتيب';
+$lang['g002_selected_all_gallery'] = 'جميع الألبومات';
+$lang['g002_selected_categories'] = 'جميع الألبومات المختارة';
+$lang['g002_selected_favorites_wm'] = 'أفضل صور الويبمستر';
+$lang['g002_selectedpict'] = 'الصور المختارة';
+$lang['g002_setting_albums_menus'] = 'الألبومات التي ستحول إلى قائمة';
+$lang['g002_setting_blocks_position'] = 'الرؤية وترتيب القوائم';
+$lang['g002_setting_core_blocks_content'] = 'محتوى \'القائمة\' والقوائم \'الخاصة\'';
+$lang['g002_valid_order'] = 'تطبيق النظام';
 ?>
