@@ -116,4 +116,6 @@ $lang['g002_album2menu'] = "Konverter album til meny";
 $lang['g002_album'] = "Album &rArr; meny";
 $lang['g002_setting_albums_menus'] = "Album å konvertere til meny";
 
+$lang['gmaps_gpc_not_up_to_date'] = 'Det er påkrevd for plugin\'en at <i>Grum Plugin Classes</i> versjonen er installert
+Nå er versjon %s installert: vennligst fortsett med den oppdaterte versjonen av plugin\'en <i>Grum Plugin Classes</i>.';
 ?>
