@@ -442,7 +442,7 @@ class AMM_root extends CommonPlugin
     {
       $sql="UPDATE ".$this->tables['personalised']."
             SET visible='$visible',
-                nfo='".$nfo."'
+                nfo='".pwg_db_real_escape_string(stripslashes($nfo))."'
             WHERE id='$id';";
       $result=pwg_query($sql);
       if($result)
@@ -462,8 +462,8 @@ class AMM_root extends CommonPlugin
       {
         $values[]="('$id',
                     '".$lang['lang']."',
-                    '".$lang['title']."',
-                    '".$lang['content']."')";
+                    '".pwg_db_real_escape_string(stripslashes($lang['title']))."',
+                    '".pwg_db_real_escape_string(stripslashes($lang['content']))."')";
       }
       $sql="INSERT INTO ".$this->tables['personalised_langs']." VALUES ".implode(',', $values);
       $result=pwg_query($sql);
