@@ -401,6 +401,11 @@ class AMM_PIP extends AMM_root
 
     $returned=array();
 
+    if (preg_match('/(Googlebot|bingbot|Baiduspider|yandex|AhrefsBot|msnbot|NCollector)/', $_SERVER["HTTP_USER_AGENT"]))
+    {
+      return($returned);
+    }
+
     $sql=array();
 
     $sql['select']="SELECT i.id as image_id, i.file as image_file, i.comment, i.path, c.id as catid, c.name, c.permalink, RAND() as rndvalue, i.name as imgname ";
