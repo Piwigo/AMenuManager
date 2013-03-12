@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.4
+Version: 3.2.5
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -227,9 +227,11 @@ Author URI: http://piwigo.org
 | 3.2.4   | 2012/12/09 | * mantis: bug 2799
 |         |            |   . Undefined index 'installed'
 |         |            |
-|         |            |
-|         |            |
-|         |            |
+| 3.2.5   | 2013/03/12 | * Checked compatibility with Piwigo 2.5
+|         |            | * Custom menus are compatible with Extended Description plugin syntax
+|         |            | * new language pt_BR
+|         |            | * mantis bug:2799 compatibility with PHP 5.4
+|         |            | * random picture not computed for search engine robots
 
 
 :: TO DO
