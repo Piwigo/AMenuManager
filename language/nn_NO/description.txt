@@ -1,0 +1,1 @@
+Advanced Menu Manager gjev enkel tilgang for å endre utsjånad av menyar i galleriet.
