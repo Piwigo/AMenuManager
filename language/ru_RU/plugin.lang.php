@@ -56,7 +56,7 @@ $lang['g002_sectionid'] = 'Идентификатор';
 $lang['g002_name'] = 'Надпись';
 
 $lang['g002_configrandompic'] = 'Настройка случайной картинки';
-$lang['g002_setting_randompic_aboutpicture'] = 'Отображаемые даты';
+$lang['g002_setting_randompic_aboutpicture'] = 'Отображаемые данные';
 $lang['g002_setting_randompic_showname'] = 'Показать название картинки';
 $lang['g002_setting_randompic_showcomment'] = 'Показать комментарии к картинке';
 $lang['g002_show_n'] = 'Нет';
