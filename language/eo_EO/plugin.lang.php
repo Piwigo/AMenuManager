@@ -71,4 +71,14 @@ $lang['g002_owner'] = 'Posedanto';
 $lang['g002_personalisedlist'] = 'Listo de tajloritaj blokoj';
 $lang['g002_personnalblock'] = 'Tajlorita menuo';
 $lang['g002_plugin'] = 'Kromaĵo';
+$lang['g002_setting_personalised_content'] = 'Bloka enhavo';
+$lang['g002_setting_personalised_nfo'] = 'Priskribo';
+$lang['g002_setting_personalised_properties'] = 'Ecoj';
+$lang['g002_setting_randompic_aboutpicture'] = 'Vidigitaj datumoj';
+$lang['g002_modmenu'] = 'bloko \'menuo\'';
+$lang['g002_modspecial'] = 'bloko \'speciala\'';
+$lang['g002_sectionslist'] = 'Menuaj blokoj';
+$lang['g002_setting_albums_menus'] = 'Fotaroj konvertendaj al menuo';
+$lang['g002_setting_block_active'] = 'Vidigi blokon en menuon';
+$lang['g002_setting_link_links'] = 'Ligiloj';
 ?>
