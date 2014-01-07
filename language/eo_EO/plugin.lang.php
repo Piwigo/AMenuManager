@@ -95,4 +95,10 @@ $lang['g002_setting_randompic_height'] = 'Alteco de la menubloko';
 $lang['g002_setting_randompic_height_auto'] = 'Aŭtomata';
 $lang['g002_setting_randompic_periodicchange_deactivated'] = 'Malŝaltita';
 $lang['g002_setting_randompic_periodicchange_delay'] = 'Prokrasto';
+$lang['g002_show_n'] = 'Ne';
+$lang['g002_title'] = 'Titolo';
+$lang['g002_url'] = 'Retadreso';
+$lang['g002_visible'] = 'Videbla';
+$lang['g002_yesno_n'] = 'Ne';
+$lang['g002_yesno_y'] = 'Jes';
 ?>
