@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.5
+Version: 3.2.7
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -232,7 +232,10 @@ Author URI: http://piwigo.org
 |         |            | * new language pt_BR
 |         |            | * mantis bug:2799 compatibility with PHP 5.4
 |         |            | * random picture not computed for search engine robots
-
+|         |            |
+| 3.2.6   | 2014/01/23 | * Checked compatibility with Piwigo 2.6
+|         |            |
+| 3.2.7   | 2014/04/21 | * speed improvement for Random Picture in menu
 
 :: TO DO
 
