@@ -408,11 +408,45 @@ class AMM_PIP extends AMM_root
 
     $sql=array();
 
-    $sql['select']="SELECT i.id as image_id, i.file as image_file, i.comment, i.path, c.id as catid, c.name, c.permalink, RAND() as rndvalue, i.name as imgname ";
-    $sql['from']="FROM ".CATEGORIES_TABLE." c, ".IMAGES_TABLE." i, ".IMAGE_CATEGORY_TABLE." ic ";
-    $sql['where']="WHERE c.id = ic.category_id
-            AND ic.image_id = i.id
-            AND i.level <= ".$user['level']." ";
+    // because ORDER BY RAND() can be very slow on a big database, let's
+    // make a first query with no join and by security take 5 times
+    // $num. We keep the result in session for 5 minutes.
+    if (!isset($_SESSION['amm_random_pics'])
+        or !isset($_SESSION['amm_random_pics_generated_on'])
+        or $_SESSION['amm_random_pics_generated_on'] < time() - 5*60) // 5 minutes ago
+    {
+      $query = '
+SELECT id
+  FROM '.IMAGES_TABLE.'
+  WHERE level <= '.$user['level'].'
+  ORDER BY RAND() LIMIT '.($num*5).'
+;';
+      $_SESSION['amm_random_pics'] = query2array($query, null, 'id');
+      $_SESSION['amm_random_pics_generated_on'] = time();
+    }
+    
+    $sql['select'] = '
+SELECT
+    i.id as image_id,
+    i.file as image_file,
+    i.comment,
+    i.path,
+    c.id as catid,
+    c.name,
+    c.permalink,
+    i.name as imgname
+';
+    
+    $sql['from'] = '
+  FROM '.CATEGORIES_TABLE.' c
+    JOIN '.IMAGE_CATEGORY_TABLE.' ic ON ic.category_id = c.id
+    JOIN '.IMAGES_TABLE.' i ON i.id = ic.image_id
+';
+    
+    $sql['where'] = '
+  WHERE i.id IN ('.implode(',', $_SESSION['amm_random_pics']).')
+    AND i.level <= '.$user['level'].'
+';
 
     if($user['forbidden_categories']!="")
     {
@@ -437,8 +471,7 @@ class AMM_PIP extends AMM_root
         break;
     }
 
-    $sql=$sql['select'].$sql['from'].$sql['where']." ORDER BY rndvalue LIMIT 0,$num";
-
+    $sql = $sql['select'].$sql['from'].$sql['where']." ORDER BY RAND() LIMIT $num;";
 
     $result = pwg_query($sql);
     if($result)
