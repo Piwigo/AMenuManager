@@ -214,7 +214,7 @@ class AMM_PIP extends AMM_root
         {
           $this->currentBuiltMenu=$row['id'];
 
-          $row['name']=trigger_event('render_category_name', $row['name'], 'amm_album_to_menu');
+          $row['name']=trigger_change('render_category_name', $row['name'], 'amm_album_to_menu');
 
           if(($block=$menu->get_block('mbAMM_album'.$row['id']))!= null)
           {

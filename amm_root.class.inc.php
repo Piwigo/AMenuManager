@@ -143,7 +143,7 @@ class AMM_root extends CommonPlugin
       {
         while($row=pwg_db_fetch_assoc($result))
         {
-          $row['name']=trigger_event('render_category_name', $row['name'], 'amm_album_to_menu');
+          $row['name']=trigger_change('render_category_name', $row['name'], 'amm_album_to_menu');
 
           $menu->register_block( new RegisteredBlock( 'mbAMM_album'.$row['id'], $row['name'].' ('.l10n('g002_album2menu').') ', 'AMM'));
         }
@@ -363,7 +363,7 @@ class AMM_root extends CommonPlugin
     {
       while($row=pwg_db_fetch_assoc($result))
       {
-        $row['content'] = trigger_event('get_extended_desc', $row['content']);
+        $row['content'] = trigger_change('get_extended_desc', $row['content']);
         $returned[]=$row;
       }
     }
