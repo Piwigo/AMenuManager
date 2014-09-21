@@ -102,4 +102,10 @@ $lang['g002_config_saved'] = 'Konfigurasjon vart lagra';
 $lang['g002_configlinks'] = 'Innstillingar for lenker';
 $lang['g002_configrandompic'] = 'Innstillingar for tilfeldig bilete';
 $lang['g002_confirm_delete_link'] = 'Fjern lenke?';
-?>
+$lang['g002_click_to_manage_rights'] = 'Handtering av rettar';
+$lang['g002_modspecial'] = 'spesialblokk';
+$lang['g002_sectionslist'] = 'Menyblokk';
+$lang['g002_setting_core_blocks_content'] = 'Innhald for \'Meny\' og \'Spesial\' menyar';
+$lang['g002_setting_randompic_periodicchange'] = 'Endre bilete over tid';
+$lang['g002_setting_randompic_periodicchange_deactivated'] = 'Ikkje aktiv';
+$lang['g002_setting_randompic_periodicchange_delay'] = 'Pause';
