@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.7
+Version: 3.2.8
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -236,6 +236,8 @@ Author URI: http://piwigo.org
 | 3.2.6   | 2014/01/23 | * Checked compatibility with Piwigo 2.6
 |         |            |
 | 3.2.7   | 2014/04/21 | * speed improvement for Random Picture in menu
+|         |            |
+| 3.2.8   | 2014/09/22 | * Checked compatibility with Piwigo 2.7 (thanks to modification on trigger_* by mistic)
 
 :: TO DO
 
