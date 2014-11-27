@@ -371,8 +371,25 @@
     private function ajax_amm_admin_linksGet($id)
     {
       $link=$this->getLink($id);
-      $link['accessUsers']=explode(',', $link['accessUsers']);
-      $link['accessGroups']=explode(',', $link['accessGroups']);
+      
+      if (empty($link['accessUsers']))
+      {
+        $link['accessUsers'] = array();
+      }
+      else
+      {
+        $link['accessUsers']=explode(',', $link['accessUsers']);
+      }
+
+      if (empty($link['accessGroups']))
+      {
+        $link['accessGroups'] = array();
+      }
+      else
+      {
+        $link['accessGroups']=explode(',', $link['accessGroups']);
+      }
+      
       return(json_encode($link));
     }
 
