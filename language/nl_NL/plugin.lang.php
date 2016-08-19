@@ -1,11 +1,11 @@
 <?php
 
-$lang['Grum Plugin Classes is not installed'] = 'Plugin <b>Grum Plugin Classes</b> in not installed';
+$lang['Grum Plugin Classes is not installed'] = 'Plugin <b>Grum Plugin Classes</b> is niet geïnstalleerd';
 
-$lang['g002_title_page'] = 'Advanced Menu Management';
+$lang['g002_title_page'] = 'Gevorderd Menu Management';
 $lang['g002_version'] = 'r';
 
-$lang['g002_error_invalid_ajax_call'] = "Ingeldige functie-aanroep !";
+$lang['g002_error_invalid_ajax_call'] = 'Ongeldige functie-aanroep !';
 
 $lang['g002_setmenu'] = 'Menu management';
 $lang['g002_addlinks'] = 'Links';
@@ -43,7 +43,7 @@ $lang['g002_setting_link_show_icon'] = 'Geef de representatieve afbeeldingen van
 
 $lang['g002_setting_block_menu'] = 'Menu integratie';
 $lang['g002_setting_block_active'] = 'Geef het blok weer in het menu';
-$lang['g002_setting_block_title'] = 'Block titel';
+$lang['g002_setting_block_title'] = 'Blok titel';
 $lang['g002_apply'] = 'Pas toe';
 
 $lang['g002_sectionslist'] = 'Menu-blok';
@@ -70,7 +70,7 @@ $lang['g002_sections'] = 'blokken';
 $lang['g002_section'] = 'blok';
 $lang['g002_nosections'] = 'Geen blokken';
 $lang['g002_addsection'] = 'Voeg een nieuw blok toe';
-$lang['g002_createofpersonalised'] = 'Maak een nieuw gersonaliseerd blok aan';
+$lang['g002_createofpersonalised'] = 'Maak een nieuw gepersonaliseerd blok aan';
 $lang['g002_editofpersonalised'] = 'Wijzig een gepersonaliseerd blok';
 $lang['g002_setting_block_langchoice'] = 'Taal';
 $lang['g002_setting_personalised_content'] = 'Inhoud';
@@ -94,7 +94,7 @@ $lang['g002_cancel'] = "Annuleren";
 $lang['g002_piwigo_default'] = "Piwigo\'s standaard sortering";
 $lang['g002_apply_changes'] = "Pas de wijzigingen toe";
 $lang['g002_config_saved'] = "De configuratie is opgeslagen";
-$lang['g002_adviser_not_allowed'] = "Het is een Adviser niet toegestaan om wijzigingen te amken";
+$lang['g002_adviser_not_allowed'] = 'Het is een Adviser niet toegestaan om wijzigingen te maken';
 $lang['g002_click_to_manage_rights'] = "Rechten management";
 
 
@@ -117,7 +117,5 @@ $lang['g002_album_nfo'] = 'Toestaan om één of meer albums in een menu te conve
 $lang['g002_album2menu'] = "Album naar menu geconverteerd";
 $lang['g002_album'] = "Album &rArr; menu";
 $lang['g002_setting_albums_menus'] = "Album naar menu te converteren";
-$lang['gmaps_gpc_not_up_to_date']= "Voor de pluginis het nodig dat de <i>Grum Plugin klasse</i> versie %s is geïnstalleerd.
-Nu, is versie %s geïnstalleerd: Ga door met de update naar versie van de plugin <i>Grum Plugin klasse</i>.";
-
-?>
+$lang['gmaps_gpc_not_up_to_date'] = 'Voor de plugin is het nodig dat de <i>Grum Plugin klasse</i> versie %s is geïnstalleerd.
+Momenteel is versie %s geïnstalleerd: Ga door met de update versie van de plugin <i>Grum Plugin klasse</i>.';
