@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.9
+Version: 3.2.10
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -240,6 +240,10 @@ Author URI: http://piwigo.org
 | 3.2.8   | 2014/09/22 | * Checked compatibility with Piwigo 2.7 (thanks to modification on trigger_* by mistic)
 |         |            |
 | 3.2.9   | 2014/11/27 | * bug fixed, avoid returning empty value on admin.links.get for accessUsers/accessGroups
+|         |            |
+| 3.2.10  | 2017/05/19 | * speed improvement with the new persistent_cache (new in Piwigo 2.7)
+|         |            | * compatibility PHP 7
+|         |            | * compatibility MySQL 5.7
 
 :: TO DO
 
