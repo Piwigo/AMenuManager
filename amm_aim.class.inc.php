@@ -19,7 +19,7 @@ include_once('amm_root.class.inc.php');
 
 class AMM_AIM extends AMM_root
 {
-  function AMM_AIM($prefixeTable, $filelocation)
+  function __construct($prefixeTable, $filelocation)
   {
     parent::__construct($prefixeTable, $filelocation);
   }

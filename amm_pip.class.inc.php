@@ -25,7 +25,7 @@ class AMM_PIP extends AMM_root
   protected $groups;
   protected $currentBuiltMenu=-1;
 
-  function AMM_PIP($prefixeTable, $filelocation)
+  function __construct($prefixeTable, $filelocation)
   {
     parent::__construct($prefixeTable, $filelocation);
 
