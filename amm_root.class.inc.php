@@ -223,8 +223,8 @@ class AMM_root extends CommonPlugin
   {
     if($id=='')
     {
-      $sql="INSERT INTO ".$this->tables['urls']." VALUES
-            ('',
+      $sql="INSERT INTO ".$this->tables['urls']." (label,url,mode,icon,position,visible,accessUsers,accessGroups) VALUES
+            (
              '".$label."',
              '".$url."',
              '$mode',
@@ -429,8 +429,8 @@ class AMM_root extends CommonPlugin
 
     if($id=='')
     {
-      $sql="INSERT INTO ".$this->tables['personalised']." VALUES
-            ('',
+      $sql="INSERT INTO ".$this->tables['personalised']." (visible,nfo) VALUES
+            (
              '$visible',
              '".$nfo."'
             );";
@@ -461,7 +461,7 @@ class AMM_root extends CommonPlugin
       foreach($langs as $key => $lang)
       {
         $values[]="('$id',
-                    '".$lang['lang']."',
+                    '".substr($lang['lang'],0,5)."',
                     '".pwg_db_real_escape_string(stripslashes($lang['title']))."',
                     '".pwg_db_real_escape_string(stripslashes($lang['content']))."')";
       }
