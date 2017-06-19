@@ -129,7 +129,7 @@ class AMM_AIP extends AMM_root
     //initialise $REQUEST values if not defined
     if(!array_key_exists('tab', $_GET)) $_GET['tab']='setmenu';
 
-    $tmp=explode('/', $_GET['tab'].'/');
+    $tmp=explode('-', $_GET['tab'].'-');
     $_GET['tab']=$tmp[0];
     $_REQUEST['t']=$tmp[1];
 
@@ -193,10 +193,10 @@ class AMM_AIP extends AMM_root
     $linksTabsheet->select($tab);
     $linksTabsheet->add('links',
                           l10n('g002_setting_link_links'),
-                          $this->getAdminLink().'-links/links');
+                          $this->getAdminLink().'-links-links');
     $linksTabsheet->add('config',
                           l10n('g002_configlinks'),
-                          $this->getAdminLink().'-links/config');
+                          $this->getAdminLink().'-links-config');
     $linksTabsheet->assign();
 
     switch($tab)
