@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.11
+Version: 3.2.12
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org
 Author: Piwigo team
@@ -246,6 +246,8 @@ Author URI: http://piwigo.org
 |         |            | * compatibility MySQL 5.7
 |         |            |
 | 3.2.11  | 2017/06/16 | * github #1, input parameter "page" is not valid (Piwigo 2.9.1+)
+|         |            |
+| 3.2.12  | 2017/06/19 | * github #1 again, better way to fix it, replace "/" by "-" for sub-tab
 
 :: TO DO
 
