@@ -89,7 +89,11 @@ class AMM_PIP extends AMM_root
       GPCCore::addHeaderJS('amm.randomPictPublic', 'plugins/AMenuManager/js/amm_randomPictPublic.js', array('jquery'));
 
       $block->set_title(base64_decode($this->config['amm_randompicture_title'][$user['language']]));
-      $block->template=dirname(__FILE__).'/menu_templates/menubar_randompic.tpl';
+
+      global $template;
+      $template->set_template_dir(dirname(__FILE__));
+
+      $block->template = 'menu_templates/menubar_randompic.tpl';
 
       $this->randomPictProp = array(
         'delay' => $this->config['amm_randompicture_periodicchange'],
@@ -156,7 +160,11 @@ class AMM_PIP extends AMM_root
         }
 
         $block->set_title(base64_decode($this->config['amm_links_title'][$user['language']]));
-        $block->template=dirname(__FILE__).'/menu_templates/menubar_links.tpl';
+
+        global $template;
+        $template->set_template_dir(dirname(__FILE__));
+
+        $block->template = 'menu_templates/menubar_links.tpl';
 
         $block->data = array(
           'LINKS' => $urls,
@@ -184,7 +192,12 @@ class AMM_PIP extends AMM_root
           if(($block=$menu->get_block('mbAMM_personalised'.$val['id']))!= null)
           {
             $block->set_title($val['title']);
-            $block->template = dirname(__FILE__).'/menu_templates/menubar_personalised.tpl';
+
+            global $template;
+            $template->set_template_dir(dirname(__FILE__));
+
+            $block->template = 'menu_templates/menubar_personalised.tpl';
+            $block->id = $val['id'];
             $block->data = stripslashes($val['content']);
           }
           $idDone[$val['id']]="";
@@ -219,8 +232,13 @@ class AMM_PIP extends AMM_root
           if(($block=$menu->get_block('mbAMM_album'.$row['id']))!= null)
           {
             $block->set_title($row['name']);
-            $block->template = dirname(__FILE__).'/menu_templates/menubar_album.tpl';
+
+            global $template;
+            $template->set_template_dir(dirname(__FILE__));
+
+            $block->template = 'menu_templates/menubar_album.tpl';
             $block->data = array(
+              'album_id' => $row['id'],
               'album' => get_categories_menu(),
               'name' => $row['name'],
               'link' => make_index_url(array('category' => $row)),
