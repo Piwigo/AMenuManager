@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.12
+Version: 3.2.13
 Description: Gestion avancée du menu / Advanced management of menu
-Plugin URI: http://piwigo.org
+Plugin URI: http://piwigo.org/ext/extension_view.php?eid=250
 Author: Piwigo team
 Author URI: http://piwigo.org
 */
@@ -248,6 +248,8 @@ Author URI: http://piwigo.org
 | 3.2.11  | 2017/06/16 | * github #1, input parameter "page" is not valid (Piwigo 2.9.1+)
 |         |            |
 | 3.2.12  | 2017/06/19 | * github #1 again, better way to fix it, replace "/" by "-" for sub-tab
+|         |            |
+| 3.2.13  | 2020/04/30 | * github #3 compatibility issue with Bootstrap themes: let themes use their own templates
 
 :: TO DO
 
