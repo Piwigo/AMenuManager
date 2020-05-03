@@ -529,7 +529,7 @@ class AMM_root extends CommonPlugin
 
     $nbExistingGroups=0;
     $sql="SELECT COUNT(id) AS nbGroup
-          FROM ".GROUPS_TABLE.";";
+          FROM `".GROUPS_TABLE."`;";
     $result=pwg_query($sql);
     if($result)
     {
@@ -553,7 +553,7 @@ class AMM_root extends CommonPlugin
       }
     }
 
-    $sql="SELECT id, `order`, users, groups
+    $sql="SELECT id, `order`, users, `groups`
           FROM ".$this->tables['blocks']."
           ORDER BY `order`;";
     $result=pwg_query($sql);
