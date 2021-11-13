@@ -30,7 +30,6 @@ class AMM_AIM extends AMM_root
   function initEvents()
   {
     parent::initEvents();
-    add_event_handler('get_admin_plugin_menu_links', array(&$this, 'pluginAdminMenu') );
     add_event_handler('loc_end_page_header', array(&$this, 'adminPanel'));
   }
 

@@ -6,6 +6,7 @@ Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=250
 Author: Piwigo team
 Author URI: http://piwigo.org
+Has Settings: true
 */
 
 /*
