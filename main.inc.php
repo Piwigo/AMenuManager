@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Menu Manager
-Version: 3.2.14
+Version: 3.2.15
 Description: Gestion avancée du menu / Advanced management of menu
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=250
 Author: Piwigo team
@@ -253,6 +253,8 @@ Has Settings: true
 | 3.2.13  | 2020/04/30 | * github #3 compatibility issue with Bootstrap themes: let themes use their own templates
 |         |            |
 | 3.2.14  | 2021/08/04 | * compatibility with MySQL 8 (escape word `groups` in SQL queries)
+|         |            |
+| 3.2.15  | 2021/11/13 | * compatibility with Piwigo 12
 
 :: TO DO
 
