@@ -91,7 +91,7 @@ $lang['g002_setting_randompic_height_auto'] = "Automatisch";
 
 // v2.1.3
 $lang['g002_cancel'] = "Annuleren";
-$lang['g002_piwigo_default'] = "Piwigo\'s standaard sortering";
+$lang['g002_piwigo_default'] = 'Piwigo\'s standaard sortering';
 $lang['g002_apply_changes'] = "Pas de wijzigingen toe";
 $lang['g002_config_saved'] = "De configuratie is opgeslagen";
 $lang['g002_adviser_not_allowed'] = 'Het is een Adviser niet toegestaan om wijzigingen te maken';
@@ -109,8 +109,8 @@ $lang['g002_loading'] = "Laden...";
 $lang['g002_valid_order'] = "uitvoeren volgorde";
 $lang['g002_reset_order'] = "Herstel volgorde";
 $lang['g002_accessibility'] = "Toegankelijkheid";
-$lang['g002_setting_core_blocks_content'] = "Inhoud voor 'Menu' & 'Specials' menu\'s";
-$lang['g002_setting_blocks_position'] = "Zichtbaarheid & volgorde van menu\'s ";
+$lang['g002_setting_core_blocks_content'] = 'Inhoud voor \'Menu\' & \'Specials\' menu\'s';
+$lang['g002_setting_blocks_position'] = 'Zichtbaarheid & volgorde van menu\'s ';
 $lang['g002_plugin'] = "Plugin";
 $lang['g002_selectedpict'] = "Geselecteerde afbeeldingen";
 $lang['g002_album_nfo'] = 'Toestaan om één of meer albums in een menu te converteren';
