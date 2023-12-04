@@ -14,7 +14,7 @@
 
   if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
-  define('AMM_VERSION',  '3.2.15');
-  define('AMM_VERSION2', '03.02.15');
-  define('AMM_GPC_NEEDED', '3.5.12');
+  define('AMM_VERSION',  '3.2.16');
+  define('AMM_VERSION2', '03.02.16');
+  define('AMM_GPC_NEEDED', '3.5.15');
 ?>
